@@ -24,11 +24,11 @@ const GameController = () => {
         <GameHealth health={health}></GameHealth>
         <GameScore score={score}></GameScore>
         <GamePlay 
-        setFeedBackItem={setFeedBackItem} 
-        setGameProgress={setGameProgress} 
-        setControlBackground={setControlBackground}
-        setHealth={setHealth}
-        setScore={setScore}
+            setFeedBackItem={setFeedBackItem} 
+            setGameProgress={setGameProgress} 
+            setControlBackground={setControlBackground}
+            setHealth={setHealth}
+            setScore={setScore}
         ></GamePlay>
         {gameProgress=="start" ? <GameStartOverlay></GameStartOverlay> : <></>}
         {gameProgress=="end" ? <GameEndOverlay feedBackItem={feedBackItem} controlBackground={controlBackground}></GameEndOverlay> : <></>}
