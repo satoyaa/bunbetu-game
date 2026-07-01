@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GamePlayBin from "./GamePlayBin";
 import { DndContext, rectIntersection, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
 import GamePlayConveyor from "./GamePlayConveyor";
+import { useConveyItems, ConveyItemsProvider } from "../contexts/conveyItems";
+
+import { Waste } from "../data/waste";
 
 import './GamePlay.css'
 
@@ -14,8 +17,14 @@ type GamePlayProps = {
   setHealth: React.Dispatch<React.SetStateAction<number>>
 }
 
-const GamePlay = (props: GamePlayProps) => {
+// 指定した範囲 of ランダムな整数を生成する関数
+const getRandomNumber = (min: number, max: number): number => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const GamePlayContent = (props: GamePlayProps) => {
     const { setFeedBackItem } = props;
+    const { conveyItems, setConveyItems } = useConveyItems();
     const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null); // 現在ドラッグ中で重なっている領域をハイライトするために管理
 
     // ドラッグ中のリアルタイム判定（ハイライト用）
@@ -28,7 +37,53 @@ const GamePlay = (props: GamePlayProps) => {
     const handleDragEnd = (_event: DragEndEvent) => {
         // ハイライト状態をリセット
         setActiveOver(null);
+        const { active, over } = _event;
+        if (!active || !over) {
+            return;
+        }
+
+        const activeItem = conveyItems.find((item) => item.id === active.id);
+        if (!activeItem) {
+            return;
+        }
+
+        // item の bin とドロップ先の id が一致すれば正解とみなし、アイテムを削除
+        if (activeItem.def.bin === over.id) {
+            setConveyItems((prevItems) => prevItems.filter((item) => item.id !== active.id));
+        }
     };
+
+    useEffect(() => {
+        const timeoutIds: ReturnType<typeof setTimeout>[] = [];
+
+        const intervalId = setInterval(() => {
+            const randomNumber = getRandomNumber(0, Waste.length - 1);
+            const itemId = Date.now() + Math.random();
+            const itemY = getRandomNumber(0, 250);
+            const newItem = {
+                id: itemId, // 重複を避けるために一意のIDを生成
+                def: Waste[1],
+                fromX: 0,
+                fromY: itemY,
+                toX: 800,
+                travelMs: 10000,
+            };
+
+            setConveyItems((prevItems) => [...prevItems, newItem]);
+
+            // travelMsミリ秒経過後にアイテムを削除する
+            const timeoutId = setTimeout(() => {
+                setConveyItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+            }, newItem.travelMs);
+
+            timeoutIds.push(timeoutId);
+        }, 10000);
+
+        return () => {
+            clearInterval(intervalId);
+            timeoutIds.forEach((id) => clearTimeout(id));
+        };
+    }, []);
 
     return(
         <>
@@ -39,7 +94,7 @@ const GamePlay = (props: GamePlayProps) => {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
         >
-            <GamePlayConveyor></GamePlayConveyor>
+            <GamePlayConveyor />
             <div className='bins'>
                 {BINS.map((bin) =>{
                     return(<GamePlayBin 
@@ -55,5 +110,13 @@ const GamePlay = (props: GamePlayProps) => {
         </>
     )
 }
+
+const GamePlay = (props: GamePlayProps) => {
+    return (
+        <ConveyItemsProvider>
+            <GamePlayContent {...props} />
+        </ConveyItemsProvider>
+    );
+};
 
 export default GamePlay;
