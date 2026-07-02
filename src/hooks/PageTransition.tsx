@@ -7,5 +7,5 @@ export const usePageTransition = () => {
   const goToGame = () => navigate("/game")
   const goToLearn = () => navigate("/learn")
 
-  return { goToStart, goToGame, goToLearn }
+  return { goToStart, goToGame, goToLearn}
 }
