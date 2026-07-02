@@ -54,34 +54,25 @@ const GamePlayContent = (props: GamePlayProps) => {
     };
 
     useEffect(() => {
-        const timeoutIds: ReturnType<typeof setTimeout>[] = [];
-
         const intervalId = setInterval(() => {
-            const randomNumber = getRandomNumber(0, Waste.length - 1);
             const itemId = Date.now() + Math.random();
             const itemY = getRandomNumber(0, 250);
+            const index = getRandomNumber(0, 6);
             const newItem = {
                 id: itemId, // 重複を避けるために一意のIDを生成
-                def: Waste[1],
-                fromX: 0,
-                fromY: itemY,
-                toX: 800,
+                def: Waste[index],
+                coordinateX: 1200,
+                coordinateY: itemY,
+                toX: -200,
                 travelMs: 10000,
+                startedAt: Date.now(),
             };
 
             setConveyItems((prevItems) => [...prevItems, newItem]);
-
-            // travelMsミリ秒経過後にアイテムを削除する
-            const timeoutId = setTimeout(() => {
-                setConveyItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
-            }, newItem.travelMs);
-
-            timeoutIds.push(timeoutId);
         }, 10000);
 
         return () => {
             clearInterval(intervalId);
-            timeoutIds.forEach((id) => clearTimeout(id));
         };
     }, []);
 

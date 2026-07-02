@@ -54,8 +54,9 @@ export type GameStatus = 'start' | 'playing' | 'end';
 export interface ConveyItem {
   id: number;
   def: WasteDef;
-  fromX: number; // 出現位置(px)
-  fromY: number; // 出現位置(px)
+  coordinateX: number; // 出現位置(px)
+  coordinateY: number; // 出現位置(px)
   toX: number; // ミスライン位置(px)
   travelMs: number; // 流れ切るまでの時間
+  startedAt: number; // 移動開始時刻
 }

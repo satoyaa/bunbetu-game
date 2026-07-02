@@ -1,6 +1,5 @@
 .bins{
     display: flex;
-    
 }
 
 .conveyor{
@@ -8,18 +7,11 @@
     width: 100vw;
     background-color: rgb(117, 117, 255);
     position: relative;
+    overflow: hidden;
 }
 
 .conveyed{
-    animation: Convey 10s linear infinite;
-    background-color: greenyellow;
-    width: fit-content;
     position: absolute;
-}
-
-
-
-@keyframes Convey {
-    0% { transform:translate3d(100vw,0,0); }
-    100% { transform:translate3d(-100%,0,0); }
+    width: fit-content;
+    background-color: lightgreen;
 }
