@@ -23,7 +23,7 @@ const getRandomNumber = (min: number, max: number): number => {
 };
 
 const GamePlayContent = (props: GamePlayProps) => {
-    const { setFeedBackItem } = props;
+    const { setFeedBackItem, setHealth } = props;
     const { conveyItems, setConveyItems } = useConveyItems();
     const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null); // 現在ドラッグ中で重なっている領域をハイライトするために管理
 
@@ -50,6 +50,8 @@ const GamePlayContent = (props: GamePlayProps) => {
         // item の bin とドロップ先の id が一致すれば正解とみなし、アイテムを削除
         if (activeItem.def.bin === over.id) {
             setConveyItems((prevItems) => prevItems.filter((item) => item.id !== active.id));
+        } else {
+            setHealth((prevHealth) => Math.max(0, prevHealth - 1));
         }
     };
 
@@ -79,13 +81,12 @@ const GamePlayContent = (props: GamePlayProps) => {
     return(
         <>
         これはゲームプレイ画面です．
-        {/*<Test></Test>*/}
         <DndContext
             collisionDetection={rectIntersection} 
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
         >
-            <GamePlayConveyor />
+            <GamePlayConveyor setHealth={setHealth} />
             <div className='bins'>
                 {BINS.map((bin) =>{
                     return(<GamePlayBin 

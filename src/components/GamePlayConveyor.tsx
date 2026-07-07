@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import GamePlayWaste from "./GamePlayWaste";
 import { useConveyItems } from "../contexts/conveyItems";
 
-const GamePlayConveyor = () => {
+type GamePlayConveyorProps = {
+    setHealth: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const GamePlayConveyor = ({ setHealth }: GamePlayConveyorProps) => {
     const { conveyItems, setConveyItems } = useConveyItems();
     const [, setTick] = useState(0);
 
@@ -23,6 +27,7 @@ const GamePlayConveyor = () => {
             .map((item) => item.id);
 
         if (expiredItemIds.length > 0) {
+            setHealth((prevHealth) => Math.max(0, prevHealth - expiredItemIds.length));
             setConveyItems((prevItems) => prevItems.filter((item) => !expiredItemIds.includes(item.id)));
         }
     }, [conveyItems, setConveyItems]);
