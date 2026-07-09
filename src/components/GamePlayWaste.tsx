@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useDraggable, type UniqueIdentifier } from '@dnd-kit/core';
 import { Waste } from '../data/waste';
-import { useConveyItems } from '../contexts/conveyItems';
+import { useConveyItems } from '../contexts/ConveyItems';
 import type { ConveyItem } from '../types/game';
 
 interface DraggableItemProps {
@@ -54,9 +54,10 @@ interface GamePlayWasteProps {
   isSimple: boolean;
   baseX: number;
   baseY: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY }: GamePlayWasteProps) => {
+const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: GamePlayWasteProps) => {
   const { conveyItems, setConveyItems } = useConveyItems();
 
   const handleSeparate = (partKey: string) => {
@@ -78,6 +79,8 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY }: GamePlayWas
     const progress = Math.min(1, elapsedMs / currentItem.travelMs);
     const currentX = currentItem.coordinateX + (currentItem.toX - currentItem.coordinateX) * progress;
     const remainingTravelMs = Math.max(0, currentItem.travelMs - elapsedMs);
+
+    setScore((prevScore) => prevScore + currentItem.def.score);
 
     const separatedItems: ConveyItem[] = [
       {

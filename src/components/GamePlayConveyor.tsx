@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import GamePlayWaste from "./GamePlayWaste";
-import { useConveyItems } from "../contexts/conveyItems";
+import { useConveyItems } from "../contexts/ConveyItems";
 
 type GamePlayConveyorProps = {
     setHealth: React.Dispatch<React.SetStateAction<number>>;
+    setScore: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const GamePlayConveyor = ({ setHealth }: GamePlayConveyorProps) => {
+const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
     const { conveyItems, setConveyItems } = useConveyItems();
     const [, setTick] = useState(0);
 
@@ -49,6 +50,7 @@ const GamePlayConveyor = ({ setHealth }: GamePlayConveyorProps) => {
                             parts={conveyItem.def.parts}
                             baseX={currentX}
                             baseY={conveyItem.coordinateY}
+                            setScore={setScore}
                         />
                     </div>
                 );

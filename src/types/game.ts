@@ -41,6 +41,7 @@ export interface WasteDef {
   key: string; // key
   label: string; //ごみ名
   img: string; //画像
+  score: number; //獲得点数
   isSimple: boolean; //分解可能か
   isWash: boolean; //洗える・流せるか
   isBurn: boolean; //発火の危険性があるか

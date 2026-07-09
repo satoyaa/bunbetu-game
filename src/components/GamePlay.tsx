@@ -3,7 +3,7 @@ import GamePlayBin from "./GamePlayBin";
 import { DndContext, rectIntersection, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
 import GamePlayConveyor from "./GamePlayConveyor";
-import { useConveyItems, ConveyItemsProvider } from "../contexts/conveyItems";
+import { useConveyItems, ConveyItemsProvider } from "../contexts/ConveyItems";
 
 import { Waste } from "../data/waste";
 
@@ -23,7 +23,7 @@ const getRandomNumber = (min: number, max: number): number => {
 };
 
 const GamePlayContent = (props: GamePlayProps) => {
-    const { setFeedBackItem, setHealth } = props;
+    const { setFeedBackItem, setHealth, setScore } = props;
     const { conveyItems, setConveyItems } = useConveyItems();
     const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null); // 現在ドラッグ中で重なっている領域をハイライトするために管理
 
@@ -49,6 +49,7 @@ const GamePlayContent = (props: GamePlayProps) => {
 
         // item の bin とドロップ先の id が一致すれば正解とみなし、アイテムを削除
         if (activeItem.def.bin === over.id) {
+            setScore((prevScore) => prevScore + activeItem.def.score);
             setConveyItems((prevItems) => prevItems.filter((item) => item.id !== active.id));
         } else {
             setHealth((prevHealth) => Math.max(0, prevHealth - 1));
@@ -86,7 +87,7 @@ const GamePlayContent = (props: GamePlayProps) => {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
         >
-            <GamePlayConveyor setHealth={setHealth} />
+            <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
             <div className='bins'>
                 {BINS.map((bin) =>{
                     return(<GamePlayBin 
