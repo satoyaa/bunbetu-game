@@ -1,0 +1,110 @@
+.gameStartOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.gameStartOverlayCard {
+  width: min(92vw, 640px);
+  min-height: min(78vh, 520px);
+  max-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: #236f9e;
+  color: white;
+
+  border: 2px solid #12384f;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+
+  padding: 24px;
+  text-align: center;
+}
+
+.gameStartOverlayHeader {
+  flex-shrink: 0;
+}
+
+.gameStartOverlayTitle {
+  margin: 0;
+  font-size: clamp(28px, 6vw, 46px);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.gameStartOverlayBody {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.gameStartOverlayItem {
+  font-size: clamp(64px, 18vw, 110px);
+  line-height: 1;
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.25));
+}
+
+.gameStartOverlayText {
+  margin: 0;
+  font-size: clamp(22px, 5vw, 36px);
+  line-height: 1.4;
+  font-weight: 800;
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.gameStartOverlayFooter {
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gameStartOverlayLearnButton,
+.gameStartOverlayNextButton {
+  min-height: 48px;
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: clamp(14px, 3vw, 18px);
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.gameStartOverlayLearnButton {
+  flex: 1.2;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.gameStartOverlayNextButton {
+  flex: 0.8;
+  background: white;
+  color: #236f9e;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.gameStartOverlayLearnButton:active,
+.gameStartOverlayNextButton:active {
+  transform: translateY(2px);
+}

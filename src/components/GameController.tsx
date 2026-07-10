@@ -16,6 +16,7 @@ const GameController = () => {
     const [health, setHealth] = useState(5); //ヘルス表示用
     const [feedBackItem, setFeedBackItem] = useState<string>(); //feedBackで呼び出すitemのid 
     const [gameProgress, setGameProgress] = useState("start"); //タップしてゲーム開始
+    const startGame = () => {setGameProgress("playing");};
     const [controlBackground, setControlBackground] = useState("pollution"); //背景を得点に応じてコントロール
     return (
         <>
@@ -30,7 +31,7 @@ const GameController = () => {
         setHealth={setHealth}
         setScore={setScore}
         ></GamePlay>
-        {gameProgress=="start" ? <GameStartOverlay></GameStartOverlay> : <></>}
+        {gameProgress === "start" ? (<GameStartOverlay onStart={startGame} />) : (<></>)}
         {gameProgress=="end" ? <GameEndOverlay feedBackItem={feedBackItem} controlBackground={controlBackground}></GameEndOverlay> : <></>}
         </>
     )
