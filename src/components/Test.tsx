@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
-import { DndContext, useDraggable, useDroppable, rectIntersection } from '@dnd-kit/core';
+import { useState, type ReactNode } from 'react';
+import { DndContext, useDraggable, useDroppable, rectIntersection, type DragEndEvent, type DragOverEvent, type UniqueIdentifier } from '@dnd-kit/core';
+
+interface DraggableItemProps {
+  id: UniqueIdentifier;
+  children: ReactNode;
+}
 
 // 1．ドラッグできるコンポーネント
-const DraggableItem = ({ id, children }) => {
+const DraggableItem = ({ id, children }: DraggableItemProps) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: id,
   });
@@ -20,8 +25,14 @@ const DraggableItem = ({ id, children }) => {
   );
 };
 
+interface DroppableAreaProps {
+  id: UniqueIdentifier;
+  children: ReactNode;
+  isOver: boolean;
+}
+
 // 2．ドロップを受け入れるコンポーネント
-const DroppableArea = ({ id, children, isOver }) => {
+const DroppableArea = ({ id, children, isOver }: DroppableAreaProps) => {
   const { setNodeRef } = useDroppable({
     id: id,
   });
@@ -45,18 +56,18 @@ const DroppableArea = ({ id, children, isOver }) => {
 // 3．メインアプリケーション
 export const Test = () => {
   // アイテムが現在どの領域にいるかを管理（初期値はnull＝どこにも属していない）
-  const [parent, setParent] = useState(null);
+  const [parent, setParent] = useState<UniqueIdentifier | null>(null);
   // 現在ドラッグ中で重なっている領域をハイライトするために管理
-  const [activeOver, setActiveOver] = useState(null);
+  const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null);
 
   // ドラッグ中のリアルタイム判定（ハイライト用）
-  const handleDragOver = (event) => {
+  const handleDragOver = (event: DragOverEvent) => {
     const { over } = event;
     setActiveOver(over ? over.id : null);
   };
 
   // ドラッグ終了時の処理（確定処理）
-  const handleDragEnd = (event) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { over } = event;
     
     // ドロップ領域に着地した場合はStateを更新

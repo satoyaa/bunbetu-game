@@ -3,7 +3,7 @@ import GamePlayBin from "./GamePlayBin";
 import { DndContext, rectIntersection, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
 import GamePlayConveyor from "./GamePlayConveyor";
-import { useConveyItems, ConveyItemsProvider } from "../contexts/ConveyItems";
+import { useConveyItems, ConveyItemsProvider } from "../contexts/conveyItems";
 
 import { Waste } from "../data/waste";
 

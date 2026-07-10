@@ -18,9 +18,19 @@ const GameController = () => {
     const [gameProgress, setGameProgress] = useState("start"); //タップしてゲーム開始
     const startGame = () => {setGameProgress("playing");};
     const [controlBackground, setControlBackground] = useState("pollution"); //背景を得点に応じてコントロール
+    const handle_game_progress = () => {
+        if (gameProgress === "start") {
+            setGameProgress("playing");
+        } else if (gameProgress === "playing") {
+            setGameProgress("end");
+        } else if (gameProgress === "end") {
+            setGameProgress("start");
+        }
+    }
     return (
         <>
         これはゲームページです．
+        <button onClick={() =>handle_game_progress()}>ゲーム進行状況変更</button>
         <p>選択中の難易度: {difficulty}</p>
         <GameHealth health={health}></GameHealth>
         <GameScore score={score}></GameScore>

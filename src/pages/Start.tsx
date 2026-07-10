@@ -15,6 +15,8 @@ export default function Start() {
 
   const closeHowToPlay = () => {
     setShowHowToPlay(false)
+  }
+
   //難易度ボタン押下時 ①難易度を設定 ②Gameページへ遷移 (トラック走行演出は後で実装)
   const handleSelectDifficulty = (difficulty: Difficulty) => {
     setDifficulty(difficulty)
