@@ -1,0 +1,17 @@
+.bins{
+    display: flex;
+}
+
+.conveyor{
+    height: 300px; /*暫定的な値*/
+    width: 100vw;
+    background-color: rgb(117, 117, 255);
+    position: relative;
+    overflow: hidden;
+}
+
+.conveyed{
+    position: absolute;
+    width: fit-content;
+    background-color: lightgreen;
+}
