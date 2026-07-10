@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDifficulty } from "../contexts/Difficulty"
+import type { Difficulty } from "../contexts/Difficulty"
 import { usePageTransition } from "../hooks/PageTransition"
 import GameHowToPlay from "../components/overlays/GameHowToPlay"
 
@@ -14,23 +15,34 @@ export default function Start() {
 
   const closeHowToPlay = () => {
     setShowHowToPlay(false)
+  //難易度ボタン押下時 ①難易度を設定 ②Gameページへ遷移 (トラック走行演出は後で実装)
+  const handleSelectDifficulty = (difficulty: Difficulty) => {
+    setDifficulty(difficulty)
+    goToGame()
   }
 
   return (
     <section>
-      <h1>これはStartページです</h1>
+      <h1>スタート画面</h1>
+      <h2>ごみ分別ゲーム</h2>
       <div>
-        <button
-          type="button"
-          onClick={() => {
-            goToGame()
-          }}>
-          Gameページへ
+        <button type="button" onClick={() => handleSelectDifficulty("easy")}>
+          やさしい
+        </button>
+      </div>
+      <div>
+        <button type="button" onClick={() => handleSelectDifficulty("normal")}>
+          ふつう
+        </button>
+      </div>
+      <div>
+        <button type="button" onClick={() => handleSelectDifficulty("hard")}>
+          むずかしい
         </button>
       </div>
       <div>
         <button type="button" onClick={goToLearn}>
-          Learnページへ
+          ごみ問題をまなぶ
         </button>
       </div>
       <div>
