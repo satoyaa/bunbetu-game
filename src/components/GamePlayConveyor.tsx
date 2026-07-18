@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import GamePlayWaste from "./GamePlayWaste";
-import { useConveyItems } from "../contexts/ConveyItems";
+import { useConveyItems } from "../contexts/conveyItems";
 
 type GamePlayConveyorProps = {
     setHealth: React.Dispatch<React.SetStateAction<number>>;

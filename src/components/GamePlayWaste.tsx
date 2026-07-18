@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useDraggable, type UniqueIdentifier } from '@dnd-kit/core';
 import { Waste } from '../data/waste';
-import { useConveyItems } from '../contexts/ConveyItems';
+import { useConveyItems } from '../contexts/conveyItems';
 import type { ConveyItem } from '../types/game';
 
 interface DraggableItemProps {
