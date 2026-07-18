@@ -8,10 +8,9 @@ type GameScoreProps = {
 const GameScore = ({score}:GameScoreProps) =>{
 
     return(
-        <>
-        これは体力です．
-        {score}
-        </>
+        <div style={{position: "fixed", top: 0, left: 0}}>
+        スコア: {score}
+        </div>
     )
 }
 
