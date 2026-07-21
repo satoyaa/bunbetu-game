@@ -6,7 +6,6 @@ export default function Game() {
 
   return (
     <section>
-      <h1>これはGameページです</h1>
       <div>
         <button type="button" onClick={goToStart}>
           スタートページへ
