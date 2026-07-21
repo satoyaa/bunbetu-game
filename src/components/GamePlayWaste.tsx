@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { useDraggable, type UniqueIdentifier } from '@dnd-kit/core';
 import { Waste } from '../data/waste';
-import { useConveyItems } from '../contexts/conveyItems';
+import { useConveyItems } from '../contexts/ConveyItems';
 import type { ConveyItem } from '../types/game';
 
 interface DraggableItemProps {
@@ -124,7 +124,6 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
     return (
       <div
         key={`${partKey}-${index}`}
-        onPointerDown={(event) => event.stopPropagation()}
         onClick={(event) => {
           event.stopPropagation();
           handleSeparate(partKey);

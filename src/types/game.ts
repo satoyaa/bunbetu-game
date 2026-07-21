@@ -47,6 +47,7 @@ export interface WasteDef {
   isBurn: boolean; //発火の危険性があるか
   bin : BinId; //ごみ箱・分解可能ならそちらを優先して処理
   parts: string[]; //分解後のパーツ
+  feedBackId?: FeedBackId; //フィードバックID
 }
 
 export type GameStatus = 'start' | 'playing' | 'end';
@@ -60,4 +61,21 @@ export interface ConveyItem {
   toX: number; // ミスライン位置(px)
   travelMs: number; // 流れ切るまでの時間
   startedAt: number; // 移動開始時刻
+}
+
+export interface GameLevelParameter {
+  level: number; // ゲームのレベル
+  wasteSpeed: number; //ごみの流れるスピード 得点に応じて高速化
+  itemInterval: number; //ごみの出現間隔 得点及び難易度に応じて頻繁に
+  wasteLevel: number; //ごみの種類別にレベル割り当て，簡単な難易度では出現するごみを絞る
+  burstSpawnRate: number; //ごみの一斉出現率 得点に応じて増加
+}
+
+// 難易度別に管理するゲームのパラメータ
+export interface GameDifficulty {
+  name: string; // 難易度名
+  timeLimit: number; //制限時間 やさしい=>60秒,ふつう=>60秒,むずかしい=>時間無制限
+  lifeLimit: number; //ライフ制限 やさしい=>無制限,ふつう=>3,むずかしい=>3(仮，使わない可能性あり)
+  binCount: number; //ごみ箱の数 難易度に応じて増減
+  levels: GameLevelParameter[]; //レベルごとのパラメータ
 }
