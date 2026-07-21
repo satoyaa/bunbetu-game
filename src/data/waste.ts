@@ -15,6 +15,7 @@ export const Waste: WasteDef[] = [
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ['pet', 'label', 'cap'],
     feedBackId: 'forget_separate',
+    wasteLevel: 3,
   },
   { //飲み残しあり，キャップ付きペットボトル
     key: 'pet_cap_drink', //key
@@ -27,6 +28,7 @@ export const Waste: WasteDef[] = [
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ['pet', 'cap'],
     feedBackId: 'forget_separate',
+    wasteLevel: 3,
   },
   { //飲み残しあり，ラベル付きペットボトル
     key: 'pet_label_drink', //key
@@ -39,6 +41,7 @@ export const Waste: WasteDef[] = [
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ['pet', 'label'],
     feedBackId: 'forget_separate',
+    wasteLevel: 2,
   },
   { //飲み残しあり，ペットボトル
     key: 'pet_drink', //key
@@ -51,6 +54,7 @@ export const Waste: WasteDef[] = [
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ["pet"],
     feedBackId: 'must_flush',
+    wasteLevel: 2,
   },
   { //ペットボトル
     key: 'pet', //key
@@ -63,6 +67,7 @@ export const Waste: WasteDef[] = [
     bin: "pet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],
     feedBackId: 'simple_mistake',
+    wasteLevel: 1,
   },
   { //キャップ
     key: 'cap', //key
@@ -75,6 +80,7 @@ export const Waste: WasteDef[] = [
     bin: "recycle_plastic", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],
     feedBackId: 'simple_mistake',
+    wasteLevel: 1,
   },
   { //ラベル
     key: 'label', //key
@@ -87,6 +93,7 @@ export const Waste: WasteDef[] = [
     bin: "recycle_plastic", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],
     feedBackId: 'simple_mistake',
+    wasteLevel: 1,
   },
   {
     key: 'can_juice',
@@ -99,5 +106,6 @@ export const Waste: WasteDef[] = [
     isBurn: false,
     bin: 'hunen',
     feedBackId: 'simple_mistake',
+    wasteLevel: 1,
   },
 ];

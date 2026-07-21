@@ -48,6 +48,7 @@ export interface WasteDef {
   bin : BinId; //ごみ箱・分解可能ならそちらを優先して処理
   parts: string[]; //分解後のパーツ
   feedBackId?: FeedBackId; //フィードバックID
+  wasteLevel: number; //ゲームレベルに応じて出現するごみの種類を制御するためのレベル
 }
 
 export type GameStatus = 'start' | 'playing' | 'end';
@@ -74,8 +75,9 @@ export interface GameLevelParameter {
 // 難易度別に管理するゲームのパラメータ
 export interface GameDifficulty {
   name: string; // 難易度名
+  difficulty: "easy" | "normal" | "hard"; // 難易度の種類
   timeLimit: number; //制限時間 やさしい=>60秒,ふつう=>60秒,むずかしい=>時間無制限
   lifeLimit: number; //ライフ制限 やさしい=>無制限,ふつう=>3,むずかしい=>3(仮，使わない可能性あり)
   binCount: number; //ごみ箱の数 難易度に応じて増減
-  levels: GameLevelParameter[]; //レベルごとのパラメータ
+  levels: number[]; //レベルごとのパラメータ
 }

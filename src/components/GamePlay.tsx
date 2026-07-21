@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import GamePlayBin from "./GamePlayBin";
 import { DndContext, rectIntersection, useSensor, useSensors, PointerSensor, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
+import { GAME_LEVEL_PARAMETER_DATA } from "../data/difficulty";
 import GamePlayConveyor from "./GamePlayConveyor";
 import { useConveyItems, ConveyItemsProvider } from "../contexts/ConveyItems";
 
 import { Waste } from "../data/waste";
-import type { FeedBack } from "../types/game";
+import type { FeedBack, GameLevelParameter } from "../types/game";
 
 import { SPECIAL_FEEDBACK_MESSAGES } from "../data/feedback";
 
@@ -19,6 +20,7 @@ type GamePlayProps = {
   setControlBackground: React.Dispatch<React.SetStateAction<string>>
   setScore: React.Dispatch<React.SetStateAction<number>>
   setHealth: React.Dispatch<React.SetStateAction<number>>
+  gameLevel: GameLevelParameter | number
 }
 
 // 指定した範囲 of ランダムな整数を生成する関数
@@ -27,7 +29,7 @@ const getRandomNumber = (min: number, max: number): number => {
 };
 
 const GamePlayContent = (props: GamePlayProps) => {
-    const { gameProgress, setFeedBackItem, setHealth, setScore } = props;
+    const { gameProgress, setFeedBackItem, setHealth, setScore, gameLevel} = props;
     const { conveyItems, setConveyItems } = useConveyItems();
     const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null); // 現在ドラッグ中で重なっている領域をハイライトするために管理
 
@@ -92,7 +94,6 @@ const GamePlayContent = (props: GamePlayProps) => {
                 where: whereText,
                 special_message: specialMessage,
             });
-            console.log(`Feedback: ${feedBackId}, Who: ${activeItem.def.label}, Where: ${whereText}, Special Message: ${specialMessage}`);
         }
     };
 
@@ -101,27 +102,36 @@ const GamePlayContent = (props: GamePlayProps) => {
             return;
         }
 
+        const levelNum = typeof gameLevel === "number" ? gameLevel : (gameLevel as any)?.level ?? 0;
+        const currentParam = GAME_LEVEL_PARAMETER_DATA.find((p) => p.level === levelNum) ?? GAME_LEVEL_PARAMETER_DATA[0];
+
+        // 出現可能なゴミ一覧（wasteLevel 以下に絞り込み）
+        const availableWastes = Waste.filter((w) => w.wasteLevel <= currentParam.wasteLevel);
+        const wasteList = availableWastes.length > 0 ? availableWastes : Waste;
+
         const intervalId = setInterval(() => {
             const itemId = Date.now() + Math.random();
             const itemY = getRandomNumber(0, 250);
-            const index = getRandomNumber(0, 6);
+            const index = getRandomNumber(0, wasteList.length - 1);
+            const travelMs = Math.round(10000 / currentParam.wasteSpeed);
+
             const newItem = {
                 id: itemId, // 重複を避けるために一意のIDを生成
-                def: Waste[index],
+                def: wasteList[index],
                 coordinateX: 1200,
                 coordinateY: itemY,
                 toX: -200,
-                travelMs: 10000,
+                travelMs: travelMs, // スピードに応じた移動ミリ秒
                 startedAt: Date.now(),
             };
 
             setConveyItems((prevItems) => [...prevItems, newItem]);
-        }, 10000);
+        }, currentParam.itemInterval * 1000);
 
         return () => {
             clearInterval(intervalId);
         };
-    }, [gameProgress, setConveyItems]);
+    }, [gameProgress, gameLevel, setConveyItems]);
 
     return(
         <>
