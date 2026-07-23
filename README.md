@@ -35,4 +35,11 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 
 | ファイル名 | 出典・権利者 |
 | :--- | :--- |
-| example.png | ©広島市 |
+| public\その他プラ.jpg | ©広島市 |
+| public\ペットボトル.jpg | ©広島市 |
+| public\リサイクルプラ.jpg | ©広島市 |
+| public\不燃ごみ.jpg | ©広島市 |
+| public\可燃ごみ.jpg | ©広島市 |
+| public\大型ごみ.jpg | ©広島市 |
+| public\有害ごみ.jpg | ©広島市 |
+| public\資源ごみ.jpg | ©広島市 |

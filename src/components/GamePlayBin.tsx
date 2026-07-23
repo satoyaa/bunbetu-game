@@ -36,11 +36,11 @@ interface GamePlayBinProps {
   activeOver: UniqueIdentifier | null;
 }
 
-const GamePlayBin = ({ id, label, activeOver }: GamePlayBinProps) => {
+const GamePlayBin = ({ id, label, img, activeOver }: GamePlayBinProps) => {
   return (
     <>
       <DroppableArea id={id} isOver={activeOver === `${id}`}>
-        <h3>{label}</h3>
+        <img src={img} alt={label} style={{ width: '100px', height: '100px' }} />
       </DroppableArea>
     </>
   );
