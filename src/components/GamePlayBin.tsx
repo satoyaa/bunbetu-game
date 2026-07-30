@@ -16,10 +16,8 @@ const DroppableArea = ({ id, children, isOver }: DroppableAreaProps) => {
   // アイテムが重なっている時は背景色を変更する
   const style = {
     backgroundColor: isOver ? 'lightgreen' : '#f0f0f0',
-    padding: '20px',
-    margin: '10px',
     border: '2px dashed #ccc',
-    minHeight: '100px',
+    flex: 1,
   };
 
   return (
@@ -40,7 +38,7 @@ const GamePlayBin = ({ id, label, img, activeOver }: GamePlayBinProps) => {
   return (
     <>
       <DroppableArea id={id} isOver={activeOver === `${id}`}>
-        <img src={img} alt={label} style={{ width: '100px', height: '100px' }} />
+        <img src={img} alt={label} />
       </DroppableArea>
     </>
   );

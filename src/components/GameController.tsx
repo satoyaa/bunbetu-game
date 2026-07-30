@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDifficulty } from "../contexts/Difficulty";
-import type { FeedBack } from "../types/game";
+import type { BackgroundType, FeedBack, GameStatus } from "../types/game";
 import { GAME_DIFFICULTY_DATA } from "../data/difficulty";
-
 
 //各コンポーネント呼び出し
 import GameHealth from "./GameHealth"; //体力表示
@@ -28,10 +27,10 @@ const GameController = () => {
     const [maxHealth, setMaxHealth] = useState(defaultHealth);
     const [health, setHealth] = useState(defaultHealth); //ヘルス表示用
     const [feedBack, setFeedBack] = useState<FeedBack>(); //feedBack 
-    const [gameProgress, setGameProgress] = useState("start"); //タップしてゲーム開始
-    const [controlBackground, setControlBackground] = useState("pollution"); //背景を得点に応じてコントロール
+    const [gameProgress, setGameProgress] = useState<GameStatus>("start"); //タップしてゲーム開始
+    const [controlBackground, setControlBackground] = useState<BackgroundType>("pollution"); //背景を得点に応じてコントロール
     const [timeLeft, setTimeLeft] = useState(defaultTime); //残り時間表示用
-    const [gameLevel, setGameLevel] = useState(defaultGameLevel); //ゲームレベル管理用
+    const [gameLevel, setGameLevel] = useState<number>(defaultGameLevel); //ゲームレベル管理用
 
     useEffect(() => {
         if (score >= 50) {

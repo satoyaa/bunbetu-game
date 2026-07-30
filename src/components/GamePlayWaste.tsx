@@ -130,6 +130,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
         }}
       >
         {matchedWaste?.label ?? partKey}
+        <img src={matchedWaste?.img} alt={label} style={{ width: '100px', height: '100px' }} />
       </div>
     );
   });

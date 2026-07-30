@@ -1,17 +1,30 @@
-.bins{
+.game-play-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    width: 100%;
 }
 
-.conveyor{
+.bins {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.conveyor {
     height: 300px; /*暫定的な値*/
-    width: 100vw;
+    width: 100%;
     background-color: rgb(117, 117, 255);
     position: relative;
     overflow: hidden;
 }
 
-.conveyed{
+.conveyed {
     position: absolute;
     width: fit-content;
     background-color: lightgreen;
 }
+

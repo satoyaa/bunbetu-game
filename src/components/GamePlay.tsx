@@ -7,20 +7,20 @@ import GamePlayConveyor from "./GamePlayConveyor";
 import { useConveyItems, ConveyItemsProvider } from "../contexts/ConveyItems";
 
 import { Waste } from "../data/waste";
-import type { FeedBack, GameLevelParameter } from "../types/game";
+import type { BackgroundType, FeedBack, GameStatus } from "../types/game";
 
 import { SPECIAL_FEEDBACK_MESSAGES } from "../data/feedback";
 
 import './GamePlay.css'
 
 type GamePlayProps = {
-  gameProgress: string
+  gameProgress: GameStatus
   setFeedBackItem: React.Dispatch<React.SetStateAction<FeedBack | undefined>>
-  setGameProgress: React.Dispatch<React.SetStateAction<string>>
-  setControlBackground: React.Dispatch<React.SetStateAction<string>>
+  setGameProgress: React.Dispatch<React.SetStateAction<GameStatus>>
+  setControlBackground: React.Dispatch<React.SetStateAction<BackgroundType>>
   setScore: React.Dispatch<React.SetStateAction<number>>
   setHealth: React.Dispatch<React.SetStateAction<number>>
-  gameLevel: GameLevelParameter | number
+  gameLevel: number
 }
 
 // 指定した範囲 of ランダムな整数を生成する関数
@@ -102,7 +102,7 @@ const GamePlayContent = (props: GamePlayProps) => {
             return;
         }
 
-        const levelNum = typeof gameLevel === "number" ? gameLevel : (gameLevel as any)?.level ?? 0;
+        const levelNum = gameLevel;
         const currentParam = GAME_LEVEL_PARAMETER_DATA.find((p) => p.level === levelNum) ?? GAME_LEVEL_PARAMETER_DATA[0];
 
         // 出現可能なゴミ一覧（wasteLevel 以下に絞り込み）
@@ -133,30 +133,31 @@ const GamePlayContent = (props: GamePlayProps) => {
         };
     }, [gameProgress, gameLevel, setConveyItems]);
 
-    return(
-        <>
-        これはゲームプレイ画面です．
-        <DndContext
-            sensors={sensors}
-            collisionDetection={rectIntersection} 
-            onDragOver={handleDragOver}
-            onDragEnd={handleDragEnd}
-        >
-            <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
-            <div className='bins'>
-                {BINS.map((bin) =>{
-                    return(<GamePlayBin 
-                        key={bin.id}
-                        id={bin.id} 
-                        img={bin.img} 
-                        label={bin.label} 
-                        activeOver={activeOver}></GamePlayBin>)
-                })}
-            </div>
-        </DndContext>
-        {setFeedBackItem}
-        </>
-    )
+    return (
+        <div className="game-play-container">
+            <DndContext
+                sensors={sensors}
+                collisionDetection={rectIntersection} 
+                onDragOver={handleDragOver}
+                onDragEnd={handleDragEnd}
+            >
+                <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
+                <div className='bins'>
+                    {BINS.map((bin) => {
+                        return (
+                            <GamePlayBin 
+                                key={bin.id}
+                                id={bin.id} 
+                                img={bin.img} 
+                                label={bin.label} 
+                                activeOver={activeOver}
+                            />
+                        );
+                    })}
+                </div>
+            </DndContext>
+        </div>
+    );
 }
 
 const GamePlay = (props: GamePlayProps) => {

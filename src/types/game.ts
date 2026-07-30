@@ -53,6 +53,8 @@ export interface WasteDef {
 
 export type GameStatus = 'start' | 'playing' | 'end';
 
+export type BackgroundType = 'nature' | 'normal' | 'pollution';
+
 // ベルト上を流れているゴミ1つ分の実体。
 export interface ConveyItem {
   id: number;
