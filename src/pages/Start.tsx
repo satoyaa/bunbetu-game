@@ -137,7 +137,6 @@ export default function Start() {
           </div>
           <div className="cardContent">
             <h2 className="cardTitle titleHard">むずかしい</h2>
-            <div className="cardAccentLine" />
             <p className="cardDesc">ちょうせんしたい人向け</p>
           </div>
         </button>

@@ -1,16 +1,17 @@
-
+import {type Difficulty } from "../contexts/Difficulty";
 
 type GameDifficultyProps = {
-    difficulty: string
-}
+  difficulty: Difficulty;
+};
 
-const GameDifficulty = ({difficulty}:GameDifficultyProps) =>{
+const GameDifficulty = ({ difficulty }: GameDifficultyProps) => {
 
-    return(
-        <div style={{position: "fixed", top: 0, left: "50%", transform: "translateX(-50%)"}}>
-        難易度: {difficulty}
-        </div>
-    )
-}
+  return (
+    <div className="game-hud-badge">
+      {difficulty}
+    </div>
+  );
+};
 
 export default GameDifficulty;
+

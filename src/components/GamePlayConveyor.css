@@ -1,0 +1,57 @@
+.conveyor-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1060px;
+  margin: 10px auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* メタリックなコンベア本体 */
+.conveyor-assembly {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* コンベアベルト面 */
+.conveyor-track {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  height: 96px;
+  background: linear-gradient(180deg, #475569 0%, #334155 20%, #1e293b 80%, #0f172a 100%);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.15);
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* ベルト上のアイテム描画領域 */
+.conveyor-items-plane {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -45px;
+  bottom: 0;
+  pointer-events: auto;
+}
+
+.conveyed-item-wrapper {
+  position: absolute;
+  user-select: none;
+  cursor: grab;
+  z-index: 20;
+  transition: transform 0.1s ease;
+}
+
+.conveyed-item-wrapper:active {
+  cursor: grabbing;
+}

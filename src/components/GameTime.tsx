@@ -1,13 +1,17 @@
 type GameTimeProps = {
-    timeLeft: number;
+  timeLeft: number;
 };
 
 const GameTime = ({ timeLeft }: GameTimeProps) => {
-    return (
-        <div style={{ position: "fixed", top: 0, left: "20%", transform: "translateX(-50%)" }}>
-            残り時間: {timeLeft}秒
-        </div>
-    );
+  const displayTime = !isFinite(timeLeft) || timeLeft >= 999 ? "∞" : `${timeLeft}秒`;
+
+  return (
+    <div className="game-hud-badge time-badge">
+      <span className="badge-label">残り時間 :</span>
+      <span className="badge-value">{displayTime}</span>
+    </div>
+  );
 };
 
 export default GameTime;
+

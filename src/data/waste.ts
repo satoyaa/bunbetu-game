@@ -97,7 +97,7 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'can_juice',
-    img: '🥫',
+    img: 'ここに挿入',
     score: 20,
     isSimple: true,
     parts: [],

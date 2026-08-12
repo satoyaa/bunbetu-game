@@ -2,13 +2,12 @@
 
 import "./GameEndOverlay.css";
 import { SPECIAL_FEEDBACK_MESSAGES } from "../../data/feedback";
-import type { BackgroundType, FeedBack } from "../../types/game";
+import type {FeedBack } from "../../types/game";
 import { usePageTransition } from "../../hooks/PageTransition";
 
 type GameEndOverlayProps = {
   onEnd?: () => void;
   feedBack?: FeedBack;
-  controlBackground?: BackgroundType;
 };
 
 const GameEndOverlay = ({ onEnd, feedBack }: GameEndOverlayProps) => {

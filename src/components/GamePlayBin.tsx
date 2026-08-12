@@ -1,46 +1,45 @@
 import type { ReactNode } from 'react';
 import { useDroppable, type UniqueIdentifier } from '@dnd-kit/core';
+import type { BinDef } from '../types/game';
+import './GamePlayBin.css';
 
 interface DroppableAreaProps {
   id: UniqueIdentifier;
   children: ReactNode;
   isOver: boolean;
+  binDef?: BinDef;
 }
 
-// 2．ドロップを受け入れるコンポーネント
-const DroppableArea = ({ id, children, isOver }: DroppableAreaProps) => {
+// ドロップを受け入れるカードコンポーネント
+const DroppableArea = ({ id, children, isOver}: DroppableAreaProps) => {
   const { setNodeRef } = useDroppable({
     id: id,
   });
 
-  // アイテムが重なっている時は背景色を変更する
-  const style = {
-    backgroundColor: isOver ? 'lightgreen' : '#f0f0f0',
-    border: '2px dashed #ccc',
-    flex: 1,
-  };
-
   return (
-    <div ref={setNodeRef} style={style}>
+    <div
+      ref={setNodeRef}
+      className={`bin-card ${isOver ? 'is-over' : ''}`}
+    >
       {children}
     </div>
   );
 };
 
 interface GamePlayBinProps {
-  id: UniqueIdentifier;
-  img?: string;
-  label: string;
+  bin: BinDef;
   activeOver: UniqueIdentifier | null;
 }
 
-const GamePlayBin = ({ id, label, img, activeOver }: GamePlayBinProps) => {
+const GamePlayBin = ({ bin, activeOver }: GamePlayBinProps) => {
+  const isOver = activeOver === bin.id;
+
   return (
-    <>
-      <DroppableArea id={id} isOver={activeOver === `${id}`}>
-        <img src={img} alt={label} />
-      </DroppableArea>
-    </>
+    <DroppableArea id={bin.id} isOver={isOver} binDef={bin}>
+      <div className="bin-image-wrapper">
+        <img src={`/${bin.img}`} alt={bin.label} className="bin-image" />
+      </div>
+    </DroppableArea>
   );
 };
 
