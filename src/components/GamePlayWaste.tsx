@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useDraggable, type UniqueIdentifier } from '@dnd-kit/core';
 import { Waste } from '../data/waste';
 import { useConveyItems } from '../contexts/ConveyItems';
-import type { ConveyItem } from '../types/game';
+import type { ConveyItem, WasteDef } from '../types/game';
 import './GamePlayWaste.css';
 
 interface DraggableItemProps {
@@ -59,7 +59,7 @@ interface GamePlayWasteProps {
 
 const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: GamePlayWasteProps) => {
   const { conveyItems, setConveyItems } = useConveyItems();
-  const currentItem = conveyItems.find((item) => item.id === id);
+  const currentItem = conveyItems.find((item: ConveyItem) => item.id === id);
   const wasteDef = currentItem?.def;
 
   const handleSeparate = (partKey: string) => {
@@ -71,7 +71,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
       return;
     }
 
-    const selectedPartDef = Waste.find((item) => item.key === partKey);
+    const selectedPartDef = Waste.find((item: WasteDef) => item.key === partKey);
     if (!selectedPartDef) {
       return;
     }
@@ -81,7 +81,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
     const currentX = currentItem.coordinateX + (currentItem.toX - currentItem.coordinateX) * progress;
     const remainingTravelMs = Math.max(0, currentItem.travelMs - elapsedMs);
 
-    setScore((prevScore) => prevScore + currentItem.def.score);
+    setScore((prevScore: number) => prevScore + currentItem.def.score);
 
     const separatedItems: ConveyItem[] = [
       {
@@ -95,13 +95,13 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
       },
     ];
 
-    const remainingParts = currentItem.def.parts.filter((part) => part !== partKey);
+    const remainingParts = currentItem.def.parts.filter((part: string) => part !== partKey);
     if (remainingParts.length > 0) {
       const combinedKey = [
         ...remainingParts,
         ...(currentItem.def.isWash ? ['drink'] : []),
       ].join('_');
-      const remainingDef = Waste.find((item) => item.key === combinedKey);
+      const remainingDef = Waste.find((item: WasteDef) => item.key === combinedKey);
       if (remainingDef) {
         separatedItems.push({
           id: Date.now() + Math.random(),
@@ -115,8 +115,8 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
       }
     }
 
-    setConveyItems((prevItems) =>
-      prevItems.filter((item) => item.id !== currentItem.id).concat(separatedItems)
+    setConveyItems((prevItems: ConveyItem[]) =>
+      prevItems.filter((item: ConveyItem) => item.id !== currentItem.id).concat(separatedItems)
     );
   };
 
@@ -150,8 +150,8 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
         renderVisual()
       ) : (
         <div className="waste-parts-container">
-          {parts.map((partKey, index) => {
-            const matchedWaste = Waste.find((item) => item.key === partKey);
+          {parts.map((partKey: string, index: number) => {
+            const matchedWaste = Waste.find((item: WasteDef) => item.key === partKey);
             const isImg = matchedWaste?.img && (matchedWaste.img.endsWith('.png') || matchedWaste.img.endsWith('.jpg'));
 
             return (

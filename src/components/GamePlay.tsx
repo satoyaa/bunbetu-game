@@ -7,9 +7,9 @@ import GamePlayConveyor from "./GamePlayConveyor";
 import { useConveyItems, ConveyItemsProvider } from "../contexts/ConveyItems";
 
 import { Waste } from "../data/waste";
-import type { BackgroundType, FeedBack, GameStatus } from "../types/game";
+import type { BackgroundType, BinDef, ConveyItem, FeedBack, GameLevelParameter, GameStatus, WasteDef } from "../types/game";
 
-import { SPECIAL_FEEDBACK_MESSAGES } from "../data/feedback";
+import { SPECIAL_FEEDBACK_MESSAGES, type SpecialFeedbackMessage } from "../data/feedback";
 
 import './GamePlay.css';
 
@@ -63,26 +63,26 @@ const GamePlayContent = (props: GamePlayProps) => {
       return;
     }
 
-    const activeItem = conveyItems.find((item) => item.id === active.id);
+    const activeItem = conveyItems.find((item: ConveyItem) => item.id === active.id);
     if (!activeItem) {
       return;
     }
 
     // item の bin とドロップ先の id が一致すれば正解とみなし、アイテムを削除
     if (activeItem.def.bin === over.id) {
-      setScore((prevScore) => prevScore + activeItem.def.score);
-      setConveyItems((prevItems) => prevItems.filter((item) => item.id !== active.id));
+      setScore((prevScore: number) => prevScore + activeItem.def.score);
+      setConveyItems((prevItems: ConveyItem[]) => prevItems.filter((item: ConveyItem) => item.id !== active.id));
     } else {
-      setHealth((prevHealth) => Math.max(0, prevHealth - 1));
+      setHealth((prevHealth: number) => Math.max(0, prevHealth - 1));
 
       const feedBackId = activeItem.def.feedBackId ?? 'simple_mistake';
-      const binInfo = BINS.find((b) => b.id === activeItem.def.bin);
+      const binInfo = BINS.find((b: BinDef) => b.id === activeItem.def.bin);
       const whereText = binInfo ? binInfo.label : activeItem.def.bin;
 
       let specialMessage = "";
       if (feedBackId !== 'simple_mistake') {
         const matchedMsg = SPECIAL_FEEDBACK_MESSAGES.find(
-          (msg) => msg.feedBackId === feedBackId
+          (msg: SpecialFeedbackMessage) => msg.feedBackId === feedBackId
         );
         if (matchedMsg) {
           specialMessage = matchedMsg.message;
@@ -103,10 +103,10 @@ const GamePlayContent = (props: GamePlayProps) => {
     }
 
     const levelNum = gameLevel;
-    const currentParam = GAME_LEVEL_PARAMETER_DATA.find((p) => p.level === levelNum) ?? GAME_LEVEL_PARAMETER_DATA[0];
+    const currentParam = GAME_LEVEL_PARAMETER_DATA.find((p: GameLevelParameter) => p.level === levelNum) ?? GAME_LEVEL_PARAMETER_DATA[0];
 
     // 出現可能なゴミ一覧（wasteLevel 以下に絞り込み）
-    const availableWastes = Waste.filter((w) => w.wasteLevel <= currentParam.wasteLevel);
+    const availableWastes = Waste.filter((w: WasteDef) => w.wasteLevel <= currentParam.wasteLevel);
     const wasteList = availableWastes.length > 0 ? availableWastes : Waste;
 
     const intervalId = setInterval(() => {
@@ -115,7 +115,7 @@ const GamePlayContent = (props: GamePlayProps) => {
       const index = getRandomNumber(0, wasteList.length - 1);
       const travelMs = Math.round(10000 / currentParam.wasteSpeed);
 
-      const newItem = {
+      const newItem: ConveyItem = {
         id: itemId, // 重複を避けるために一意のIDを生成
         def: wasteList[index],
         coordinateX: 980,
@@ -125,7 +125,7 @@ const GamePlayContent = (props: GamePlayProps) => {
         startedAt: Date.now(),
       };
 
-      setConveyItems((prevItems) => [...prevItems, newItem]);
+      setConveyItems((prevItems: ConveyItem[]) => [...prevItems, newItem]);
     }, currentParam.itemInterval * 1000);
 
     return () => {
@@ -147,7 +147,7 @@ const GamePlayContent = (props: GamePlayProps) => {
 
         <div className="bins-container">
           <div className="bins-grid">
-            {BINS.map((bin) => {
+            {BINS.map((bin: BinDef) => {
               return (
                 <GamePlayBin
                   key={bin.id}

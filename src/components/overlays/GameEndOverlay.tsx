@@ -1,8 +1,6 @@
-
-
 import "./GameEndOverlay.css";
-import { SPECIAL_FEEDBACK_MESSAGES } from "../../data/feedback";
-import type {FeedBack } from "../../types/game";
+import { SPECIAL_FEEDBACK_MESSAGES, type SpecialFeedbackMessage } from "../../data/feedback";
+import type { FeedBack } from "../../types/game";
 import { usePageTransition } from "../../hooks/PageTransition";
 
 type GameEndOverlayProps = {
@@ -24,7 +22,7 @@ const GameEndOverlay = ({ onEnd, feedBack }: GameEndOverlayProps) => {
       detailMessage = "正しいごみ箱に分別しよう！";
     } else {
       const special = SPECIAL_FEEDBACK_MESSAGES.find(
-        (item) => item.feedBackId === feedBack.id
+        (item: SpecialFeedbackMessage) => item.feedBackId === feedBack.id
       );
       detailMessage = special
         ? special.message
