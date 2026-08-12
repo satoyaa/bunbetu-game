@@ -30,9 +30,11 @@ const GameController = () => {
   const [gameLevel, setGameLevel] = useState<number>(defaultGameLevel); // ゲームレベル管理用
 
   useEffect(() => {
-    if (score >= 50) {
-      setControlBackground("nature");
-    } else if (score >= 30) {
+    if (score >= 100) {
+      setControlBackground("beautiful");
+    } else if (score >= 60) {
+      setControlBackground("reconstruction");
+    }else if (score >= 30) {
       setControlBackground("normal");
     } else {
       setControlBackground("pollution");

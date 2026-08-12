@@ -104,7 +104,7 @@ export const Waste: WasteDef[] = [
     label: '空き缶',
     isWash: false,
     isBurn: false,
-    bin: 'hunen',
+    bin: 'sigen',
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },

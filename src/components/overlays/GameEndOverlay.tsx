@@ -43,7 +43,7 @@ const GameEndOverlay = ({ onEnd, feedBack }: GameEndOverlayProps) => {
         </div>
 
         <div className="gameEndOverlayBody">
-          <div className="gameEndOverlayItem">🧴</div>
+          <div className="gameEndOverlayItem">🧴あとで画像に差し替え</div>
 
           <p className="gameEndOverlayText">
             {feedbackMessage}
