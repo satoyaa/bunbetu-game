@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import GamePlayWaste from "./GamePlayWaste";
 import { useConveyItems } from "../contexts/ConveyItems";
+import type { ConveyItem } from "../types/game";
 import "./GamePlayConveyor.css";
 
 type GamePlayConveyorProps = {
@@ -14,7 +15,7 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
 
   useEffect(() => {
     let frameId = window.requestAnimationFrame(function animate() {
-      setTick((prev) => prev + 1);
+      setTick((prev: number) => prev + 1);
       frameId = window.requestAnimationFrame(animate);
     });
 
@@ -25,12 +26,12 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
 
   useEffect(() => {
     const expiredItemIds = conveyItems
-      .filter((item) => Date.now() - item.startedAt >= item.travelMs)
-      .map((item) => item.id);
+      .filter((item: ConveyItem) => Date.now() - item.startedAt >= item.travelMs)
+      .map((item: ConveyItem) => item.id);
 
     if (expiredItemIds.length > 0) {
-      setHealth((prevHealth) => Math.max(0, prevHealth - expiredItemIds.length));
-      setConveyItems((prevItems) => prevItems.filter((item) => !expiredItemIds.includes(item.id)));
+      setHealth((prevHealth: number) => Math.max(0, prevHealth - expiredItemIds.length));
+      setConveyItems((prevItems: ConveyItem[]) => prevItems.filter((item: ConveyItem) => !expiredItemIds.includes(item.id)));
     }
   }, [conveyItems, setConveyItems, setHealth]);
 
@@ -42,7 +43,7 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
         {/* ベルト面 */}
         <div className="conveyor-track">
           <div className="conveyor-items-plane">
-            {conveyItems.map((conveyItem) => {
+            {conveyItems.map((conveyItem: ConveyItem) => {
               const elapsedMs = Date.now() - conveyItem.startedAt;
               const progress = Math.min(1, elapsedMs / conveyItem.travelMs);
               const distanceX = conveyItem.toX - conveyItem.coordinateX;
