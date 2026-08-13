@@ -124,7 +124,7 @@ const GameController = () => {
         <GameStartOverlay onStart={() => setGameProgress("playing")} />
       )}
       {gameProgress === "end" && (
-        <GameEndOverlay feedBack={feedBack}/>
+        <GameEndOverlay feedBack={feedBack} score={score}/>
       )}
     </div>
   );

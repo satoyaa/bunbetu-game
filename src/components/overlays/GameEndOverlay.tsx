@@ -1,19 +1,26 @@
 import "./GameEndOverlay.css";
-import { SPECIAL_FEEDBACK_MESSAGES, type SpecialFeedbackMessage } from "../../data/feedback";
+import { SPECIAL_FEEDBACK_MESSAGES, FEEDBACK_TITLES, type SpecialFeedbackMessage, type FeedTitle } from "../../data/feedback";
 import type { FeedBack } from "../../types/game";
 import { usePageTransition } from "../../hooks/PageTransition";
 
 type GameEndOverlayProps = {
   onEnd?: () => void;
   feedBack?: FeedBack;
+  score?: number;
 };
 
-const GameEndOverlay = ({ onEnd, feedBack }: GameEndOverlayProps) => {
-  const { goToStart } = usePageTransition();
+const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => {
+  const { goToStart, goToLearn } = usePageTransition();
+
+  // スコアに応じた称号の取得
+  const earnedTitle = [...FEEDBACK_TITLES]
+    .sort((a, b) => b.feedTitleScoreThreshold - a.feedTitleScoreThreshold)
+    .find((item: FeedTitle) => score >= item.feedTitleScoreThreshold)
+    ?.feedTitle ?? FEEDBACK_TITLES[0].feedTitle;
 
   const feedbackMessage = feedBack
     ? `${feedBack.who}は${feedBack.where}です。`
-    : "ごみの分別をしよう。";
+    : "上手に分別できました！";
 
   let detailMessage = "正しいごみ箱に分別しよう！";
 
@@ -35,25 +42,43 @@ const GameEndOverlay = ({ onEnd, feedBack }: GameEndOverlayProps) => {
     goToStart();
   };
 
+  const handleLearn = () => {
+    onEnd?.();
+    goToLearn();
+  };
+
   return (
     <div className="gameEndOverlay">
       <div className="gameEndOverlayCard">
-        <div className="gameEndOverlayHeader">
-          <h1 className="gameEndOverlayTitle">ちゃんと分別しよう！</h1>
+        <div className="gameEndTitleBadge">
+              <span className="gameEndTitleName">{earnedTitle}</span>
         </div>
-
-        <div className="gameEndOverlayBody">
-          <div className="gameEndOverlayItem">🧴あとで画像に差し替え</div>
-
-          <p className="gameEndOverlayText">
-            {feedbackMessage}
-            <br />
-            {detailMessage}
-          </p>
+          {/* スコア＆称号表示セクション */}
+          <div className="gameEndScoreSection">
+            <div className="gameEndScoreDisplay">
+              <span className="gameEndScoreLabel">最終スコア</span>
+              <span className="gameEndScoreValue">{score}</span>
+              <span className="gameEndScoreUnit">点</span>
+            </div>
+          {/* フィードバックメッセージ */}
+          {feedBack && (
+            <div className="gameEndFeedbackBox">
+              <p className="gameEndOverlayText">
+                {feedbackMessage}
+              </p>
+              <p className="gameEndDetailText">
+                {detailMessage}
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="gameEndOverlayFooter">
-          <button className="gameEndOverlayLearnButton" type="button">
+          <button
+            className="gameEndOverlayLearnButton"
+            type="button"
+            onClick={handleLearn}
+          >
             リサイクルについて学ぶ
           </button>
 

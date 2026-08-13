@@ -27,13 +27,11 @@
   border-radius: 8px;
   box-sizing: border-box;
   user-select: none;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
   position: relative;
   cursor: pointer;
 }
 
 .bin-card.is-over {
-  transform: translateY(-6px) scale(1.12);
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
   z-index: 10;
 }
@@ -45,7 +43,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
 }
 
 .bin-image {
