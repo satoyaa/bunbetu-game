@@ -88,8 +88,8 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
   {
     name: 'ふつう',
     difficulty: 'normal',
-    timeLimit: 60,
-    lifeLimit: 5,
+    timeLimit: 999,
+    lifeLimit: 999,
     binCount: 6,
     levels: [3, 4, 5, 6],
   },

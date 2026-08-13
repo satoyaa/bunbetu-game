@@ -145,17 +145,19 @@ const GamePlayContent = (props: GamePlayProps) => {
           <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
         </div>
 
-        <div className="bins-container">
-          <div className="bins-grid">
-            {BINS.map((bin: BinDef) => {
-              return (
-                <GamePlayBin
-                  key={bin.id}
-                  bin={bin}
-                  activeOver={activeOver}
-                />
-              );
-            })}
+        <div className="bottom-bins-bar">
+          <div className="bins-container">
+            <div className="bins-grid">
+              {BINS.map((bin: BinDef) => {
+                return (
+                  <GamePlayBin
+                    key={bin.id}
+                    bin={bin}
+                    activeOver={activeOver}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </DndContext>

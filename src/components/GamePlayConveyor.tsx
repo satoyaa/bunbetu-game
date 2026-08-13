@@ -37,8 +37,9 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
 
   return (
     <div className="conveyor-wrapper">
-
       <div className="conveyor-assembly">
+        {/* 上部レール枠 */}
+        <div className="conveyor-rail conveyor-rail-top" />
 
         {/* ベルト面 */}
         <div className="conveyor-track">
@@ -65,6 +66,9 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
             })}
           </div>
         </div>
+
+        {/* 下部レール枠 */}
+        <div className="conveyor-rail conveyor-rail-bottom" />
       </div>
     </div>
   );

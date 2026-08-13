@@ -13,9 +13,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
 }
 
 .game-header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,32 +29,65 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  flex: 1;
 }
 
-/* カプセルバッジ共通スタイル (画像に準拠) */
+/* カプセルバッジ共通スタイル */
 .game-hud-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 9999px;
   padding: 8px 18px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 700;
   color: #1e293b;
   user-select: none;
 }
 
+/* スコア＋残り時間統合カプセル */
+.score-time-badge {
+  gap: 12px;
+  padding: 8px 16px;
+}
 
+.hud-badge-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.badge-label {
+  color: #475569;
+  font-weight: 700;
+  font-size: 14px;
+}
 
 .badge-value {
   color: #0f172a;
   font-weight: 800;
+  font-size: 15px;
 }
+
+.hud-badge-divider {
+  width: 1.5px;
+  height: 16px;
+  background-color: #cbd5e1;
+  border-radius: 1px;
+}
+
 
 
 

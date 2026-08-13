@@ -1,6 +1,7 @@
 import { useDifficulty } from "../contexts/Difficulty"
 import type { Difficulty } from "../contexts/Difficulty"
 import { usePageTransition } from "../hooks/PageTransition"
+import imgSrc from '../assets/beauty2.png';
 import "./Start.css"
 
 export default function Start() {
@@ -15,50 +16,20 @@ export default function Start() {
 
   return (
     <div className="startContainer">
+      <div className="startBackgroundContainer">
+        <img src={imgSrc} alt="ゲーム背景" className="gameBackgroundImage" />
+      </div>
       <header className="startHeader">
-        {/* 上部 双葉アイコン */}
-        <div className="topSproutIcon" aria-hidden="true">
-          <svg width="68" height="52" viewBox="0 0 68 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* 左の葉 */}
-            <path
-              d="M32 46C32 28 16 10 4 15C1 28 13 46 32 46Z"
-              fill="#82cd47"
-            />
-            {/* 右の葉 */}
-            <path
-              d="M36 46C36 26 52 8 64 13C67 26 55 46 36 46Z"
-              fill="#54b435"
-            />
-            {/* 茎 */}
-            <path
-              d="M34 44V50"
-              stroke="#379237"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
         {/* メインタイトル */}
         <div className="titleWrapper">
-          {/* 左側の小さな葉 */}
-          <svg className="decorLeaf decorLeafLeft" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 20C4 10 14 4 20 4C20 14 10 20 4 20Z" fill="#88d655" />
-          </svg>
-
           <h1 className="mainTitle">
             <span className="titleGreen">ごみ分別</span>
-            <span className="titleBlue">アプリ</span>
+            <span className="titleBlue">ゲーム</span>
           </h1>
-
-          {/* 右側の小さな葉 */}
-          <svg className="decorLeaf decorLeafRight" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 20C4 10 14 4 20 4C20 14 10 20 4 20Z" fill="#78cb47" />
-          </svg>
         </div>
 
         {/* サブタイトル */}
-        <p className="subTitle">自然を守って、未来をつくろう</p>
+        <p className="subTitle">分別をして，地球を守ろう！</p>
       </header>
 
       {/* カード選択エリア */}

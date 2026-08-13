@@ -1,57 +1,72 @@
 .conveyor-wrapper {
   position: relative;
   width: 100%;
-  max-width: 1060px;
-  margin: 10px auto 20px auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 }
 
-/* メタリックなコンベア本体 */
+/* コンベア本体アセンブリ */
 .conveyor-assembly {
   position: relative;
   width: 100%;
-  height: 140px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
+/* 上部レール（コンクリート） */
+.conveyor-rail {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 5;
+}
 
+.conveyor-rail-top {
+  height: 18px;
+  background: #b8b5af;
+  border-top: 1.5px solid #eae7e1;
+}
 
-/* コンベアベルト面 */
+/* コンベアベルト面（スレートブルー） */
 .conveyor-track {
-  position: absolute;
-  left: 24px;
-  right: 24px;
-  height: 96px;
-  background: linear-gradient(180deg, #475569 0%, #334155 20%, #1e293b 80%, #0f172a 100%);
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.15);
-  overflow: visible;
+  position: relative;
+  width: 100%;
+  height: 110px;
+  background: #486684;
   display: flex;
   align-items: center;
 }
 
-
+/* 下部レール（コンクリート） */
+.conveyor-rail-bottom {
+  height: 18px;
+  background: #7d7a75;
+}
 
 /* ベルト上のアイテム描画領域 */
 .conveyor-items-plane {
   position: absolute;
   left: 0;
   right: 0;
-  top: -45px;
+  top: 0;
   bottom: 0;
   pointer-events: auto;
 }
 
 .conveyed-item-wrapper {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   user-select: none;
   cursor: grab;
   z-index: 20;
-  transition: transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.2s ease;
 }
 
 .conveyed-item-wrapper:active {
   cursor: grabbing;
 }
+

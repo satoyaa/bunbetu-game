@@ -9,22 +9,7 @@
   overflow: hidden;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* 背景画像挿入用レイヤー（後から画像を差し替え可能） */
-.game-background-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, #dbeafe 0%, #e0f2fe 30%, #f0fdf4 70%, #dcfce7 100%);
-}
-
-.game-background-layer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.85;
+  user-select: none;
 }
 
 /* ゲーム内コンテンツレイヤー */
@@ -37,3 +22,4 @@
   width: 100%;
   justify-content: space-between;
 }
+

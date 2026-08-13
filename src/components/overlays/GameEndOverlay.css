@@ -20,10 +20,10 @@
   flex-direction: column;
   justify-content: space-between;
 
-  background: #236f9e;
-  color: white;
+  background: #ffffff;
+  color: #2e2e2e;
 
-  border: 2px solid #12384f;
+  border: 2px solid #33adf9;
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 

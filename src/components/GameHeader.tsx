@@ -1,6 +1,4 @@
 import type { Difficulty } from "../contexts/Difficulty";
-import GameScore from "./GameScore";
-import GameTime from "./GameTime";
 import GameDifficulty from "./GameDifficulty";
 import GameHealth from "./GameHealth";
 import "./GameHeader.css";
@@ -20,11 +18,23 @@ const GameHeader = ({
   health,
   maxHealth,
 }: GameHeaderProps) => {
+  const displayTime = !isFinite(timeLeft) || timeLeft >= 999 ? "∞" : `${timeLeft}秒`;
+
   return (
     <header className="game-header">
       <div className="game-header-left">
-        <GameScore score={score} />
-        <GameTime timeLeft={timeLeft} />
+        {/* スコアと残り時間を統合したカプセル */}
+        <div className="game-hud-badge score-time-badge">
+          <div className="hud-badge-section">
+            <span className="badge-label">スコア :</span>
+            <span className="badge-value">{score}</span>
+          </div>
+          <div className="hud-badge-divider" />
+          <div className="hud-badge-section">
+            <span className="badge-label">残り時間 :</span>
+            <span className="badge-value">{displayTime}</span>
+          </div>
+        </div>
       </div>
 
       <div className="game-header-center">
@@ -39,3 +49,4 @@ const GameHeader = ({
 };
 
 export default GameHeader;
+
