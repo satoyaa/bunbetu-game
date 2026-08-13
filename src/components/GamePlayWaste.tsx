@@ -14,30 +14,27 @@ interface DraggableItemProps {
 
 // 1．ドラッグできるコンポーネント
 const DraggableItem = ({ id, children, baseX, baseY }: DraggableItemProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: id,
   });
-  const [dragStartX, setDragStartX] = useState<number | null>(null);
+  const [fixedDragBaseX, setFixedDragBaseX] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!transform) {
-      setDragStartX(null);
-      return;
+    if (isDragging && fixedDragBaseX === null) {
+      setFixedDragBaseX(baseX);
+    } else if (!isDragging && fixedDragBaseX !== null) {
+      setFixedDragBaseX(null);
     }
+  }, [isDragging, fixedDragBaseX, baseX]);
 
-    if (dragStartX === null) {
-      setDragStartX(baseX);
-    }
-  }, [baseX, dragStartX, transform]);
-
-  const dragOffsetX = dragStartX !== null && transform ? transform.x + (dragStartX - baseX) : transform?.x ?? 0;
+  const currentLeft = isDragging && fixedDragBaseX !== null ? fixedDragBaseX : baseX;
 
   const style = {
     position: 'absolute' as const,
-    left: `${baseX}px`,
+    left: `${currentLeft}px`,
     top: `${baseY}px`,
-    transform: transform ? `translate3d(${dragOffsetX}px, ${transform.y}px, 0)` : undefined,
-    zIndex: transform ? 100 : 10,
+    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    zIndex: isDragging ? 100 : 10,
   };
 
   return (
