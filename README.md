@@ -31,6 +31,12 @@ If you are developing a production application, we recommend enabling type-aware
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
 
+## CI/CD（継続的インテグレーション・デプロイ）
+
+- **CI (`.github/workflows/ci.yml`)**: Pull Request 作成・更新時に Lint、単体テスト、ビルド検証を自動実行します。
+- **CD (`.github/workflows/cd.yml`)**: `main` ブランチへの push 時に、自動でテスト環境（Cloudflare Pages）へビルド・デプロイします。
+- **セットアップ手順**: Cloudflare のアカウント作成やアクセス制御（Zero Trust Access）の設定方法については、[Cloudflare セットアップ手順書](docs/CLOUDFLARE_SETUP.md) を参照してください。
+
 ## 使用素材一覧
 
 | ファイル名 | 出典・権利者 |

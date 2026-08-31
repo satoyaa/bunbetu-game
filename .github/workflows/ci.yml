@@ -1,8 +1,6 @@
-name: React+Vite CI
+name: React+Vite CI (PR Verification)
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
