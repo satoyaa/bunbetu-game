@@ -49,6 +49,7 @@ export interface WasteDef {
   parts: string[]; //分解後のパーツ
   feedBackId?: FeedBackId; //フィードバックID
   wasteLevel: number; //ゲームレベルに応じて出現するごみの種類を制御するためのレベル
+  washTargetKey?: string; // 洗浄後に置き換わるごみの key
 }
 
 export type GameStatus = 'start' | 'playing' | 'end';

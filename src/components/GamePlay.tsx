@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import GamePlayBin from "./GamePlayBin";
+import GamePlaySink from "./GamePlaySink";
 import { DndContext, rectIntersection, useSensor, useSensors, PointerSensor, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
 import { GAME_LEVEL_PARAMETER_DATA } from "../data/difficulty";
@@ -48,10 +49,26 @@ const GamePlayContent = (props: GamePlayProps) => {
     })
   );
 
-  // ドラッグ中のリアルタイム判定（ハイライト用）
+  // ドラッグ中のリアルタイム判定（ハイライト & 洗浄処理）
   const handleDragOver = (event: DragOverEvent) => {
-    const { over } = event;
+    const { active, over } = event;
     setActiveOver(over ? over.id : null);
+
+    if (over && over.id === 'sink' && active) {
+      const activeItem = conveyItems.find((item: ConveyItem) => item.id === active.id);
+      if (activeItem && activeItem.def.isWash && activeItem.def.washTargetKey) {
+        const targetDef = Waste.find((w: WasteDef) => w.key === activeItem.def.washTargetKey);
+        if (targetDef) {
+          setConveyItems((prevItems: ConveyItem[]) =>
+            prevItems.map((item: ConveyItem) =>
+              item.id === active.id
+                ? { ...item, def: targetDef }
+                : item
+            )
+          );
+        }
+      }
+    }
   };
 
   // ドラッグ終了時の処理（確定処理）
@@ -60,6 +77,11 @@ const GamePlayContent = (props: GamePlayProps) => {
     setActiveOver(null);
     const { active, over } = _event;
     if (!active || !over) {
+      return;
+    }
+
+    // シンクの上にドロップされた場合は分別ではないため処理を終了（洗浄された状態で維持）
+    if (over.id === 'sink') {
       return;
     }
 
@@ -142,7 +164,12 @@ const GamePlayContent = (props: GamePlayProps) => {
         onDragEnd={handleDragEnd}
       >
         <div className="game-play-main-area">
-          <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
+          <div className="conveyor-section">
+            <div className="sink-wrapper">
+              <GamePlaySink isOver={activeOver === 'sink'} />
+            </div>
+            <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
+          </div>
         </div>
 
         <div className="bottom-bins-bar">

@@ -20,6 +20,23 @@
   flex: 1;
 }
 
+.conveyor-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.sink-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 32px 10px 0;
+  box-sizing: border-box;
+  z-index: 15;
+}
+
 .bottom-bins-bar {
   width: 100%;
   background-color: #87a55c;
