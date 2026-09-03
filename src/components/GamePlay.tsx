@@ -111,7 +111,7 @@ const GamePlayContent = (props: GamePlayProps) => {
 
     const intervalId = setInterval(() => {
       const itemId = Date.now() + Math.random();
-      const itemY = getRandomNumber(0, 15);
+      const itemY = 0;
       const index = getRandomNumber(0, wasteList.length - 1);
       const travelMs = Math.round(10000 / currentParam.wasteSpeed);
 

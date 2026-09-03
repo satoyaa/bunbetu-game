@@ -29,11 +29,13 @@ const DraggableItem = ({ id, children, baseX, baseY }: DraggableItemProps) => {
 
   const currentLeft = isDragging && fixedDragBaseX !== null ? fixedDragBaseX : baseX;
 
-  const style = {
-    position: 'absolute' as const,
+  const style: React.CSSProperties = {
+    position: 'absolute',
     left: `${currentLeft}px`,
-    top: `${baseY}px`,
-    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    top: `calc(50% + ${baseY}px)`,
+    transform: transform
+      ? `translate3d(${transform.x}px, calc(-50% + ${transform.y}px), 0)`
+      : 'translateY(-50%)',
     zIndex: isDragging ? 100 : 10,
   };
 
@@ -85,7 +87,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
         id: Date.now() + Math.random(),
         def: selectedPartDef,
         coordinateX: currentX,
-        coordinateY: currentItem.coordinateY - 5,
+        coordinateY: currentItem.coordinateY - 12,
         toX: currentItem.toX,
         travelMs: remainingTravelMs,
         startedAt: Date.now(),
@@ -104,7 +106,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
           id: Date.now() + Math.random(),
           def: remainingDef,
           coordinateX: currentX,
-          coordinateY: currentItem.coordinateY + 5,
+          coordinateY: currentItem.coordinateY + 12,
           toX: currentItem.toX,
           travelMs: remainingTravelMs,
           startedAt: Date.now(),
@@ -161,7 +163,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, baseX, baseY, setScore }: G
                 }}
               >
                 {isImg ? (
-                  <img src={`/${matchedWaste.img}`} alt={matchedWaste.label} className="waste-image" style={{ width: 40, height: 40 }} />
+                  <img src={`/${matchedWaste.img}`} alt={matchedWaste.label} className="waste-image" style={{ width: 100, height: 100 }} />
                 ) : (
                   <span>{matchedWaste?.img && matchedWaste.img !== 'ここに挿入' ? matchedWaste.img : matchedWaste?.label ?? partKey}</span>
                 )}

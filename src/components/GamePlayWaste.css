@@ -9,8 +9,8 @@
 }
 
 .waste-image {
-  max-width: 85px;
-  max-height: 85px;
+  max-width: 150px;
+  max-height: 150px;
   object-fit: contain;
   pointer-events: none;
   display: block;

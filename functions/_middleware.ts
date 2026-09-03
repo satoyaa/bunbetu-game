@@ -7,8 +7,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, env, next } = context;
 
   // デフォルトの認証情報（Cloudflareダッシュボードの環境変数で変更可能）
-  const expectedUser = env.BASIC_USER || "admin";
-  const expectedPass = env.BASIC_PASS || "bunbetu2026";
+  const expectedUser = env.BASIC_USER;
+  const expectedPass = env.BASIC_PASS;
 
   const authHeader = request.headers.get("Authorization");
 
