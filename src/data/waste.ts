@@ -110,7 +110,7 @@ export const Waste: WasteDef[] = [
   },
   { // ぬいぐるみ（電子機器なし・30cm未満はその他プラ）
     key: 'nuigurumi',
-    label: 'ぬいぐるみ',
+    label: 'ぬいぐるみ(電子機器無し)',
     img: 'ごみデータ/ぬいぐるみ.png',
     score: 20,
     isSimple: true,
@@ -201,7 +201,7 @@ export const Waste: WasteDef[] = [
   },
   { // 靴（スニーカー・革靴などはその他プラ）
     key: 'shoes',
-    label: '靴',
+    label: '靴（運動靴・革靴・スリッパ・サンダル等）',
     img: 'ごみデータ/靴.png',
     score: 20,
     isSimple: true,
@@ -215,7 +215,7 @@ export const Waste: WasteDef[] = [
   // ─── 可燃ごみ（燃やすごみ） ──────────────────────────────────
   { // えんぴつ（木製・文房具は可燃ごみ）
     key: 'pencil',
-    label: 'えんぴつ',
+    label: '鉛筆',
     img: 'ごみデータ/えんぴつ.png',
     score: 10,
     isSimple: true,
@@ -228,7 +228,7 @@ export const Waste: WasteDef[] = [
   },
   { // 割りばし（木製品は可燃ごみ）
     key: 'disposable_chopsticks',
-    label: '割りばし',
+    label: '割り箸',
     img: 'ごみデータ/割りばし.png',
     score: 10,
     isSimple: true,
@@ -241,7 +241,7 @@ export const Waste: WasteDef[] = [
   },
   { // 草（植物・刈り草は可燃ごみ）
     key: 'grass',
-    label: '草（刈り草）',
+    label: '草(花殻)',
     img: 'ごみデータ/草.png',
     score: 10,
     isSimple: true,
@@ -254,7 +254,7 @@ export const Waste: WasteDef[] = [
   },
   { // ヨーグルト容器（汚れあり・水洗いでリサイクルプラへ）
     key: 'yogurt_dirty',
-    label: 'ヨーグルト容器（汚れあり）',
+    label: 'ヨーグルトのカップ プラスチック製（汚れあり）',
     img: 'ごみデータ/ヨーグルト（汚れあり）.png',
     score: 15,
     isSimple: true,
@@ -282,7 +282,7 @@ export const Waste: WasteDef[] = [
   },
   { // ビール瓶（飲料用ガラス瓶は資源ごみ）
     key: 'beer_bottle',
-    label: 'ビール瓶',
+    label: 'ビールびん',
     img: 'ごみデータ/ビール瓶(※)不適と思ったらラムネ瓶を採用してね.png',
     score: 15,
     isSimple: true,
@@ -295,7 +295,7 @@ export const Waste: WasteDef[] = [
   },
   { // ラムネ瓶（飲料用ガラス瓶は資源ごみ）
     key: 'ramune_bottle',
-    label: 'ラムネ瓶',
+    label: 'びん(ガラス) 薬・飲料・食料品等用',
     img: 'ごみデータ/ラムネ瓶(※).png',
     score: 15,
     isSimple: true,
@@ -308,13 +308,13 @@ export const Waste: WasteDef[] = [
   },
   { // しょうゆ瓶（調味料ガラス瓶・洗浄済は資源ごみ）
     key: 'soy_sauce_bottle',
-    label: 'しょうゆ瓶（洗浄済）',
+    label: 'しょうゆの容器 ペットボトル（洗浄済）',
     img: 'ごみデータ/しょうゆ.png',
     score: 15,
     isSimple: true,
     isWash: false,
     isBurn: false,
-    bin: 'sigen',
+    bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
@@ -348,7 +348,7 @@ export const Waste: WasteDef[] = [
   // ─── 汚れのあるびん（水洗いで資源ごみへ） ──────────────────────
   { // しょうゆ瓶（水洗いで資源ごみへ）
     key: 'soy_sauce_dirty',
-    label: 'しょうゆ瓶（汚れあり）',
+    label: 'しょうゆの容器 ペットボトル（汚れあり）',
     img: 'ごみデータ/しょうゆ（汚れあり）.png',
     score: 20,
     isSimple: true,
@@ -404,7 +404,7 @@ export const Waste: WasteDef[] = [
   },
   { // ヨーグルトカップ（洗浄済・容器包装はリサイクルプラ）
     key: 'yogurt_clean',
-    label: 'ヨーグルトカップ（洗浄済）',
+    label: 'ヨーグルトのカップ プラスチック製（洗浄済）',
     img: 'ごみデータ/ヨーグルト.png',
     score: 15,
     isSimple: true,
