@@ -1,7 +1,8 @@
-import pollutionImg from '../assets/pollution.png';
-import normalImg from '../assets/normal.png';
-import reconstructionImg from '../assets/reconstruction.png';
-import beautyImg from '../assets/beauty.png';
+import pollutionImg from '../assets/pollution.jpg';
+import fewpollutionImg from '../assets/fewpollution.jpg';
+import normalImg from '../assets/normal.jpg';
+import fewbeautyImg from '../assets/fewbeauty.jpg';
+import beautyImg from '../assets/beauty.jpg';
 import type { BackgroundType } from '../types/game';
 import './GameBackground.css';
 
@@ -11,8 +12,9 @@ type GameBackgroundProps = {
 
 const backgroundImages: Record<BackgroundType, string> = {
   pollution: pollutionImg,
+  fewpollution: fewpollutionImg,
   normal: normalImg,
-  reconstruction: reconstructionImg,
+  fewbeauty: fewbeautyImg,
   beautiful: beautyImg,
 };
 

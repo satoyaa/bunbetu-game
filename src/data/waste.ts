@@ -321,26 +321,26 @@ export const Waste: WasteDef[] = [
   },
   { // みりん瓶（調味料ガラス瓶・洗浄済は資源ごみ）
     key: 'mirin_bottle',
-    label: 'みりん瓶（洗浄済）',
+    label: 'みりんの容器 ペットボトル（洗浄済）',
     img: 'ごみデータ/みりん.png',
     score: 15,
     isSimple: true,
     isWash: false,
     isBurn: false,
-    bin: 'sigen',
+    bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
   { // 料理酒瓶（調味料ガラス瓶・洗浄済は資源ごみ）
     key: 'cooking_sake_bottle',
-    label: '料理酒瓶（洗浄済）',
+    label: '酒の容器 ペットボトル（洗浄済）',
     img: 'ごみデータ/料理酒.png',
     score: 15,
     isSimple: true,
     isWash: false,
     isBurn: false,
-    bin: 'sigen',
+    bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
@@ -362,7 +362,7 @@ export const Waste: WasteDef[] = [
   },
   { // みりん瓶（水洗いで資源ごみへ）
     key: 'mirin_dirty',
-    label: 'みりん瓶（汚れあり）',
+    label: 'みりんの容器 ペットボトル（汚れあり）',
     img: 'ごみデータ/みりん（汚れあり）.png',
     score: 20,
     isSimple: true,
@@ -376,7 +376,7 @@ export const Waste: WasteDef[] = [
   },
   { // 料理酒瓶（水洗いで資源ごみへ）
     key: 'cooking_sake_dirty',
-    label: '料理酒瓶（汚れあり）',
+    label: '酒の容器 ペットボトル（汚れあり）',
     img: 'ごみデータ/料理酒（汚れあり）.png',
     score: 20,
     isSimple: true,
@@ -391,7 +391,7 @@ export const Waste: WasteDef[] = [
   // ─── リサイクルプラ（プラスチック製容器包装） ────────────────
   { // コンビニ弁当容器（プラマーク・容器包装はリサイクルプラ）
     key: 'bento_box',
-    label: 'コンビニ弁当の容器',
+    label: '弁当ガラ(プラスチック製容器)',
     img: 'ごみデータ/コンビニ弁当.png',
     score: 15,
     isSimple: true,
@@ -418,7 +418,7 @@ export const Waste: WasteDef[] = [
   // ─── 大型ごみ（最長辺30cm以上） ─────────────────────────────
   { // 布団（最長辺30cm以上の寝具は大型ごみ）
     key: 'futon',
-    label: '布団（ふとん）',
+    label: 'ふとん',
     img: 'ごみデータ/ふとん.png',
     score: 20,
     isSimple: true,

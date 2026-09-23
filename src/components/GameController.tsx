@@ -32,10 +32,12 @@ const GameController = () => {
   useEffect(() => {
     if (score >= 100) {
       setControlBackground("beautiful");
-    } else if (score >= 60) {
-      setControlBackground("reconstruction");
-    }else if (score >= 30) {
+    } else if (score >= 75) {
+      setControlBackground("fewbeauty");
+    } else if (score >= 50) {
       setControlBackground("normal");
+    } else if (score >= 25) {
+      setControlBackground("fewpollution");
     } else {
       setControlBackground("pollution");
     }
