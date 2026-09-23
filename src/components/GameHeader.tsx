@@ -1,4 +1,5 @@
 import type { Difficulty } from "../contexts/Difficulty";
+import { usePageTransition } from "../hooks/PageTransition";
 import GameDifficulty from "./GameDifficulty";
 import GameHealth from "./GameHealth";
 import "./GameHeader.css";
@@ -18,6 +19,7 @@ const GameHeader = ({
   health,
   maxHealth,
 }: GameHeaderProps) => {
+  const { goToStart } = usePageTransition();
   const displayTime = !isFinite(timeLeft) || timeLeft >= 999 ? "∞" : `${timeLeft}秒`;
 
   return (
@@ -43,6 +45,9 @@ const GameHeader = ({
 
       <div className="game-header-right">
         <GameHealth health={health} maxHealth={maxHealth} />
+        <button className="game-exit-btn" onClick={goToStart}>
+          Exit
+        </button>
       </div>
     </header>
   );

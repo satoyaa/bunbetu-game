@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDifficulty } from "../../contexts/Difficulty";
 import { GAME_DIFFICULTY_DATA } from "../../data/difficulty";
 import { GUIDE_SLIDES } from "../../data/guide";
+import { usePageTransition } from "../../hooks/PageTransition";
 import "./GameStartOverlay.css";
 
 type GameStartOverlayProps = {
@@ -10,6 +11,7 @@ type GameStartOverlayProps = {
 
 const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
   const { difficulty } = useDifficulty();
+  const { goToStart } = usePageTransition();
   const diffData = GAME_DIFFICULTY_DATA.find((d) => d.difficulty === difficulty);
   const diffName = diffData?.name || "ふつう";
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,6 +34,10 @@ const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
   return (
     <div className="game-start-overlay">
       <div className="start-modal">
+        <button className="reselect-difficulty-btn" onClick={goToStart}>
+          難易度を選びなおす
+        </button>
+
         {/* 1. 難易度バッジ */}
         <div className="start-difficulty-badge">
           難易度：{diffName}
