@@ -51,7 +51,7 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
     <div className="gameEndOverlay">
       <div className="gameEndOverlayCard">
         <div className="gameEndTitleBadge">
-              <span className="gameEndTitleName">{earnedTitle}</span>
+          <span className="gameEndTitleName">称号：{earnedTitle}</span>
         </div>
           {/* スコア＆称号表示セクション */}
           <div className="gameEndScoreSection">
@@ -69,6 +69,19 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
               <p className="gameEndDetailText">
                 {detailMessage}
               </p>
+              {feedBack.id === "simple_mistake" && feedBack.wasteImg && feedBack.binImg && (
+                <div className="gameEndFeedbackImages">
+                  <div className="feedbackImageWrapper">
+                    <span className="feedbackImageLabel">間違えたごみ</span>
+                    <img src={`/${feedBack.wasteImg}`} alt="間違えたごみ" className="feedbackImage" />
+                  </div>
+                  <span className="feedbackArrow">→</span>
+                  <div className="feedbackImageWrapper">
+                    <span className="feedbackImageLabel">正しいごみ箱</span>
+                    <img src={`/${feedBack.binImg}`} alt="正しいごみ箱" className="feedbackImage" />
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

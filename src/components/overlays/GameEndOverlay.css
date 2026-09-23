@@ -1,63 +1,51 @@
 .gameEndOverlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
-
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
 }
 
 .gameEndOverlayCard {
-  width: min(92vw, 560px);
-  min-height: min(75vh, 480px);
-  max-height: 90vh;
-
+  background: #ffffff;
+  border: 4px solid #a3d977;
+  border-radius: 40px;
+  padding: 24px 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  background: #ffffff;
-  color: #1e293b;
-
-  border: 3px solid #38bdf8;
-  border-radius: 20px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-
-  padding: 28px 24px;
+  align-items: center;
+  gap: 20px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
   text-align: center;
   box-sizing: border-box;
 }
 
-.gameEndOverlayHeader {
-  flex-shrink: 0;
-}
-
-.gameEndOverlayTitle {
-  margin: 0;
-  font-size: clamp(26px, 5vw, 36px);
-  line-height: 1.2;
-  font-weight: 800;
-  color: #0f172a;
-}
-
-.gameEndOverlayBody {
-  flex: 1;
-
+.gameEndTitleBadge {
+  background: #3b82f6; /* Matching start-difficulty-badge */
+  color: white;
+  padding: 8px 24px;
+  border-radius: 9999px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  gap: 20px;
-  margin: 16px 0;
 }
 
-/* スコア＆称号セクション */
+.gameEndTitleName {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
 .gameEndScoreSection {
   display: flex;
   flex-direction: column;
@@ -70,130 +58,139 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .gameEndScoreLabel {
-  font-size: 16px;
-  font-weight: 700;
-  color: #64748b;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b82f6; /* Matching start-modal-title */
 }
 
 .gameEndScoreValue {
-  font-size: clamp(38px, 8vw, 54px);
+  font-size: clamp(48px, 10vw, 64px);
   font-weight: 900;
-  color: #0284c7;
+  color: #3b82f6;
   line-height: 1;
 }
 
 .gameEndScoreUnit {
-  font-size: 18px;
-  font-weight: 700;
-  color: #475569;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b82f6;
 }
 
-/* 称号バッジ */
-.gameEndTitleBadge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
-  border: 2px solid #eab308;
-  border-radius: 9999px;
-  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.25);
-}
-
-.gameEndTitlePrefix {
-  font-size: 13px;
-  font-weight: 800;
-  color: #854d0e;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-
-.gameEndTitleName {
-  font-size: clamp(18px, 4vw, 24px);
-  font-weight: 900;
-  color: #713f12;
-}
-
-/* フィードバックメッセージボックス */
 .gameEndFeedbackBox {
-  background: #f8fafc;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 14px 18px;
+  background: white;
+  border: 3px solid #fde047; /* Matching slider-card */
+  border-radius: 20px;
+  padding: 16px;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .gameEndOverlayText {
-  margin: 0 0 6px 0;
-  font-size: clamp(16px, 3.5vw, 20px);
-  line-height: 1.4;
-  font-weight: 800;
-  color: #0f172a;
+  margin: 0;
+  font-size: clamp(18px, 4vw, 22px);
+  font-weight: bold;
+  color: #166534; /* Matching slider-card-title */
 }
 
 .gameEndDetailText {
   margin: 0;
   font-size: clamp(14px, 3vw, 16px);
-  line-height: 1.4;
-  font-weight: 600;
-  color: #e11d48;
+  font-weight: bold;
+  color: #f43f5e;
 }
 
-/* フッターボタン */
 .gameEndOverlayFooter {
-  flex-shrink: 0;
-
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .gameEndOverlayLearnButton,
 .gameEndOverlayNextButton {
-  min-height: 48px;
-  padding: 10px 18px;
-
   border: none;
-  border-radius: 999px;
-
-  font-size: clamp(14px, 3vw, 17px);
-  font-weight: 800;
-
+  border-radius: 9999px;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gameEndOverlayLearnButton {
-  flex: 1.2;
-  background: #0284c7;
+  flex: 1;
+  background: #22c55e; /* Matching reselect-difficulty-btn */
   color: white;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-}
-
-.gameEndOverlayLearnButton:hover {
-  background: #0369a1;
+  padding: 16px 20px;
+  font-size: 16px;
 }
 
 .gameEndOverlayNextButton {
-  flex: 0.8;
-  background: #f1f5f9;
-  color: #334155;
-  border: 1.5px solid #cbd5e1;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
-}
-
-.gameEndOverlayNextButton:hover {
-  background: #e2e8f0;
+  flex: 1;
+  background: white; /* Matching start-action-button */
+  color: #22c55e;
+  padding: 16px 20px;
+  font-size: 20px;
+  border: 3px solid #22c55e; /* Matching slider-card */
 }
 
 .gameEndOverlayLearnButton:active,
 .gameEndOverlayNextButton:active {
-  transform: translateY(2px);
+  transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gameEndFeedbackImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.feedbackImageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.feedbackImageLabel {
+  font-size: 14px;
+  font-weight: bold;
+  color: #64748b;
+}
+
+.feedbackImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 8px;
+  border: 2px solid #e2e8f0;
+}
+
+.feedbackArrow {
+  font-size: 24px;
+  font-weight: bold;
+  color: #94a3b8;
 }

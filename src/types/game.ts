@@ -25,6 +25,8 @@ export interface FeedBack{
     who: string; //何のごみを
     where: string; //本来入れるべき場所
     special_message: string; //単純な入れ間違え以外のメッセージ
+    wasteImg?: string; //ごみの画像
+    binImg?: string; //ごみ箱の画像
 }
 
 // ごみ箱のデータ

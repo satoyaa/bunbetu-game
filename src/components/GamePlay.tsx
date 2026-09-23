@@ -115,6 +115,8 @@ const GamePlayContent = (props: GamePlayProps) => {
         who: activeItem.def.label,
         where: whereText,
         special_message: specialMessage,
+        wasteImg: activeItem.def.img,
+        binImg: binInfo ? binInfo.img : undefined,
       });
     }
   };
