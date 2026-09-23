@@ -15,7 +15,9 @@ const GamePlaySink = ({ isOver }: GamePlaySinkProps) => {
       ref={setNodeRef}
       className={`game-play-sink ${isOver ? 'is-over' : ''}`}
       title="流しエリア"
-    />
+    >
+      <img src="/流し台/流し台（idle）.png" alt="流し台" className="game-play-sink-image" />
+    </div>
   );
 };
 
