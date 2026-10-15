@@ -7,54 +7,29 @@ export const Waste: WasteDef[] = [
   { //飲み残しあり，キャップ，ラベル付きペットボトル
     key: 'pet_label_cap_drink', //key
     label: 'ペットボトル', //ごみ名
-    img: 'ここに挿入', //アイコン画像
+    img: 'ごみデータ/ペットボトル.png', //アイコン画像
     score: 50, //獲得点数
     isSimple: false, //分解できるか
-    isWash: true, //洗える・流せるか
+    isWash: false, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
-    parts: ['pet', 'label', 'cap'],
+    parts: ['pet_drink', 'label', 'cap'],
     feedBackId: 'forget_separate',
     wasteLevel: 3,
-  },
-  { //飲み残しあり，キャップ付きペットボトル
-    key: 'pet_cap_drink', //key
-    label: 'ペットボトル', //ごみ名
-    img: 'ごみデータ/ペットボトル_ラベル無.png', //アイコン画像
-    score: 40, //獲得点数
-    isSimple: false, //分解できるか
-    isWash: true, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
-    bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
-    parts: ['pet', 'cap'],
-    feedBackId: 'forget_separate',
-    wasteLevel: 3,
-  },
-  { //飲み残しあり，ラベル付きペットボトル
-    key: 'pet_label_drink', //key
-    label: 'ペットボトル', //ごみ名
-    img: 'ごみデータ/ペットボトル_キャップ無.png', //アイコン画像
-    score: 30, //獲得点数
-    isSimple: false, //分解できるか
-    isWash: true, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
-    bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
-    parts: ['pet', 'label'],
-    feedBackId: 'forget_separate',
-    wasteLevel: 2,
   },
   { //飲み残しあり，ペットボトル
     key: 'pet_drink', //key
     label: 'ペットボトル', //ごみ名
-    img: 'ごみデータ/ペットボトル_キャップ無_ラベル無.png', //アイコン画像
+    img: 'ごみデータ/ペットボトル_ラベル無_キャップ無.png', //アイコン画像
     score: 20, //獲得点数
-    isSimple: false, //分解できるか
+    isSimple: true, //分解できるか
     isWash: true, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ["pet"],
     feedBackId: 'must_flush',
     wasteLevel: 2,
+    washTargetKey: 'pet',
   },
   { //ペットボトル
     key: 'pet', //key
@@ -62,7 +37,7 @@ export const Waste: WasteDef[] = [
     img: 'ごみデータ/ペットボトル_ラベル無_キャップ無_飲み残し無.png', //アイコン画像
     score: 10, //獲得点数
     isSimple: true, //分解できるか
-    isWash: true, //洗える・流せるか
+    isWash: false, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
     bin: "pet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],

@@ -72,21 +72,20 @@ const DraggableItem = ({ id, children, progress, laneOffset }: DraggableItemProp
 interface GamePlayWasteProps {
   id: UniqueIdentifier;
   label: string;
-  parts: string[];
   isSimple: boolean;
   progress: number;
   laneOffset: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GamePlayWaste = ({ id, label, parts, isSimple, progress, laneOffset, setScore }: GamePlayWasteProps) => {
+const GamePlayWaste = ({ id, label, isSimple, progress, laneOffset, setScore }: GamePlayWasteProps) => {
   const { conveyItems, setConveyItems } = useConveyItems();
   const currentItem = conveyItems.find((item: ConveyItem) => item.id === id);
   const wasteDef = currentItem?.def;
   // タップ開始位置。ドラッグとの競合を避けるため、移動量が小さいときだけ分解とみなす。
   const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
 
-  const handleSeparate = (partKey: string) => {
+  const handleSeparate = () => {
     if (isSimple) {
       return;
     }
@@ -95,44 +94,26 @@ const GamePlayWaste = ({ id, label, parts, isSimple, progress, laneOffset, setSc
       return;
     }
 
-    const selectedPartDef = Waste.find((item: WasteDef) => item.key === partKey);
-    if (!selectedPartDef) {
+    const partDefs = currentItem.def.parts.map((partKey: string) =>
+      Waste.find((item: WasteDef) => item.key === partKey)
+    );
+    if (partDefs.length === 0 || partDefs.some((partDef) => !partDef)) {
       return;
     }
 
     setScore((prevScore: number) => prevScore + currentItem.def.score);
 
     /*
-     * 分解後の 2 片は、親の startedAt / travelMs をそのまま引き継ぐ。
+     * 分解後のパーツは、親の startedAt / travelMs をそのまま引き継ぐ。
      * 進行度は時間だけで決まるので、これだけで分解地点から途切れずに流れ続ける。
      */
-    const separatedItems: ConveyItem[] = [
-      {
-        id: Date.now() + Math.random(),
-        def: selectedPartDef,
-        laneOffset: currentItem.laneOffset - LANE_OFFSET_STEP,
-        travelMs: currentItem.travelMs,
-        startedAt: currentItem.startedAt,
-      },
-    ];
-
-    const remainingParts = currentItem.def.parts.filter((part: string) => part !== partKey);
-    if (remainingParts.length > 0) {
-      const combinedKey = [
-        ...remainingParts,
-        ...(currentItem.def.isWash ? ['drink'] : []),
-      ].join('_');
-      const remainingDef = Waste.find((item: WasteDef) => item.key === combinedKey);
-      if (remainingDef) {
-        separatedItems.push({
-          id: Date.now() + Math.random(),
-          def: remainingDef,
-          laneOffset: currentItem.laneOffset + LANE_OFFSET_STEP,
-          travelMs: currentItem.travelMs,
-          startedAt: currentItem.startedAt,
-        });
-      }
-    }
+    const separatedItems: ConveyItem[] = partDefs.map((partDef, index) => ({
+      id: Date.now() + Math.random(),
+      def: partDef!,
+      laneOffset: currentItem.laneOffset + (index - (partDefs.length - 1) / 2) * LANE_OFFSET_STEP,
+      travelMs: currentItem.travelMs,
+      startedAt: currentItem.startedAt,
+    }));
 
     setConveyItems((prevItems: ConveyItem[]) =>
       prevItems.filter((item: ConveyItem) => item.id !== currentItem.id).concat(separatedItems)
@@ -143,7 +124,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, progress, laneOffset, setSc
     pointerStartRef.current = { x: event.clientX, y: event.clientY };
   };
 
-  const handlePartPointerUp = (event: React.PointerEvent, partKey: string) => {
+  const handlePartPointerUp = (event: React.PointerEvent) => {
     const start = pointerStartRef.current;
     pointerStartRef.current = null;
     if (!start) {
@@ -158,7 +139,7 @@ const GamePlayWaste = ({ id, label, parts, isSimple, progress, laneOffset, setSc
     }
 
     event.stopPropagation();
-    handleSeparate(partKey);
+    handleSeparate();
   };
 
   const renderVisual = () => {
@@ -190,26 +171,8 @@ const GamePlayWaste = ({ id, label, parts, isSimple, progress, laneOffset, setSc
       {isSimple ? (
         renderVisual()
       ) : (
-        <div className="waste-parts-container">
-          {parts.map((partKey: string, index: number) => {
-            const matchedWaste = Waste.find((item: WasteDef) => item.key === partKey);
-            const isImg = matchedWaste?.img && (matchedWaste.img.endsWith('.png') || matchedWaste.img.endsWith('.jpg'));
-
-            return (
-              <div
-                key={`${partKey}-${index}`}
-                className="waste-part-chip"
-                onPointerDown={handlePartPointerDown}
-                onPointerUp={(event) => handlePartPointerUp(event, partKey)}
-              >
-                {isImg ? (
-                  <img src={`/${matchedWaste.img}`} alt={matchedWaste.label} className="waste-image waste-part-image" />
-                ) : (
-                  <span>{matchedWaste?.img && matchedWaste.img !== 'ここに挿入' ? matchedWaste.img : matchedWaste?.label ?? partKey}</span>
-                )}
-              </div>
-            );
-          })}
+        <div onPointerDown={handlePartPointerDown} onPointerUp={handlePartPointerUp}>
+          {renderVisual()}
         </div>
       )}
     </DraggableItem>

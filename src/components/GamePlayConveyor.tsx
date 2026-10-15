@@ -57,7 +57,6 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
               id={conveyItem.id}
               label={conveyItem.def.label}
               isSimple={conveyItem.def.isSimple}
-              parts={conveyItem.def.parts}
               progress={getProgress(conveyItem)}
               laneOffset={conveyItem.laneOffset}
               setScore={setScore}
