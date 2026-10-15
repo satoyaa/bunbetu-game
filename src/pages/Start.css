@@ -54,6 +54,12 @@
   position: relative;
   display: inline-block;
   margin: 0;
+  height: 40vh;
+}
+
+.gameTitleImage {
+  height: 100%;
+  display: block;
 }
 
 .mainTitle {
