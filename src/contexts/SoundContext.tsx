@@ -75,7 +75,7 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
   const [volume, setVolume] = useState<number>(0.7);
 
   // use-sound フックで正解音・不正解音を定義
-  const [playCorrectHowl] = useSound('/sounds/correct.mp3', {
+  const [playCorrectHowl] = useSound('/sounds/correct.m4a', {
     volume: isMuted ? 0 : volume,
     interrupt: false,
     onloaderror: () => {
