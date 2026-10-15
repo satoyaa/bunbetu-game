@@ -2,6 +2,7 @@ import { useDifficulty } from "../contexts/Difficulty"
 import type { Difficulty } from "../contexts/Difficulty"
 import { usePageTransition } from "../hooks/PageTransition"
 import imgSrc from '../assets/beauty2.png';
+import titleSrc from '/アプリタイトル.png';
 import "./Start.css"
 
 export default function Start() {
@@ -22,20 +23,10 @@ export default function Start() {
       <div className="startContent">
         <header className="startHeader">
           <div className="titleWrapper">
-            <h1 className="mainTitle">
-              <div className="titleTop">
-                <span className="charPink">ゴ</span>
-                <span className="charPink">ミ</span>
-                <span className="charGreen">分</span>
-                <span className="charOrange">別</span>
-              </div>
-              <div className="titleBottom">
-                <span className="charBlue">ゲーム！</span>
-              </div>
-            </h1>
+            <img src={titleSrc} alt="ゲームタイトル" className="gameTitleImage" />
           </div>
           <div className="subTitleRibbon">
-            <span>きれいな未来のために、正しく分けよう！</span>
+            <span>きれいな未来のために、正しく分別しよう！</span>
           </div>
         </header>
 
@@ -93,10 +84,12 @@ export default function Start() {
       </div>
 
       {/* 木の看板 (左下) */}
+      {/*}
       <div className="woodenSignboard">
         <p>ルールをまもって</p>
         <p>だいせつな地球を守ろう！</p>
       </div>
+      */}
     </div>
   )
 }
