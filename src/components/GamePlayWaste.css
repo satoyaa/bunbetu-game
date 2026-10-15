@@ -21,26 +21,6 @@
   display: block;
 }
 
-.waste-parts-container {
-  display: flex;
-  gap: 6px;
-}
-
-.waste-part-chip {
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 8px;
-  touch-action: none;
-}
-
-/* 分解パーツの画像は本体より一回り小さく */
-.waste-part-image {
-  width: var(--waste-part-size);
-  height: var(--waste-part-size);
-  max-width: var(--waste-part-size);
-  max-height: var(--waste-part-size);
-}
-
 .waste-emoji {
   font-size: calc(var(--waste-size) * 0.28);
   line-height: 1;
