@@ -36,11 +36,11 @@ export const SPECIAL_FEEDBACK_MESSAGES: SpecialFeedbackMessage[] = [
 
 export const FEEDBACK_TITLES: FeedTitle[] = [
   { feedTitleScoreThreshold: 0, feedTitle: '初心者' },
-  { feedTitleScoreThreshold: 100, feedTitle: '分別の達人' },
-  { feedTitleScoreThreshold: 200, feedTitle: '分別マスター' },
-  { feedTitleScoreThreshold: 300, feedTitle: 'エコイスト' },
-  { feedTitleScoreThreshold: 400, feedTitle: '環境保護の英雄' },
-  { feedTitleScoreThreshold: 500, feedTitle: '分別の王' },
-  { feedTitleScoreThreshold: 1000, feedTitle: '分別星人' },
+  { feedTitleScoreThreshold: 300, feedTitle: '分別の達人' },
+  { feedTitleScoreThreshold: 500, feedTitle: '分別マスター' },
+  { feedTitleScoreThreshold: 700, feedTitle: 'エコイスト' },
+  { feedTitleScoreThreshold: 1000, feedTitle: '環境保護の英雄' },
+  { feedTitleScoreThreshold: 1500, feedTitle: '分別の王' },
+  { feedTitleScoreThreshold: 2500, feedTitle: '分別星人' },
   { feedTitleScoreThreshold: 5000, feedTitle: '分別神' },
 ];
