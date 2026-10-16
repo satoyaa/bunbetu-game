@@ -52,12 +52,24 @@ const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
 
         {/* 3. スライダー */}
         <div className="start-slider-container">
-          <button className="slider-arrow left" onClick={prevSlide}>&lt;</button>
+          <button className="slider-arrow left" type="button" aria-label="前のページ" onClick={prevSlide}>
+            <svg className="slider-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </button>
           <div className="slider-card">
-            <div className="slider-image-placeholder">画像準備中</div>
+            <img
+              className="slider-image"
+              src={GUIDE_SLIDES[currentSlide].imagePath}
+              alt={GUIDE_SLIDES[currentSlide].title}
+            />
             <p className="slider-card-title">{GUIDE_SLIDES[currentSlide].title}</p>
           </div>
-          <button className="slider-arrow right" onClick={nextSlide}>&gt;</button>
+          <button className="slider-arrow right" type="button" aria-label="次のページ" onClick={nextSlide}>
+            <svg className="slider-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </button>
         </div>
 
         {/* 4. ページナビゲーション */}
