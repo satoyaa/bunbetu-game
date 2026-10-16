@@ -47,6 +47,7 @@ export interface WasteDef {
   isSimple: boolean; //分解可能か
   isWash: boolean; //洗える・流せるか
   isBurn: boolean; //発火の危険性があるか
+  isTrash: boolean; //自治体のごみとして捨てられるか
   bin : BinId; //ごみ箱・分解可能ならそちらを優先して処理
   parts: string[]; //分解後のパーツ
   feedBackId?: FeedBackId; //フィードバックID

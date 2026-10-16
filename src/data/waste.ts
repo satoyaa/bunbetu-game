@@ -12,6 +12,7 @@ export const Waste: WasteDef[] = [
     isSimple: false, //分解できるか
     isWash: false, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
+    isTrash: true,
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ['pet_drink', 'label', 'cap'],
     feedBackId: 'forget_separate',
@@ -25,6 +26,7 @@ export const Waste: WasteDef[] = [
     isSimple: true, //分解できるか
     isWash: true, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
+    isTrash: true,
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ["pet"],
     feedBackId: 'must_flush',
@@ -39,6 +41,7 @@ export const Waste: WasteDef[] = [
     isSimple: true, //分解できるか
     isWash: false, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
+    isTrash: true,
     bin: "pet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],
     feedBackId: 'simple_mistake',
@@ -52,6 +55,7 @@ export const Waste: WasteDef[] = [
     isSimple: true, //分解できるか
     isWash: false, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
+    isTrash: true,
     bin: "recycle_plastic", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],
     feedBackId: 'simple_mistake',
@@ -65,6 +69,7 @@ export const Waste: WasteDef[] = [
     isSimple: true, //分解できるか
     isWash: false, //洗える・流せるか
     isBurn: false, //発火の危険性があるか
+    isTrash: true,
     bin: "recycle_plastic", //ごみ箱・分解可能ならそちらを優先して処理
     parts: [],
     feedBackId: 'simple_mistake',
@@ -78,6 +83,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -91,12 +97,13 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // モバイル充電器（リチウムイオン電池内蔵のため有害ごみ、発火の危険あり）
+  { // モバイル充電器（リチウムイオン電池内蔵のため購入店へ持参、発火の危険あり）
     key: 'mobile_battery',
     label: 'モバイル充電器',
     img: 'ごみデータ/モバイル充電器.png',
@@ -104,10 +111,25 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: true,
+    isTrash: true,
     bin: 'yugai',
     parts: [],
     feedBackId: 'burning',
     wasteLevel: 3,
+  },
+  { // スマートフォン（リチウムイオン電池内蔵のため購入店へ持参、発火の危険あり）
+    key: 'smartphone',
+    label: 'スマートフォン',
+    img: 'ごみデータ/スマートフォン.png',
+    score: 30,
+    isSimple: true,
+    isWash: false,
+    isBurn: true,
+    isTrash: false,
+    bin: 'yet',
+    parts: [],
+    feedBackId: 'burning',
+    wasteLevel: 2,
   },
   { // 卵のパック（パルプモールド・紙製容器は可燃ごみ）
     key: 'egg_carton_pulp',
@@ -117,6 +139,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'kanen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -130,6 +153,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -143,6 +167,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'recycle_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -156,6 +181,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -169,6 +195,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -183,6 +210,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'kanen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -196,6 +224,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'kanen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -209,6 +238,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'kanen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -222,6 +252,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: true,
     isBurn: false,
+    isTrash: true,
     bin: 'yet',
     parts: [],
     feedBackId: 'must_wash',
@@ -237,6 +268,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'sigen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -250,6 +282,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'sigen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -263,6 +296,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'sigen',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -276,6 +310,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -289,6 +324,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -302,6 +338,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -316,6 +353,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: true,
     isBurn: false,
+    isTrash: true,
     bin: 'yet',
     parts: [],
     feedBackId: 'must_wash',
@@ -330,6 +368,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: true,
     isBurn: false,
+    isTrash: true,
     bin: 'yet',
     parts: [],
     feedBackId: 'must_wash',
@@ -344,6 +383,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: true,
     isBurn: false,
+    isTrash: true,
     bin: 'yet',
     parts: [],
     feedBackId: 'must_wash',
@@ -359,6 +399,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'recycle_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -372,6 +413,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'recycle_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -386,6 +428,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'oogata',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -399,6 +442,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'oogata',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -412,6 +456,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'oogata',
     parts: [],
     feedBackId: 'simple_mistake',
@@ -425,6 +470,7 @@ export const Waste: WasteDef[] = [
     isSimple: true,
     isWash: false,
     isBurn: false,
+    isTrash: true,
     bin: 'oogata',
     parts: [],
     feedBackId: 'simple_mistake',

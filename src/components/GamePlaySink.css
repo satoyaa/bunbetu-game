@@ -19,14 +19,10 @@
 }
 
 .game-play-sink.is-over {
-  filter: drop-shadow(0 0 16px rgba(49, 176, 213, 0.8));
   transform: scale(1.08);
 }
 
-.game-play-sink.is-over::before {
-  background: rgba(49, 176, 213, 0.15);
-  outline: 3px solid #31b0d5;
-}
+
 
 .game-play-sink-image {
   width: 100%;

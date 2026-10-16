@@ -18,7 +18,7 @@ export const SPECIAL_FEEDBACK_MESSAGES: SpecialFeedbackMessage[] = [
   },
   {
     feedBackId: 'burning',
-    message: '発火の危険があるゴミです！正しく処理してください！',
+    message: '発火の危険があります。ごみ箱には入れず、購入店へ持参してください。',
   },
   {
     feedBackId: 'missed_Waste',

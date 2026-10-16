@@ -1,0 +1,15 @@
+.game-play-shop {
+  width: var(--sink-w);
+  height: var(--sink-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-weight: 700;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-play-shop.is-over {
+  transform: scale(1.08);
+}
