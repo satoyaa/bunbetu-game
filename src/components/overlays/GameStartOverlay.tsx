@@ -54,7 +54,11 @@ const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
         <div className="start-slider-container">
           <button className="slider-arrow left" onClick={prevSlide}>&lt;</button>
           <div className="slider-card">
-            <div className="slider-image-placeholder">画像準備中</div>
+            <img
+              className="slider-image"
+              src={GUIDE_SLIDES[currentSlide].imagePath}
+              alt={GUIDE_SLIDES[currentSlide].title}
+            />
             <p className="slider-card-title">{GUIDE_SLIDES[currentSlide].title}</p>
           </div>
           <button className="slider-arrow right" onClick={nextSlide}>&gt;</button>
