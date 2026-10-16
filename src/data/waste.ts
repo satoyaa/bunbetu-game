@@ -16,7 +16,7 @@ export const Waste: WasteDef[] = [
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ['pet_drink', 'label', 'cap'],
     feedBackId: 'forget_separate',
-    wasteLevel: 3,
+    wasteLevel: 1,
   },
   { //飲み残しあり，ペットボトル
     key: 'pet_drink', //key
@@ -30,7 +30,7 @@ export const Waste: WasteDef[] = [
     bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
     parts: ["pet"],
     feedBackId: 'must_flush',
-    wasteLevel: 2,
+    wasteLevel: 1,
     washTargetKey: 'pet',
   },
   { //ペットボトル
@@ -129,7 +129,7 @@ export const Waste: WasteDef[] = [
     bin: 'yet',
     parts: [],
     feedBackId: 'burning',
-    wasteLevel: 2,
+    wasteLevel: 1,
   },
   { // 卵のパック（パルプモールド・紙製容器は可燃ごみ）
     key: 'egg_carton_pulp',
@@ -143,7 +143,7 @@ export const Waste: WasteDef[] = [
     bin: 'kanen',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   { // 歯ブラシ（手動のプラスチック製歯ブラシはその他プラ）
     key: 'toothbrush',
@@ -185,7 +185,7 @@ export const Waste: WasteDef[] = [
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   { // 靴（スニーカー・革靴などはその他プラ）
     key: 'shoes',
@@ -199,7 +199,7 @@ export const Waste: WasteDef[] = [
     bin: 'other_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   // ─── 可燃ごみ（燃やすごみ） ──────────────────────────────────
   { // えんぴつ（木製・文房具は可燃ごみ）
@@ -242,7 +242,7 @@ export const Waste: WasteDef[] = [
     bin: 'kanen',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   { // ヨーグルト容器（汚れあり・水洗いでリサイクルプラへ）
     key: 'yogurt_dirty',
@@ -286,7 +286,7 @@ export const Waste: WasteDef[] = [
     bin: 'sigen',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   { // ラムネ瓶（飲料用ガラス瓶は資源ごみ）
     key: 'ramune_bottle',
@@ -302,7 +302,7 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // しょうゆ瓶（調味料ガラス瓶・洗浄済は資源ごみ）
+  { // しょうゆの容器（調味料ガラス瓶・洗浄済は資源ごみ）
     key: 'soy_sauce_bottle',
     label: 'しょうゆの容器 ペットボトル（洗浄済）',
     img: 'ごみデータ/しょうゆ.png',
@@ -328,7 +328,7 @@ export const Waste: WasteDef[] = [
     bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   { // 料理酒瓶（調味料ガラス瓶・洗浄済は資源ごみ）
     key: 'cooking_sake_bottle',
@@ -342,7 +342,7 @@ export const Waste: WasteDef[] = [
     bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    wasteLevel: 2,
   },
   // ─── 汚れのあるびん（水洗いで資源ごみへ） ──────────────────────
   { // しょうゆ瓶（水洗いで資源ごみへ）
@@ -357,7 +357,7 @@ export const Waste: WasteDef[] = [
     bin: 'yet',
     parts: [],
     feedBackId: 'must_wash',
-    wasteLevel: 2,
+    wasteLevel: 1,
     washTargetKey: 'soy_sauce_bottle',
   },
   { // みりん瓶（水洗いで資源ごみへ）
@@ -432,7 +432,7 @@ export const Waste: WasteDef[] = [
     bin: 'oogata',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 2,
+    wasteLevel: 1,
   },
   { // 学習机（最長辺30cm以上の家具は大型ごみ）
     key: 'study_desk',
@@ -460,7 +460,7 @@ export const Waste: WasteDef[] = [
     bin: 'oogata',
     parts: [],
     feedBackId: 'simple_mistake',
-    wasteLevel: 2,
+    wasteLevel: 1,
   },
   { // アイロン台（最長辺30cm以上の生活用品は大型ごみ）
     key: 'ironing_board',
