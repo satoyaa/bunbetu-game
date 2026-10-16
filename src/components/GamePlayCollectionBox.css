@@ -1,0 +1,22 @@
+.game-play-collection-box {
+  width: var(--sink-w);
+  height: var(--sink-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 3px dashed #6b543b;
+  border-radius: 16px;
+  background: #f5e8cf;
+  color: #392d20;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-play-collection-box.is-over {
+  box-shadow: 0 0 16px rgba(49, 176, 213, 0.8);
+  transform: scale(1.08);
+  border-color: #31b0d5;
+}

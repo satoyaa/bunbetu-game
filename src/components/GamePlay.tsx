@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import GamePlayBin from "./GamePlayBin";
 import GamePlaySink from "./GamePlaySink";
+import GamePlayCollectionBox from "./GamePlayCollectionBox";
 import { DndContext, rectIntersection, useSensor, useSensors, MouseSensor, TouchSensor, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
 import { GAME_LEVEL_PARAMETER_DATA } from "../data/difficulty";
@@ -104,8 +105,11 @@ const GamePlayContent = (props: GamePlayProps) => {
       return;
     }
 
-    // item の bin とドロップ先の id が一致すれば正解とみなし、アイテムを削除
-    if (activeItem.def.bin === over.id) {
+    const isCorrect = activeItem.def.isTrush
+      ? activeItem.def.bin === over.id
+      : over.id === 'collection_box';
+
+    if (isCorrect) {
       setScore((prevScore: number) => prevScore + activeItem.def.score);
       setConveyItems((prevItems: ConveyItem[]) => prevItems.filter((item: ConveyItem) => item.id !== active.id));
       playSE('correct');
@@ -115,7 +119,9 @@ const GamePlayContent = (props: GamePlayProps) => {
 
       const feedBackId = activeItem.def.feedBackId ?? 'simple_mistake';
       const binInfo = BINS.find((b: BinDef) => b.id === activeItem.def.bin);
-      const whereText = binInfo ? binInfo.label : activeItem.def.bin;
+      const whereText = activeItem.def.isTrush
+        ? (binInfo ? binInfo.label : activeItem.def.bin)
+        : '回収ボックス（購入店へ持参）';
 
       let specialMessage = "";
       if (feedBackId !== 'simple_mistake') {
@@ -183,7 +189,8 @@ const GamePlayContent = (props: GamePlayProps) => {
       >
         <div className="game-play-main-area">
           <div className="conveyor-section">
-            <div className="sink-wrapper">
+            <div className="special-areas">
+              <GamePlayCollectionBox isOver={activeOver === 'collection_box'} />
               <GamePlaySink isOver={activeOver === 'sink'} />
             </div>
             <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
