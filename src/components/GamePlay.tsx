@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import GamePlayBin from "./GamePlayBin";
 import GamePlaySink from "./GamePlaySink";
 import GamePlayCollectionBox from "./GamePlayCollectionBox";
-import { DndContext, rectIntersection, useSensor, useSensors, MouseSensor, TouchSensor, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
+import { DndContext, pointerWithin, useSensor, useSensors, MouseSensor, TouchSensor, type DragOverEvent, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { BINS } from "../data/bins";
 import { GAME_LEVEL_PARAMETER_DATA } from "../data/difficulty";
 import { BASE_TRAVEL_MS } from "../data/layout";
@@ -182,7 +182,7 @@ const GamePlayContent = (props: GamePlayProps) => {
     <div className="game-play-container">
       <DndContext
         sensors={sensors}
-        collisionDetection={rectIntersection}
+        collisionDetection={pointerWithin}
         autoScroll={false}
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
