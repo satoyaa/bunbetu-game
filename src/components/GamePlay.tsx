@@ -105,7 +105,7 @@ const GamePlayContent = (props: GamePlayProps) => {
       return;
     }
 
-    const isCorrect = activeItem.def.isTrush
+    const isCorrect = activeItem.def.isTrash
       ? activeItem.def.bin === over.id
       : over.id === 'collection_box';
 
@@ -119,7 +119,7 @@ const GamePlayContent = (props: GamePlayProps) => {
 
       const feedBackId = activeItem.def.feedBackId ?? 'simple_mistake';
       const binInfo = BINS.find((b: BinDef) => b.id === activeItem.def.bin);
-      const whereText = activeItem.def.isTrush
+      const whereText = activeItem.def.isTrash
         ? (binInfo ? binInfo.label : activeItem.def.bin)
         : '回収ボックス（購入店へ持参）';
 
