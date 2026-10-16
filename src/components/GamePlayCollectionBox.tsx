@@ -11,11 +11,11 @@ const GamePlayCollectionBox = ({ isOver }: GamePlayCollectionBoxProps) => {
   return (
     <div
       ref={setNodeRef}
-      className={`game-play-collection-box ${isOver ? 'is-over' : ''}`}
+      className={`game-play-shop ${isOver ? 'is-over' : ''}`}
       title="購入店へ持参するものを入れるエリア"
       aria-label="回収ボックス"
     >
-      <span>回収ボックス</span>
+      <img src="/販売店/販売店.png" alt="販売店" className="game-play-shop-img" />
     </div>
   );
 };
