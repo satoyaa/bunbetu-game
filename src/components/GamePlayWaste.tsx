@@ -20,7 +20,7 @@ interface DraggableItemProps {
 
 // 1．ドラッグできるコンポーネント
 const DraggableItem = ({ id, children, progress, laneOffset }: DraggableItemProps) => {
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+  const { attributes, listeners, setNodeRef, transform, isDragging, activatorEvent, activeNodeRect } = useDraggable({
     id: id,
   });
   // ドラッグ中はベルトの進行を止めて見せる（指から位置が逃げないように）
@@ -49,10 +49,23 @@ const DraggableItem = ({ id, children, progress, laneOffset }: DraggableItemProp
   const leftPercent = (1 - p) * 100;
   const selfShiftPercent = -p * 100;
 
+  const startPoint = activatorEvent instanceof MouseEvent
+    ? activatorEvent
+    : activatorEvent instanceof TouchEvent
+      ? activatorEvent.touches[0]
+      : null;
+  // dnd-kit の矩形は CSS transform を除いた位置。ベルト上の配置分を戻して中心を求める。
+  const centerOffset = isDragging && activeNodeRect && startPoint
+    ? {
+        x: startPoint.clientX - (activeNodeRect.left + activeNodeRect.width * (0.5 - p)),
+        y: startPoint.clientY - activeNodeRect.top,
+      }
+    : { x: 0, y: 0 };
+
   const translateX = transform
-    ? `calc(${selfShiftPercent}% + ${transform.x}px)`
+    ? `calc(${selfShiftPercent}% + ${transform.x + centerOffset.x}px)`
     : `${selfShiftPercent}%`;
-  const translateY = transform ? `calc(-50% + ${transform.y}px)` : '-50%';
+  const translateY = transform ? `calc(-50% + ${transform.y + centerOffset.y}px)` : '-50%';
 
   const style: React.CSSProperties = {
     position: 'absolute',
