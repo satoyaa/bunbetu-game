@@ -171,6 +171,17 @@
   }
 }
 
+.start-notion-reference{
+  font-size: 12px;
+  color: #6b7280; /* Gray text */
+  margin-top: 8px;
+  text-align: center;
+}
+
+.start-notion-sp-br{
+  display: none;
+}
+
 .reselect-difficulty-btn {
   position: absolute;
   top: 16px;
@@ -234,5 +245,13 @@
     padding: 14px 24px;
     font-size: clamp(18px, 5vw, 24px);
     min-height: 56px;
+  }
+
+  .start-notion-reference {
+    font-size: 11px;
+  }
+
+  .start-notion-sp-br{
+    display: inline;
   }
 }

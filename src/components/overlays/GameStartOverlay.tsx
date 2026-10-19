@@ -83,6 +83,11 @@ const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
         <button className="start-action-button" onClick={handleStart}>
           ゲームスタート！
         </button>
+        <span className="start-notion-reference" >
+          ※分別は広島市のごみ分別50音事典に基づいています<br className="start-notion-sp-br"></br>
+          <a href="https://www.city.hiroshima.lg.jp/living/gomi-kankyo/1021277/1003072/1026094/1003180.html">広島市/ごみ分別50音事典</a>
+        </span>
+        
       </div>
     </div>
   );
