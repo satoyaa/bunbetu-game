@@ -25,9 +25,6 @@ export default function Start() {
           <div className="titleWrapper">
             <img src={titleSrc} alt="ゲームタイトル" className="gameTitleImage" />
           </div>
-          <div className="subTitleRibbon">
-            <span>きれいな未来のために、正しく分別しよう！</span>
-          </div>
         </header>
 
         <div className="mainArea">
@@ -84,12 +81,10 @@ export default function Start() {
       </div>
 
       {/* 木の看板 (左下) */}
-      {/*}
       <div className="woodenSignboard">
         <p>ルールをまもって</p>
         <p>だいせつな地球を守ろう！</p>
       </div>
-      */}
     </div>
   )
 }
