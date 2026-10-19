@@ -81,6 +81,12 @@ export default function Start() {
             </button>
           </nav>
         </div>
+
+        <footer className="startFooter">
+          <p>ごみ箱画像（8点）　出典：広島市／©広島市</p>
+          <p>制作：広島市立大学大学院情報科学研究科学生</p>
+          <p>協力：株式会社コーヨー</p>
+        </footer>
       </div>
 
       {/* 木の看板 (左下) */}
