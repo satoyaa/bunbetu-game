@@ -105,21 +105,6 @@
 .charOrange { color: #ffa726; }
 .charBlue { color: #29b6f6; }
 
-.subTitleRibbon {
-  background-color: #8bc34a;
-  color: white;
-  padding: 0.5em 1.4em;
-  font-size: clamp(0.95rem, 3.6vw, 1.6rem);
-  font-weight: bold;
-  border-radius: 40px;
-  margin-top: 25px;
-  border: 4px solid white;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  position: relative;
-  letter-spacing: 0.1em;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
 /* カードグリッドエリア */
 .mainArea {
   display: flex;
@@ -172,7 +157,6 @@
   outline: none;
   transition: all 0.1s ease;
   border: 4px solid white;
-  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   position: relative;
   overflow: hidden;
@@ -180,7 +164,6 @@
 
 .menuBtn:active {
   transform: translateY(6px);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btnInner {
@@ -201,7 +184,6 @@
   font-size: clamp(1.15rem, 4.4vw, 2rem);
   font-weight: bold;
   color: white;
-  text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
   letter-spacing: 0.05em;
 }
 
@@ -224,18 +206,6 @@
 .btnHard { background-color: #ef9838; }
 .btnLearn { background-color: #a673d3; }
 
-/* 木の看板 */
-.woodenSignboard {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  background-color: #dcb37b;
-  border: 4px solid #8e623a;
-  border-radius: 12px;
-  padding: 20px 30px;
-  box-shadow: 3px 5px 10px rgba(0,0,0,0.3);
-  transform: rotate(-3deg);
-}
 
 .woodenSignboard p {
   margin: 0;
