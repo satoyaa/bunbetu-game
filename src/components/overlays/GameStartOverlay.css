@@ -18,7 +18,7 @@
 .start-modal {
   background: #ffffff;
   border: 4px solid #a3d977;
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 24px 32px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -39,7 +39,7 @@
   margin: 0;
   font-size: 28px;
   font-weight: 800;
-  color: #3b82f6; /* Blue matching "あそびかた" text */
+  color: #166534; /* Blue matching "あそびかた" text */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -50,7 +50,7 @@
 }
 
 .start-difficulty-badge {
-  background: #3b82f6; /* Blue badge for difficulty */
+  background: #166534; /* Blue badge for difficulty */
   color: white;
   padding: 6px 20px;
   border-radius: 9999px;
@@ -186,11 +186,11 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: #f43f5e;
-  color: white;
-  border: none;
+  color: #166534;
+  background: #fff;
+  border: 2px solid #166534;
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 4px 8px;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
