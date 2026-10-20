@@ -4,7 +4,7 @@ import { useConveyItems } from "../contexts/ConveyItems";
 import { getProgress, isExpired } from "../data/layout";
 import type { ConveyItem } from "../types/game";
 import "./GamePlayConveyor.css";
-import conveyorImage from '../assets/images/waste/ベルトコンベア.png';
+import conveyorImage from '../assets/images/waste/ベルトコンベア.webp';
 
 type GamePlayConveyorProps = {
   setHealth: React.Dispatch<React.SetStateAction<number>>;

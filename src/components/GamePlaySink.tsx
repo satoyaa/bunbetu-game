@@ -1,6 +1,6 @@
 import { useDroppable } from '@dnd-kit/core';
 import './GamePlaySink.css';
-import sinkImage from '../assets/images/ui/流し台（idle）.png';
+import sinkImage from '../assets/images/ui/流し台（idle）.webp';
 
 interface GamePlaySinkProps {
   isOver: boolean;

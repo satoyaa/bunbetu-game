@@ -1,6 +1,6 @@
 import { useDroppable } from '@dnd-kit/core';
 import './GamePlayCollectionBox.css';
-import shopImage from '../assets/images/ui/販売店.png';
+import shopImage from '../assets/images/ui/販売店.webp';
 
 interface GamePlayCollectionBoxProps {
   isOver: boolean;
