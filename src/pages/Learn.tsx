@@ -2,7 +2,7 @@ import { usePageTransition } from "../hooks/PageTransition"
 import "./Learn.css"
 
 export default function Learn() {
-  const { goToStart, goToGame } = usePageTransition()
+  const { goToStart } = usePageTransition()
 
   return (
     <section className="learnContainer">
