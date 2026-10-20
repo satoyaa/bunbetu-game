@@ -4,6 +4,7 @@ import { useConveyItems } from "../contexts/ConveyItems";
 import { getProgress, isExpired } from "../data/layout";
 import type { ConveyItem } from "../types/game";
 import "./GamePlayConveyor.css";
+import conveyorImage from '../assets/images/waste/ベルトコンベア.png';
 
 type GamePlayConveyorProps = {
   setHealth: React.Dispatch<React.SetStateAction<number>>;
@@ -43,7 +44,7 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
         {/* イラスト画像のビューポート（中央揃え・--conveyor-h に合わせて縮尺） */}
         <div className="conveyor-image-viewport">
           <img
-            src="/ごみデータ/ベルトコンベア.png"
+            src={conveyorImage}
             alt="ベルトコンベア"
             className="conveyor-illustration"
           />

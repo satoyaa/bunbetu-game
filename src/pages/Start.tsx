@@ -2,7 +2,7 @@ import { useDifficulty } from "../contexts/Difficulty"
 import type { Difficulty } from "../contexts/Difficulty"
 import { usePageTransition } from "../hooks/PageTransition"
 import imgSrc from '../assets/beauty2.png';
-import titleSrc from '/アプリタイトル.png';
+import titleSrc from '../assets/images/ui/アプリタイトル.png';
 import "./Start.css"
 
 export default function Start() {

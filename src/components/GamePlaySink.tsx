@@ -1,5 +1,6 @@
 import { useDroppable } from '@dnd-kit/core';
 import './GamePlaySink.css';
+import sinkImage from '../assets/images/ui/流し台（idle）.png';
 
 interface GamePlaySinkProps {
   isOver: boolean;
@@ -16,7 +17,7 @@ const GamePlaySink = ({ isOver }: GamePlaySinkProps) => {
       className={`game-play-sink ${isOver ? 'is-over' : ''}`}
       title="流しエリア"
     >
-      <img src="/流し台/流し台（idle）.png" alt="流し台" className="game-play-sink-image" />
+      <img src={sinkImage} alt="流し台" className="game-play-sink-image" />
     </div>
   );
 };

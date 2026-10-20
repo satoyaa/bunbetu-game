@@ -1,5 +1,6 @@
 import { useDroppable } from '@dnd-kit/core';
 import './GamePlayCollectionBox.css';
+import shopImage from '../assets/images/ui/販売店.png';
 
 interface GamePlayCollectionBoxProps {
   isOver: boolean;
@@ -15,7 +16,7 @@ const GamePlayCollectionBox = ({ isOver }: GamePlayCollectionBoxProps) => {
       title="購入店へ持参するものを入れるエリア"
       aria-label="回収ボックス"
     >
-      <img src="/販売店/販売店.png" alt="販売店" className="game-play-shop-img" />
+      <img src={shopImage} alt="販売店" className="game-play-shop-img" />
     </div>
   );
 };

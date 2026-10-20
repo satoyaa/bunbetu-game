@@ -160,12 +160,12 @@ const GamePlayWaste = ({ id, label, isSimple, progress, laneOffset, setScore }: 
       return <div className="waste-label-tag">{label}</div>;
     }
 
-    const isImageFile = wasteDef.img && (wasteDef.img.endsWith('.png') || wasteDef.img.endsWith('.jpg') || wasteDef.img.endsWith('.jpeg') || wasteDef.img.endsWith('.svg'));
+    const isImageFile = wasteDef.img && (wasteDef.img.startsWith('data:image/') || wasteDef.img.endsWith('.png') || wasteDef.img.endsWith('.jpg') || wasteDef.img.endsWith('.jpeg') || wasteDef.img.endsWith('.svg'));
 
     if (isImageFile) {
       return (
         <img
-          src={`/${wasteDef.img}`}
+          src={wasteDef.img}
           alt={wasteDef.label}
           className="waste-image"
         />

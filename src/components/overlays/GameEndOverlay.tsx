@@ -78,12 +78,12 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
                 <div className="gameEndFeedbackImages">
                   <div className="feedbackImageWrapper">
                     <span className="feedbackImageLabel">間違えたごみ</span>
-                    <img src={`/${feedBack.wasteImg}`} alt="間違えたごみ" className="feedbackImage" />
+                    <img src={feedBack.wasteImg} alt="間違えたごみ" className="feedbackImage" />
                   </div>
                   <ArrowCircleIcon direction="right" className="feedbackArrow" />
                   <div className="feedbackImageWrapper">
                     <span className="feedbackImageLabel">正しいごみ箱</span>
-                    <img src={`/${feedBack.binImg}`} alt="正しいごみ箱" className="feedbackImage" />
+                    <img src={feedBack.binImg} alt="正しいごみ箱" className="feedbackImage" />
                   </div>
                 </div>
               )}
