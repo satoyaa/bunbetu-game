@@ -212,9 +212,8 @@
   .reselect-difficulty-btn {
     position: static;
     align-self: flex-end;
-    padding: 8px 14px;
+    padding: 2px 4px;
     font-size: 13px;
-    min-height: 40px;
   }
 
   .start-modal-title {
