@@ -85,12 +85,6 @@ export default function Start() {
           <p>協力：株式会社コーヨー</p>
         </footer>
       </div>
-
-      {/* 木の看板 (左下) */}
-      <div className="woodenSignboard">
-        <p>ルールをまもって</p>
-        <p>だいせつな地球を守ろう！</p>
-      </div>
     </div>
   )
 }
