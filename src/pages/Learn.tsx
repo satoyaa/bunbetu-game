@@ -6,13 +6,10 @@ export default function Learn() {
 
   return (
     <section className="learnContainer">
-      <h1 className="learnTitle">これはLearnページです</h1>
+      <h1 className="learnTitle">現在準備中</h1>
       <div className="learnActions">
         <button type="button" className="learnButton isSecondary" onClick={goToStart}>
           スタートページへ
-        </button>
-        <button type="button" className="learnButton" onClick={goToGame}>
-          Gameページへ
         </button>
       </div>
     </section>
