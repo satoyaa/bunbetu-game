@@ -12,7 +12,7 @@ import { useConveyItems, ConveyItemsProvider } from "../contexts/ConveyItems";
 import { Waste } from "../data/waste";
 import type { BackgroundType, BinDef, ConveyItem, FeedBack, GameLevelParameter, GameStatus, WasteDef } from "../types/game";
 
-import { SPECIAL_FEEDBACK_MESSAGES, type SpecialFeedbackMessage } from "../data/feedback";
+import { getImmediateHint, SPECIAL_FEEDBACK_MESSAGES, type SpecialFeedbackMessage } from "../data/feedback";
 import { useGameSound } from "../contexts/SoundContext";
 
 import './GamePlay.css';
@@ -27,6 +27,12 @@ type GamePlayProps = {
   gameLevel: number;
 };
 
+type ImmediateHint = {
+  message: string;
+  x: number;
+  y: number;
+};
+
 // 指定した範囲 of ランダムな整数を生成する関数
 const getRandomNumber = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,6 +43,13 @@ const GamePlayContent = (props: GamePlayProps) => {
   const { conveyItems, setConveyItems } = useConveyItems();
   const { playSE } = useGameSound();
   const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null); // 現在ドラッグ中で重なっている領域をハイライトするために管理
+  const [immediateHint, setImmediateHint] = useState<ImmediateHint | null>(null);
+
+  useEffect(() => {
+    if (!immediateHint) return;
+    const timeoutId = window.setTimeout(() => setImmediateHint(null), 2000);
+    return () => window.clearTimeout(timeoutId);
+  }, [immediateHint]);
 
   // ゲーム終了時またはスタート画面への遷移時に conveyItems をリセット
   useEffect(() => {
@@ -97,6 +110,7 @@ const GamePlayContent = (props: GamePlayProps) => {
 
     // シンクの上にドロップされた場合は分別ではないため処理を終了（洗浄された状態で維持）
     if (over.id === 'sink') {
+      setImmediateHint(null);
       return;
     }
 
@@ -110,12 +124,25 @@ const GamePlayContent = (props: GamePlayProps) => {
       : over.id === 'collection_box';
 
     if (isCorrect) {
+      setImmediateHint(null);
       setScore((prevScore: number) => prevScore + activeItem.def.score);
       setConveyItems((prevItems: ConveyItem[]) => prevItems.filter((item: ConveyItem) => item.id !== active.id));
       playSE('correct');
     } else {
       setHealth((prevHealth: number) => Math.max(0, prevHealth - 1));
       playSE('incorrect');
+
+      const hintMessage = getImmediateHint(activeItem.def);
+      if (hintMessage) {
+        const halfWidth = Math.min(140, (window.innerWidth - 24) / 2);
+        setImmediateHint({
+          message: hintMessage,
+          x: Math.max(halfWidth + 12, Math.min(over.rect.left + over.rect.width / 2, window.innerWidth - halfWidth - 12)),
+          y: Math.max(24, over.rect.top - 68),
+        });
+      } else {
+        setImmediateHint(null);
+      }
 
       const feedBackId = activeItem.def.feedBackId ?? 'simple_mistake';
       const binInfo = BINS.find((b: BinDef) => b.id === activeItem.def.bin);
@@ -180,6 +207,15 @@ const GamePlayContent = (props: GamePlayProps) => {
 
   return (
     <div className="game-play-container">
+      {gameProgress === 'playing' && immediateHint && (
+        <div
+          className="game-play-immediate-hint"
+          role="status"
+          style={{ left: immediateHint.x, top: immediateHint.y }}
+        >
+          {immediateHint.message}
+        </div>
+      )}
       <DndContext
         sensors={sensors}
         collisionDetection={pointerWithin}
