@@ -2,6 +2,7 @@ import "./GameEndOverlay.css";
 import { SPECIAL_FEEDBACK_MESSAGES, FEEDBACK_TITLES, type SpecialFeedbackMessage, type FeedTitle } from "../../data/feedback";
 import type { FeedBack } from "../../types/game";
 import { usePageTransition } from "../../hooks/PageTransition";
+import ArrowCircleIcon from "./ArrowCircleIcon";
 
 type GameEndOverlayProps = {
   onEnd?: () => void;
@@ -19,7 +20,7 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
     ?.feedTitle ?? FEEDBACK_TITLES[0].feedTitle;
 
   const feedbackMessage = feedBack
-    ? `${feedBack.who}は${feedBack.where}です。`
+    ? `${feedBack.who}は${feedBack.where}です`
     : "上手に分別できました！";
 
   let detailMessage = "正しいごみ箱に分別しよう！";
@@ -63,9 +64,13 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
           {/* フィードバックメッセージ */}
           {feedBack && (
             <div className="gameEndFeedbackBox">
-              <p className="gameEndOverlayText">
-                {feedbackMessage}
-              </p>
+              {feedBack.id === "simple_mistake" && (
+                <p className="gameEndOverlayText">
+                  {feedbackMessage}
+                </p>
+              )
+              }
+              
               <p className="gameEndDetailText">
                 {detailMessage}
               </p>
@@ -75,7 +80,7 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
                     <span className="feedbackImageLabel">間違えたごみ</span>
                     <img src={`/${feedBack.wasteImg}`} alt="間違えたごみ" className="feedbackImage" />
                   </div>
-                  <span className="feedbackArrow">→</span>
+                  <ArrowCircleIcon direction="right" className="feedbackArrow" />
                   <div className="feedbackImageWrapper">
                     <span className="feedbackImageLabel">正しいごみ箱</span>
                     <img src={`/${feedBack.binImg}`} alt="正しいごみ箱" className="feedbackImage" />

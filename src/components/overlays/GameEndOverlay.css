@@ -18,7 +18,7 @@
 .gameEndOverlayCard {
   background: #ffffff;
   border: 4px solid #a3d977;
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 24px 32px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -37,7 +37,7 @@
 }
 
 .gameEndTitleBadge {
-  background: #3b82f6; /* Matching start-difficulty-badge */
+  background: #166534; /* Matching start-difficulty-badge */
   color: white;
   padding: 8px 24px;
   border-radius: 9999px;
@@ -70,7 +70,7 @@
 .gameEndScoreLabel {
   font-size: 20px;
   font-weight: bold;
-  color: #3b82f6; /* Matching start-modal-title */
+  color: #333; /* Matching start-modal-title */
 }
 
 .gameEndScoreValue {
@@ -83,13 +83,10 @@
 .gameEndScoreUnit {
   font-size: 20px;
   font-weight: bold;
-  color: #3b82f6;
+  color: #333;
 }
 
 .gameEndFeedbackBox {
-  background: white;
-  border: 3px solid #fde047; /* Matching slider-card */
-  border-radius: 20px;
   padding: 16px;
   width: 100%;
   box-sizing: border-box;
@@ -102,7 +99,7 @@
   margin: 0;
   font-size: clamp(18px, 4vw, 22px);
   font-weight: bold;
-  color: #166534; /* Matching slider-card-title */
+  color: #333; /* Matching slider-card-title */
 }
 
 .gameEndDetailText {
@@ -196,9 +193,10 @@
 }
 
 .feedbackArrow {
-  font-size: 24px;
-  font-weight: bold;
-  color: #94a3b8;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  color: #166534;
 }
 
 
@@ -233,6 +231,12 @@
 
   .gameEndFeedbackImages {
     gap: 10px;
+  }
+
+  .feedbackArrow {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
   }
 }
 

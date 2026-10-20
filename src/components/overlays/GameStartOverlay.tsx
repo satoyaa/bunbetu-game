@@ -3,6 +3,7 @@ import { useDifficulty } from "../../contexts/Difficulty";
 import { GAME_DIFFICULTY_DATA } from "../../data/difficulty";
 import { GUIDE_SLIDES } from "../../data/guide";
 import { usePageTransition } from "../../hooks/PageTransition";
+import ArrowCircleIcon from "./ArrowCircleIcon";
 import "./GameStartOverlay.css";
 
 type GameStartOverlayProps = {
@@ -53,9 +54,7 @@ const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
         {/* 3. スライダー */}
         <div className="start-slider-container">
           <button className="slider-arrow left" type="button" aria-label="前のページ" onClick={prevSlide}>
-            <svg className="slider-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
+            <ArrowCircleIcon direction="left" className="slider-arrow-icon" />
           </button>
           <div className="slider-card">
             <img
@@ -66,9 +65,7 @@ const GameStartOverlay = ({ onStart }: GameStartOverlayProps) => {
             <p className="slider-card-title">{GUIDE_SLIDES[currentSlide].title}</p>
           </div>
           <button className="slider-arrow right" type="button" aria-label="次のページ" onClick={nextSlide}>
-            <svg className="slider-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
+            <ArrowCircleIcon direction="right" className="slider-arrow-icon" />
           </button>
         </div>
 
