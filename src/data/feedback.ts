@@ -1,4 +1,22 @@
-import type { FeedBackId } from '../types/game';
+import type { FeedBackId, WasteDef } from '../types/game';
+
+// プレイ中は短い注意だけを表示し、詳しい説明は終了画面に残す。
+export const getImmediateHint = (waste: WasteDef): string | undefined => {
+  switch (waste.feedBackId) {
+    case 'forget_separate':
+      return 'キャップとラベル、まだついてるよ！';
+    case 'must_wash':
+      return '汚れたままはダメだよ！';
+    case 'must_flush':
+      return '中身が残っているよ！';
+    case 'burning':
+      if (waste.key === 'smartphone') return 'スマホはごみ箱に入れちゃダメ！';
+      if (waste.key === 'mobile_battery') return '充電器はごみ箱に入れちゃダメ！';
+      return undefined;
+    default:
+      return undefined;
+  }
+};
 
 export interface SpecialFeedbackMessage {
   feedBackId: FeedBackId;

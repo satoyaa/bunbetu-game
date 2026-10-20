@@ -12,6 +12,33 @@
   z-index: 10;
 }
 
+.game-play-immediate-hint {
+  position: fixed;
+  z-index: 100;
+  max-width: min(280px, calc(100vw - 24px));
+  font-size: clamp(13px, 3.4vw, 16px);
+  padding: 4px 6px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  pointer-events: none;
+  animation: game-play-hint-rise 2s ease-out forwards;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+@keyframes game-play-hint-rise {
+  0% { opacity: 0; transform: translate(-50%, 8px); }
+  12%, 75% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-play-immediate-hint {
+    animation: none;
+  }
+}
+
 .game-play-main-area {
   width: 100%;
   display: flex;
