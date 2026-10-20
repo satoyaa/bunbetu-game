@@ -20,7 +20,7 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
     ?.feedTitle ?? FEEDBACK_TITLES[0].feedTitle;
 
   const feedbackMessage = feedBack
-    ? `${feedBack.who}は${feedBack.where}です。`
+    ? `${feedBack.who}は${feedBack.where}です`
     : "上手に分別できました！";
 
   let detailMessage = "正しいごみ箱に分別しよう！";
