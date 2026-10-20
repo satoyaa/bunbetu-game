@@ -63,48 +63,6 @@
   display: block;
 }
 
-.mainTitle {
-  text-align: center;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0px;
-  line-height: 1.1;
-}
-
-.titleTop {
-  /* 流体タイポ: 360px 端末 〜 PC まで途中で崩れずに追従する */
-  font-size: clamp(2.4rem, 11vw, 6.5rem);
-  font-weight: 900;
-  display: flex;
-  gap: 0.04em;
-  text-shadow:
-    -0.06em -0.06em 0 #fff,  0      -0.06em 0 #fff,  0.06em -0.06em 0 #fff,
-    -0.06em  0      0 #fff,                          0.06em  0      0 #fff,
-    -0.06em  0.06em 0 #fff,  0       0.06em 0 #fff,  0.06em  0.06em 0 #fff,
-    0 0.1em 0 #fff,
-    0 0.15em 0.15em rgba(0,0,0,0.2);
-}
-
-.titleBottom {
-  font-size: clamp(2.1rem, 10vw, 6rem);
-  font-weight: 900;
-  text-shadow:
-    -0.06em -0.06em 0 #fff,  0      -0.06em 0 #fff,  0.06em -0.06em 0 #fff,
-    -0.06em  0      0 #fff,                          0.06em  0      0 #fff,
-    -0.06em  0.06em 0 #fff,  0       0.06em 0 #fff,  0.06em  0.06em 0 #fff,
-    0 0.1em 0 #fff,
-    0 0.15em 0.15em rgba(0,0,0,0.2);
-  margin-top: -0.02em;
-  transform: rotate(-2deg);
-}
-
-.charPink { color: #f06292; }
-.charGreen { color: #8bc34a; }
-.charOrange { color: #ffa726; }
-.charBlue { color: #29b6f6; }
-
 /* カードグリッドエリア */
 .mainArea {
   display: flex;
@@ -175,11 +133,6 @@
   margin-bottom: 8px;
 }
 
-.btnIcon {
-  font-size: clamp(1.4rem, 5vw, 2.2rem);
-  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
-}
-
 .btnText {
   font-size: clamp(1.15rem, 4.4vw, 2rem);
   font-weight: bold;
@@ -194,39 +147,12 @@
   margin: 0;
 }
 
-.btnSprout {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
-}
-
 /* 各カードの色 */
 .btnEasy { background-color: #8cc63f; }
 .btnNormal { background-color: #4b9dec; }
 .btnHard { background-color: #ef9838; }
 .btnLearn { background-color: #a673d3; }
 
-
-.woodenSignboard p {
-  margin: 0;
-  color: #4a2e15;
-  font-weight: bold;
-  font-size: 1.3rem;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.woodenSignboard::before, .woodenSignboard::after {
-  content: '';
-  position: absolute;
-  background-color: #5c3a21;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  top: 10px;
-}
-.woodenSignboard::before { left: 15px; }
-.woodenSignboard::after { right: 15px; }
 
 /* =========================================================================
    レスポンシブ
@@ -254,16 +180,6 @@
     padding: 14px 14px 8px;
     min-height: 72px;
   }
-
-  .woodenSignboard {
-    bottom: calc(16px + var(--safe-b));
-    left: 16px;
-    padding: 12px 16px;
-  }
-
-  .woodenSignboard p {
-    font-size: clamp(0.8rem, 3vw, 1rem);
-  }
 }
 
 @media (max-width: 599px) {
@@ -280,12 +196,6 @@
 
   .titleWrapper {
     height: clamp(72px, 22vh, 160px);
-  }
-
-  .subTitleRibbon {
-    margin-top: 8px;
-    padding: 0.35em 0.8em;
-    border-width: 3px;
   }
 
   .mainArea {
@@ -305,11 +215,6 @@
   .startFooter {
     font-size: 0.75rem;
   }
-
-  /* 看板はスペースを圧迫するので非表示（文言はゲーム内で担保） */
-  .woodenSignboard {
-    display: none;
-  }
 }
 
 @media (min-width: 600px) and (max-height: 700px) {
@@ -320,11 +225,6 @@
 
   .titleWrapper {
     height: clamp(100px, 25vh, 175px);
-  }
-
-  .subTitleRibbon {
-    margin-top: 10px;
-    padding: 0.35em 1em;
   }
 
   .mainArea {
@@ -361,12 +261,6 @@
     height: clamp(50px, 18vh, 100px);
   }
 
-  .subTitleRibbon {
-    margin-top: 6px;
-    padding: 0.25em 0.8em;
-    border-width: 3px;
-  }
-
   .mainArea {
     padding-bottom: 8px;
   }
@@ -384,10 +278,6 @@
   .startFooter {
     padding: 6px 12px;
     font-size: 0.7rem;
-  }
-
-  .woodenSignboard {
-    display: none;
   }
 }
 

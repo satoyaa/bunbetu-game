@@ -10,7 +10,9 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
   // 1. ホワイトリスト判定
   const allowedPaths = ['/', '/game', '/learn'];
-  const isAsset = /\.(png|jpe?g|gif|svg|ico|webp|css|js|json|webmanifest|woff2?|ttf|eot)$/i.test(path);
+  // Vite が付けるハッシュ部分だけを可変にし、使用中の音声 2 種類に限定する
+  const isAllowedAudio = /^\/assets\/(?:correct-[A-Za-z0-9_-]+\.m4a|incorrect-[A-Za-z0-9_-]+\.mp3)$/.test(path);
+  const isAsset = /\.(png|jpe?g|gif|svg|ico|webp|css|js|json|webmanifest|woff2?|ttf|eot)$/i.test(path) || isAllowedAudio;
 
   // 想定ルートでも静的ファイルでもない場合（.env など）は即 404
   if (!allowedPaths.includes(path) && !isAsset) {

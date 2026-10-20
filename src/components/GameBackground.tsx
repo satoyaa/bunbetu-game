@@ -1,8 +1,8 @@
-import pollutionImg from '../assets/pollution.jpg';
-import fewpollutionImg from '../assets/fewpollution.jpg';
-import normalImg from '../assets/normal.jpg';
-import fewbeautyImg from '../assets/fewbeauty.jpg';
-import beautyImg from '../assets/beauty.jpg';
+import pollutionImg from '../assets/pollution.webp';
+import fewpollutionImg from '../assets/fewpollution.webp';
+import normalImg from '../assets/normal.webp';
+import fewbeautyImg from '../assets/fewbeauty.webp';
+import beautyImg from '../assets/beauty.webp';
 import type { BackgroundType } from '../types/game';
 import './GameBackground.css';
 

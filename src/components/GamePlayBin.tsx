@@ -37,7 +37,7 @@ const GamePlayBin = ({ bin, activeOver }: GamePlayBinProps) => {
   return (
     <DroppableArea id={bin.id} isOver={isOver} binDef={bin}>
       <div className="bin-image-wrapper">
-        <img src={`/${bin.img}`} alt={bin.label} className="bin-image" />
+        <img src={bin.img} alt={bin.label} className="bin-image" />
       </div>
     </DroppableArea>
   );

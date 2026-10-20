@@ -22,7 +22,6 @@
 
   /* --- ごみ / ごみ箱 / 流し台 --------------------------------------------- */
   --waste-size: 150px;
-  --waste-part-size: 100px;
   --bin-size: 100px;
   --bin-cols: 8;                     /* ごみ箱の列数。モバイルでは 4 = 2 段組み */
   --bin-gap: 8px;
@@ -53,7 +52,6 @@
   :root {
     --conveyor-h: clamp(110px, 26vw, 170px);
     --waste-size: clamp(64px, 17vw, 120px);
-    --waste-part-size: clamp(48px, 13vw, 90px);
     --bin-size: clamp(56px, 18vw, 90px);
     --bin-cols: 4;                   /* 4 列 x 2 段 */
     --bin-gap: 6px;
@@ -71,7 +69,6 @@
   :root {
     --conveyor-h: clamp(84px, 22vh, 140px);
     --waste-size: clamp(52px, 13vh, 110px);
-    --waste-part-size: clamp(40px, 10vh, 80px);
     --bin-size: clamp(48px, 12vh, 80px);
     --bin-cols: 8;
     --sink-w: clamp(76px, 18vh, 140px);

@@ -160,23 +160,13 @@ const GamePlayWaste = ({ id, label, isSimple, progress, laneOffset, setScore }: 
       return <div className="waste-label-tag">{label}</div>;
     }
 
-    const isImageFile = wasteDef.img && (wasteDef.img.endsWith('.png') || wasteDef.img.endsWith('.jpg') || wasteDef.img.endsWith('.jpeg') || wasteDef.img.endsWith('.svg'));
-
-    if (isImageFile) {
-      return (
-        <img
-          src={`/${wasteDef.img}`}
-          alt={wasteDef.label}
-          className="waste-image"
-        />
-      );
-    }
-
-    if (wasteDef.img && wasteDef.img !== 'ここに挿入') {
-      return <span className="waste-emoji">{wasteDef.img}</span>;
-    }
-
-    return <div className="waste-label-tag">{wasteDef.label}</div>;
+    return (
+      <img
+        src={wasteDef.img}
+        alt={wasteDef.label}
+        className="waste-image"
+      />
+    );
   };
 
   return (

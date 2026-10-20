@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useCallback, useMemo } from 'react';
 import useSound from 'use-sound';
+import correctSound from '../assets/audio/correct.m4a';
+import incorrectSound from '../assets/audio/incorrect.mp3';
 
 export type SoundType = 'correct' | 'incorrect' | 'wash' | 'click';
 
@@ -75,7 +77,7 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
   const [volume, setVolume] = useState<number>(0.7);
 
   // use-sound フックで正解音・不正解音を定義
-  const [playCorrectHowl] = useSound('/sounds/correct.m4a', {
+  const [playCorrectHowl] = useSound(correctSound, {
     volume: isMuted ? 0 : volume,
     interrupt: false,
     onloaderror: () => {
@@ -83,7 +85,7 @@ export const SoundProvider: React.FC<SoundProviderProps> = ({ children }) => {
     },
   });
 
-  const [playIncorrectHowl] = useSound('/sounds/incorrect.mp3', {
+  const [playIncorrectHowl] = useSound(incorrectSound, {
     volume: isMuted ? 0 : volume,
     interrupt: false,
     onloaderror: () => {},
