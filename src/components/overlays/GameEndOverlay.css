@@ -196,9 +196,10 @@
 }
 
 .feedbackArrow {
-  font-size: 24px;
-  font-weight: bold;
-  color: #94a3b8;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  color: #166534;
 }
 
 
@@ -233,6 +234,12 @@
 
   .gameEndFeedbackImages {
     gap: 10px;
+  }
+
+  .feedbackArrow {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
   }
 }
 
