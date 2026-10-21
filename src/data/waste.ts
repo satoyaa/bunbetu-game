@@ -1,117 +1,135 @@
-import wasteImage0 from '../assets/images/waste/ペットボトル.webp';
-import wasteImage1 from '../assets/images/waste/ペットボトル_ラベル無_キャップ無.webp';
-import wasteImage2 from '../assets/images/waste/ペットボトル_ラベル無_キャップ無_飲み残し無.webp';
-import wasteImage3 from '../assets/images/waste/キャップ.webp';
-import wasteImage4 from '../assets/images/waste/ラベル.webp';
-import wasteImage5 from '../assets/images/waste/ぬいぐるみ.webp';
-import wasteImage6 from '../assets/images/waste/ボールペン.webp';
-import wasteImage7 from '../assets/images/waste/モバイル充電器.webp';
-import wasteImage8 from '../assets/images/waste/スマートフォン.webp';
-import wasteImage9 from '../assets/images/waste/卵のパック（パルプモールド）.webp';
-import wasteImage10 from '../assets/images/waste/歯ブラシ.webp';
-import wasteImage11 from '../assets/images/waste/発泡スチロール.webp';
-import wasteImage12 from '../assets/images/waste/輪ゴム.webp';
-import wasteImage13 from '../assets/images/waste/靴.webp';
-import wasteImage14 from '../assets/images/waste/えんぴつ.webp';
-import wasteImage15 from '../assets/images/waste/割りばし.webp';
-import wasteImage16 from '../assets/images/waste/草.webp';
-import wasteImage17 from '../assets/images/waste/ヨーグルト（汚れあり）.webp';
-import wasteImage18 from '../assets/images/waste/はがき.webp';
-import wasteImage19 from '../assets/images/waste/ビール瓶(※)不適と思ったらラムネ瓶を採用してね.webp';
-import wasteImage20 from '../assets/images/waste/ラムネ瓶(※).webp';
-import wasteImage21 from '../assets/images/waste/しょうゆ.webp';
-import wasteImage22 from '../assets/images/waste/みりん.webp';
-import wasteImage23 from '../assets/images/waste/料理酒.webp';
-import wasteImage24 from '../assets/images/waste/しょうゆ（汚れあり）.webp';
-import wasteImage25 from '../assets/images/waste/みりん（汚れあり）.webp';
-import wasteImage26 from '../assets/images/waste/料理酒（汚れあり）.webp';
-import wasteImage27 from '../assets/images/waste/コンビニ弁当.webp';
-import wasteImage28 from '../assets/images/waste/ヨーグルト.webp';
-import wasteImage29 from '../assets/images/waste/ふとん.webp';
-import wasteImage30 from '../assets/images/waste/学習机.webp';
-import wasteImage31 from '../assets/images/waste/オーブンレンジ.webp';
-import wasteImage32 from '../assets/images/waste/アイロン台リアル.webp';
+import petWithDrinkImage from '../assets/images/waste/ペットボトル.webp';
+import petBodyWithDrinkImage from '../assets/images/waste/ペットボトル_ラベル無_キャップ無.webp';
+import petBodyImage from '../assets/images/waste/ペットボトル_ラベル無_キャップ無_飲み残し無.webp';
+import petCapImage from '../assets/images/waste/キャップ.webp';
+import petLabelImage from '../assets/images/waste/ラベル.webp';
+import plushToyImage from '../assets/images/waste/ぬいぐるみ.webp';
+import ballpointPenImage from '../assets/images/waste/ボールペン.webp';
+import mobileBatteryImage from '../assets/images/waste/モバイル充電器.webp';
+import smartphoneImage from '../assets/images/waste/スマートフォン.webp';
+import pulpEggCartonImage from '../assets/images/waste/卵のパック（パルプモールド）.webp';
+import toothbrushImage from '../assets/images/waste/歯ブラシ.webp';
+import styrofoamImage from '../assets/images/waste/発泡スチロール.webp';
+import rubberBandImage from '../assets/images/waste/輪ゴム.webp';
+import shoesImage from '../assets/images/waste/靴.webp';
+import pencilImage from '../assets/images/waste/えんぴつ.webp';
+import chopsticksImage from '../assets/images/waste/割りばし.webp';
+import grassImage from '../assets/images/waste/草.webp';
+import dirtyYogurtImage from '../assets/images/waste/ヨーグルト（汚れあり）.webp';
+import postcardImage from '../assets/images/waste/はがき.webp';
+import beerBottleImage from '../assets/images/waste/ビール瓶.webp';
+import ramuneBottleImage from '../assets/images/waste/ラムネ瓶(※).webp';
+import soySauceBottleImage from '../assets/images/waste/しょうゆ.webp';
+import mirinBottleImage from '../assets/images/waste/みりん.webp';
+import cookingSakeBottleImage from '../assets/images/waste/料理酒.webp';
+import dirtySoySauceBottleImage from '../assets/images/waste/しょうゆ（汚れあり）.webp';
+import dirtyMirinBottleImage from '../assets/images/waste/みりん（汚れあり）.webp';
+import dirtyCookingSakeBottleImage from '../assets/images/waste/料理酒（汚れあり）.webp';
+import bentoBoxImage from '../assets/images/waste/コンビニ弁当.webp';
+import cleanYogurtImage from '../assets/images/waste/ヨーグルト.webp';
+import futonImage from '../assets/images/waste/ふとん.webp';
+import studyDeskImage from '../assets/images/waste/学習机.webp';
+import microwaveOvenImage from '../assets/images/waste/オーブンレンジ.webp';
+import ironingBoardImage from '../assets/images/waste/アイロン台リアル.webp';
+import chairImage from '../assets/images/waste/いす.webp';
+import carpetImage from '../assets/images/waste/じゅうたん.webp';
+import aluminumCanImage from '../assets/images/waste/アルミ缶.webp';
+import shirtImage from '../assets/images/waste/シャツ.webp';
+import notebookImage from '../assets/images/waste/ノート.webp';
+import kitchenKnifeImage from '../assets/images/waste/包丁.webp';
+import newspaperImage from '../assets/images/waste/新聞紙.webp';
+import paperClayImage from '../assets/images/waste/紙ねんど.webp';
+import petNoDrinkImage from '../assets/images/waste/ペットボトル_飲み残し無し.webp';
+import condimentCapImage from '../assets/images/waste/調味料ボトルキャップ.webp';
+import condimentBodyImage from '../assets/images/waste/調味料ボトル本体.webp';
+import soySauceLabelImage from '../assets/images/waste/しょうゆボトルラベル.webp';
+import mirinLabelImage from '../assets/images/waste/みりんボトルラベル.webp';
+import cookingSakeLabelImage from '../assets/images/waste/料理酒ボトルラベル.webp';
+import soySauceDirtyBodyImage from '../assets/images/waste/しょうゆボトル本体（汚れあり）.webp';
+import mirinDirtyBodyImage from '../assets/images/waste/みりんボトル本体（汚れあり）.webp';
+import cookingSakeDirtyBodyImage from '../assets/images/waste/料理酒ボトル本体（汚れあり）.webp';
 import type { WasteDef } from '../types/game';
 
-// 流れてくるゴミの一覧と分解ルール。
-// isSimple=false のものはタップで複数パーツに分解してから分別する。
-// 行を追加・編集するだけでゴミの種類を増やせる。
+// key は parts と washTargetKey から参照されるため、変更時は参照元も更新する。
+// isSimple が false のごみはタップで parts に分割し、isWash が true のごみは洗浄で washTargetKey に変わる。
+// bin: 'yet' は未処理状態を表し、ごみ箱へ直接入れることはできない。
 export const Waste: WasteDef[] = [
-  { //飲み残しあり，キャップ，ラベル付きペットボトル
-    key: 'pet_label_cap_drink', //key
-    label: 'ペットボトル', //ごみ名
-    img: wasteImage0, //アイコン画像
-    score: 50, //獲得点数
-    isSimple: false, //分解できるか
-    isWash: false, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
+  {
+    key: 'pet_label_cap_drink',
+    label: 'ペットボトル',
+    img: petWithDrinkImage,
+    score: 50,
+    isSimple: false,
+    isWash: true,
+    isBurn: false,
     isTrash: true,
-    bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
+    bin: 'yet',
     parts: ['pet_drink', 'label', 'cap'],
     feedBackId: 'forget_separate',
     wasteLevel: 1,
+    washTargetKey: 'pet_label_cap',
   },
-  { //飲み残しあり，ペットボトル
-    key: 'pet_drink', //key
-    label: 'ペットボトル', //ごみ名
-    img: wasteImage1, //アイコン画像
-    score: 20, //獲得点数
-    isSimple: true, //分解できるか
-    isWash: true, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
+  {
+    key: 'pet_drink',
+    label: 'ペットボトル',
+    img: petBodyWithDrinkImage,
+    score: 20,
+    isSimple: true,
+    isWash: true,
+    isBurn: false,
     isTrash: true,
-    bin: "yet", //ごみ箱・分解可能ならそちらを優先して処理
-    parts: ["pet"],
+    bin: 'yet',
+    parts: ['pet'],
     feedBackId: 'must_flush',
     wasteLevel: 1,
     washTargetKey: 'pet',
   },
-  { //ペットボトル
-    key: 'pet', //key
-    label: 'ボトル', //ごみ名
-    img: wasteImage2, //アイコン画像
-    score: 10, //獲得点数
-    isSimple: true, //分解できるか
-    isWash: false, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
+  {
+    key: 'pet',
+    label: 'ボトル',
+    img: petBodyImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
     isTrash: true,
-    bin: "pet", //ごみ箱・分解可能ならそちらを優先して処理
+    bin: 'pet',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { //キャップ
-    key: 'cap', //key
-    label: 'キャップ', //ごみ名
-    img: wasteImage3, //アイコン画像
-    score: 10, //獲得点数
-    isSimple: true, //分解できるか
-    isWash: false, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
+  {
+    key: 'cap',
+    label: 'キャップ',
+    img: petCapImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
     isTrash: true,
-    bin: "recycle_plastic", //ごみ箱・分解可能ならそちらを優先して処理
+    bin: 'recycle_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { //ラベル
-    key: 'label', //key
-    label: 'ラベル', //ごみ名
-    img: wasteImage4, //アイコン画像
-    score: 10, //獲得点数
-    isSimple: true, //分解できるか
-    isWash: false, //洗える・流せるか
-    isBurn: false, //発火の危険性があるか
+  {
+    key: 'label',
+    label: 'ラベル',
+    img: petLabelImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
     isTrash: true,
-    bin: "recycle_plastic", //ごみ箱・分解可能ならそちらを優先して処理
+    bin: 'recycle_plastic',
     parts: [],
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // ぬいぐるみ（電子機器なし・30cm未満はその他プラ）
+  {
     key: 'nuigurumi',
     label: 'ぬいぐるみ(電子機器無し)',
-    img: wasteImage5,
+    img: plushToyImage,
     score: 20,
     isSimple: true,
     isWash: false,
@@ -122,10 +140,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // ボールペン（プラスチック製文房具はその他プラ）
+  {
     key: 'ballpoint_pen',
     label: 'ボールペン',
-    img: wasteImage6,
+    img: ballpointPenImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -136,10 +154,11 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // モバイル充電器（リチウムイオン電池内蔵のため購入店へ持参、発火の危険あり）
+  {
+    // リチウムイオン電池を含むため、回収ボックスで扱う。
     key: 'mobile_battery',
     label: 'モバイル充電器',
-    img: wasteImage7,
+    img: mobileBatteryImage,
     score: 30,
     isSimple: true,
     isWash: false,
@@ -150,10 +169,11 @@ export const Waste: WasteDef[] = [
     feedBackId: 'burning',
     wasteLevel: 3,
   },
-  { // スマートフォン（リチウムイオン電池内蔵のため購入店へ持参、発火の危険あり）
+  {
+    // リチウムイオン電池を含むため、回収ボックスで扱う。
     key: 'smartphone',
     label: 'スマートフォン',
-    img: wasteImage8,
+    img: smartphoneImage,
     score: 30,
     isSimple: true,
     isWash: false,
@@ -164,10 +184,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'burning',
     wasteLevel: 1,
   },
-  { // 卵のパック（パルプモールド・紙製容器は可燃ごみ）
+  {
     key: 'egg_carton_pulp',
     label: '卵のパック（パルプモールド）',
-    img: wasteImage9,
+    img: pulpEggCartonImage,
     score: 20,
     isSimple: true,
     isWash: false,
@@ -178,10 +198,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 2,
   },
-  { // 歯ブラシ（手動のプラスチック製歯ブラシはその他プラ）
+  {
     key: 'toothbrush',
     label: '歯ブラシ',
-    img: wasteImage10,
+    img: toothbrushImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -192,10 +212,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // 発泡スチロール（商品保護・緩衝材・容器包装はリサイクルプラ）
+  {
     key: 'styrofoam',
     label: '発泡スチロール',
-    img: wasteImage11,
+    img: styrofoamImage,
     score: 20,
     isSimple: true,
     isWash: false,
@@ -206,10 +226,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // 輪ゴム（ゴム製品はその他プラ）
+  {
     key: 'rubber_band',
     label: '輪ゴム',
-    img: wasteImage12,
+    img: rubberBandImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -220,10 +240,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 2,
   },
-  { // 靴（スニーカー・革靴などはその他プラ）
+  {
     key: 'shoes',
     label: '靴（運動靴・革靴・スリッパ・サンダル等）',
-    img: wasteImage13,
+    img: shoesImage,
     score: 20,
     isSimple: true,
     isWash: false,
@@ -234,11 +254,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 2,
   },
-  // ─── 可燃ごみ（燃やすごみ） ──────────────────────────────────
-  { // えんぴつ（木製・文房具は可燃ごみ）
+  {
     key: 'pencil',
     label: '鉛筆',
-    img: wasteImage14,
+    img: pencilImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -249,10 +268,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // 割りばし（木製品は可燃ごみ）
+  {
     key: 'disposable_chopsticks',
     label: '割り箸',
-    img: wasteImage15,
+    img: chopsticksImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -263,10 +282,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // 草（植物・刈り草は可燃ごみ）
+  {
     key: 'grass',
     label: '草(花殻)',
-    img: wasteImage16,
+    img: grassImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -277,10 +296,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 2,
   },
-  { // ヨーグルト容器（汚れあり・水洗いでリサイクルプラへ）
+  {
     key: 'yogurt_dirty',
     label: 'ヨーグルトのカップ プラスチック製（汚れあり）',
-    img: wasteImage17,
+    img: dirtyYogurtImage,
     score: 15,
     isSimple: true,
     isWash: true,
@@ -292,11 +311,10 @@ export const Waste: WasteDef[] = [
     wasteLevel: 2,
     washTargetKey: 'yogurt_clean',
   },
-  // ─── 資源ごみ（紙類・空きびん） ──────────────────────────────
-  { // はがき（紙類・雑がみは資源ごみ）
+  {
     key: 'postcard',
     label: 'はがき',
-    img: wasteImage18,
+    img: postcardImage,
     score: 10,
     isSimple: true,
     isWash: false,
@@ -307,10 +325,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // ビール瓶（飲料用ガラス瓶は資源ごみ）
+  {
     key: 'beer_bottle',
     label: 'ビールびん',
-    img: wasteImage19,
+    img: beerBottleImage,
     score: 15,
     isSimple: true,
     isWash: false,
@@ -321,10 +339,10 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 2,
   },
-  { // ラムネ瓶（飲料用ガラス瓶は資源ごみ）
+  {
     key: 'ramune_bottle',
     label: 'びん(ガラス) 薬・飲料・食料品等用',
-    img: wasteImage20,
+    img: ramuneBottleImage,
     score: 15,
     isSimple: true,
     isWash: false,
@@ -335,84 +353,380 @@ export const Waste: WasteDef[] = [
     feedBackId: 'simple_mistake',
     wasteLevel: 1,
   },
-  { // しょうゆの容器（調味料ガラス瓶・洗浄済は資源ごみ）
+  {
     key: 'soy_sauce_bottle',
-    label: 'しょうゆの容器 ペットボトル（洗浄済）',
-    img: wasteImage21,
+    label: 'しょうゆボトル（洗浄済・ラベルとキャップ付き）',
+    img: soySauceBottleImage,
     score: 15,
-    isSimple: true,
+    isSimple: false,
     isWash: false,
     isBurn: false,
     isTrash: true,
-    bin: 'pet',
-    parts: [],
-    feedBackId: 'simple_mistake',
+    bin: 'yet',
+    parts: ['condiment_body', 'soy_sauce_label', 'condiment_cap'],
+    feedBackId: 'forget_separate',
     wasteLevel: 1,
   },
-  { // みりん瓶（調味料ガラス瓶・洗浄済は資源ごみ）
+  {
     key: 'mirin_bottle',
-    label: 'みりんの容器 ペットボトル（洗浄済）',
-    img: wasteImage22,
+    label: 'みりんボトル（洗浄済・ラベルとキャップ付き）',
+    img: mirinBottleImage,
     score: 15,
-    isSimple: true,
+    isSimple: false,
     isWash: false,
     isBurn: false,
     isTrash: true,
-    bin: 'pet',
-    parts: [],
-    feedBackId: 'simple_mistake',
+    bin: 'yet',
+    parts: ['condiment_body', 'mirin_label', 'condiment_cap'],
+    feedBackId: 'forget_separate',
     wasteLevel: 2,
   },
-  { // 料理酒瓶（調味料ガラス瓶・洗浄済は資源ごみ）
+  {
     key: 'cooking_sake_bottle',
-    label: '酒の容器 ペットボトル（洗浄済）',
-    img: wasteImage23,
+    label: '料理酒ボトル（洗浄済・ラベルとキャップ付き）',
+    img: cookingSakeBottleImage,
     score: 15,
-    isSimple: true,
+    isSimple: false,
     isWash: false,
     isBurn: false,
     isTrash: true,
-    bin: 'pet',
-    parts: [],
-    feedBackId: 'simple_mistake',
+    bin: 'yet',
+    parts: ['condiment_body', 'cooking_sake_label', 'condiment_cap'],
+    feedBackId: 'forget_separate',
     wasteLevel: 2,
   },
-  // ─── 汚れのあるびん（水洗いで資源ごみへ） ──────────────────────
-  { // しょうゆ瓶（水洗いで資源ごみへ）
+  {
     key: 'soy_sauce_dirty',
-    label: 'しょうゆの容器 ペットボトル（汚れあり）',
-    img: wasteImage24,
+    label: 'しょうゆボトル（汚れあり・ラベルとキャップ付き）',
+    img: dirtySoySauceBottleImage,
     score: 20,
-    isSimple: true,
+    isSimple: false,
     isWash: true,
     isBurn: false,
     isTrash: true,
     bin: 'yet',
-    parts: [],
+    parts: ['soy_sauce_dirty_body', 'soy_sauce_label', 'condiment_cap'],
     feedBackId: 'must_wash',
     wasteLevel: 1,
     washTargetKey: 'soy_sauce_bottle',
   },
-  { // みりん瓶（水洗いで資源ごみへ）
+  {
     key: 'mirin_dirty',
-    label: 'みりんの容器 ペットボトル（汚れあり）',
-    img: wasteImage25,
+    label: 'みりんボトル（汚れあり・ラベルとキャップ付き）',
+    img: dirtyMirinBottleImage,
     score: 20,
-    isSimple: true,
+    isSimple: false,
     isWash: true,
     isBurn: false,
     isTrash: true,
     bin: 'yet',
-    parts: [],
+    parts: ['mirin_dirty_body', 'mirin_label', 'condiment_cap'],
     feedBackId: 'must_wash',
     wasteLevel: 2,
     washTargetKey: 'mirin_bottle',
   },
-  { // 料理酒瓶（水洗いで資源ごみへ）
+  {
     key: 'cooking_sake_dirty',
-    label: '酒の容器 ペットボトル（汚れあり）',
-    img: wasteImage26,
+    label: '料理酒ボトル（汚れあり・ラベルとキャップ付き）',
+    img: dirtyCookingSakeBottleImage,
     score: 20,
+    isSimple: false,
+    isWash: true,
+    isBurn: false,
+    isTrash: true,
+    bin: 'yet',
+    parts: ['cooking_sake_dirty_body', 'cooking_sake_label', 'condiment_cap'],
+    feedBackId: 'must_wash',
+    wasteLevel: 2,
+    washTargetKey: 'cooking_sake_bottle',
+  },
+  {
+    key: 'bento_box',
+    label: '弁当ガラ(プラスチック製容器)',
+    img: bentoBoxImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'recycle_plastic',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 1,
+  },
+  {
+    key: 'yogurt_clean',
+    label: 'ヨーグルトのカップ プラスチック製（洗浄済）',
+    img: cleanYogurtImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'recycle_plastic',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 1,
+  },
+  {
+    key: 'futon',
+    label: 'ふとん',
+    img: futonImage,
+    score: 20,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'oogata',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 1,
+  },
+  {
+    key: 'study_desk',
+    label: '学習机',
+    img: studyDeskImage,
+    score: 25,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'oogata',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'microwave_oven',
+    label: 'オーブンレンジ',
+    img: microwaveOvenImage,
+    score: 25,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'oogata',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 1,
+  },
+  {
+    key: 'ironing_board',
+    label: 'アイロン台',
+    img: ironingBoardImage,
+    score: 20,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'oogata',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'chair',
+    label: 'いす',
+    img: chairImage,
+    score: 25,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'oogata',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'carpet',
+    label: 'じゅうたん',
+    img: carpetImage,
+    score: 25,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'oogata',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'aluminum_can',
+    label: 'アルミ缶',
+    img: aluminumCanImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'sigen',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'shirt',
+    label: 'シャツ',
+    img: shirtImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'sigen',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'notebook',
+    label: 'ノート',
+    img: notebookImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'sigen',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    // 資源ごみ。実際に出す際は刃を包み、袋に「危険」と表示する。
+    key: 'kitchen_knife',
+    label: '包丁',
+    img: kitchenKnifeImage,
+    score: 20,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'sigen',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'newspaper',
+    label: '新聞紙',
+    img: newspaperImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'sigen',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'paper_clay',
+    label: '紙ねんど',
+    img: paperClayImage,
+    score: 15,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'kanen',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'pet_label_cap',
+    label: 'ペットボトル（飲み残しなし・ラベルとキャップ付き）',
+    img: petNoDrinkImage,
+    score: 40,
+    isSimple: false,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'yet',
+    parts: ['pet', 'label', 'cap'],
+    feedBackId: 'forget_separate',
+    wasteLevel: 2,
+  },
+  {
+    // 3種類の調味料ボトルで共用する洗浄済み本体。
+    key: 'condiment_body',
+    label: '調味料ボトル本体（洗浄済）',
+    img: condimentBodyImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'pet',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'condiment_cap',
+    label: '調味料ボトルのキャップ',
+    img: condimentCapImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'recycle_plastic',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'soy_sauce_label',
+    label: 'しょうゆボトルのラベル',
+    img: soySauceLabelImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'recycle_plastic',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'mirin_label',
+    label: 'みりんボトルのラベル',
+    img: mirinLabelImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'recycle_plastic',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'cooking_sake_label',
+    label: '料理酒ボトルのラベル',
+    img: cookingSakeLabelImage,
+    score: 10,
+    isSimple: true,
+    isWash: false,
+    isBurn: false,
+    isTrash: true,
+    bin: 'recycle_plastic',
+    parts: [],
+    feedBackId: 'simple_mistake',
+    wasteLevel: 2,
+  },
+  {
+    key: 'soy_sauce_dirty_body',
+    label: 'しょうゆボトル本体（汚れあり）',
+    img: soySauceDirtyBodyImage,
+    score: 15,
     isSimple: true,
     isWash: true,
     isBurn: false,
@@ -421,92 +735,36 @@ export const Waste: WasteDef[] = [
     parts: [],
     feedBackId: 'must_wash',
     wasteLevel: 2,
-    washTargetKey: 'cooking_sake_bottle',
+    washTargetKey: 'condiment_body',
   },
-  // ─── リサイクルプラ（プラスチック製容器包装） ────────────────
-  { // コンビニ弁当容器（プラマーク・容器包装はリサイクルプラ）
-    key: 'bento_box',
-    label: '弁当ガラ(プラスチック製容器)',
-    img: wasteImage27,
+  {
+    key: 'mirin_dirty_body',
+    label: 'みりんボトル本体（汚れあり）',
+    img: mirinDirtyBodyImage,
     score: 15,
     isSimple: true,
-    isWash: false,
+    isWash: true,
     isBurn: false,
     isTrash: true,
-    bin: 'recycle_plastic',
+    bin: 'yet',
     parts: [],
-    feedBackId: 'simple_mistake',
-    wasteLevel: 1,
+    feedBackId: 'must_wash',
+    wasteLevel: 2,
+    washTargetKey: 'condiment_body',
   },
-  { // ヨーグルトカップ（洗浄済・容器包装はリサイクルプラ）
-    key: 'yogurt_clean',
-    label: 'ヨーグルトのカップ プラスチック製（洗浄済）',
-    img: wasteImage28,
+  {
+    key: 'cooking_sake_dirty_body',
+    label: '料理酒ボトル本体（汚れあり）',
+    img: cookingSakeDirtyBodyImage,
     score: 15,
     isSimple: true,
-    isWash: false,
+    isWash: true,
     isBurn: false,
     isTrash: true,
-    bin: 'recycle_plastic',
+    bin: 'yet',
     parts: [],
-    feedBackId: 'simple_mistake',
-    wasteLevel: 1,
-  },
-  // ─── 大型ごみ（最長辺30cm以上） ─────────────────────────────
-  { // 布団（最長辺30cm以上の寝具は大型ごみ）
-    key: 'futon',
-    label: 'ふとん',
-    img: wasteImage29,
-    score: 20,
-    isSimple: true,
-    isWash: false,
-    isBurn: false,
-    isTrash: true,
-    bin: 'oogata',
-    parts: [],
-    feedBackId: 'simple_mistake',
-    wasteLevel: 1,
-  },
-  { // 学習机（最長辺30cm以上の家具は大型ごみ）
-    key: 'study_desk',
-    label: '学習机',
-    img: wasteImage30,
-    score: 25,
-    isSimple: true,
-    isWash: false,
-    isBurn: false,
-    isTrash: true,
-    bin: 'oogata',
-    parts: [],
-    feedBackId: 'simple_mistake',
+    feedBackId: 'must_wash',
     wasteLevel: 2,
-  },
-  { // オーブンレンジ（最長辺30cm以上の家電は大型ごみ）
-    key: 'microwave_oven',
-    label: 'オーブンレンジ',
-    img: wasteImage31,
-    score: 25,
-    isSimple: true,
-    isWash: false,
-    isBurn: false,
-    isTrash: true,
-    bin: 'oogata',
-    parts: [],
-    feedBackId: 'simple_mistake',
-    wasteLevel: 1,
-  },
-  { // アイロン台（最長辺30cm以上の生活用品は大型ごみ）
-    key: 'ironing_board',
-    label: 'アイロン台',
-    img: wasteImage32,
-    score: 20,
-    isSimple: true,
-    isWash: false,
-    isBurn: false,
-    isTrash: true,
-    bin: 'oogata',
-    parts: [],
-    feedBackId: 'simple_mistake',
-    wasteLevel: 2,
+    washTargetKey: 'condiment_body',
   },
 ];
