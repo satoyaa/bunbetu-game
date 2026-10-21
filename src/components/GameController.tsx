@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDifficulty } from "../contexts/Difficulty";
 import type { BackgroundType, FeedBack, GameStatus } from "../types/game";
 import { GAME_DIFFICULTY_DATA } from "../data/difficulty";
@@ -28,6 +28,7 @@ const GameController = () => {
   const [controlBackground, setControlBackground] = useState<BackgroundType>("pollution"); // 背景を得点に応じてコントロール
   const [timeLeft, setTimeLeft] = useState(defaultTime); // 残り時間表示用
   const [gameLevel, setGameLevel] = useState<number>(defaultGameLevel); // ゲームレベル管理用
+  const startedAtRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (score >= 100) {
@@ -50,6 +51,7 @@ const GameController = () => {
     const initialLevel = diffSetting.levels[0];
 
     if (gameProgress === "start") {
+      startedAtRef.current = null;
       setTimeLeft(initialTime);
       setHealth(initialLife);
       setMaxHealth(initialLife);
@@ -62,17 +64,33 @@ const GameController = () => {
       return;
     }
 
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          setGameProgress("end");
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    const startedAt = startedAtRef.current ?? Date.now();
+    startedAtRef.current = startedAt;
+    const maxLevel = Math.max(...diffSetting.levels);
 
-    return () => clearInterval(timer);
+    const updateClock = () => {
+      const elapsedMs = Math.max(0, Date.now() - startedAt);
+      const remaining = Math.max(0, initialTime - Math.floor(elapsedMs / 1000));
+      setTimeLeft(remaining);
+      setGameLevel(Math.min(initialLevel + Math.floor(elapsedMs / 10000), maxLevel));
+
+      if (remaining === 0) {
+        setGameProgress("end");
+      }
+    };
+
+    const timer = window.setInterval(updateClock, 250);
+    const updateWhenVisible = () => {
+      if (!document.hidden) updateClock();
+    };
+    document.addEventListener("visibilitychange", updateWhenVisible);
+    window.addEventListener("pageshow", updateClock);
+
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", updateWhenVisible);
+      window.removeEventListener("pageshow", updateClock);
+    };
   }, [gameProgress, difficulty]);
 
   useEffect(() => {
@@ -80,22 +98,6 @@ const GameController = () => {
       setGameProgress("end");
     }
   }, [health, gameProgress]);
-
-  // 10秒ごとに gameLevel を1上げるタイマー（difficulty に合わせた最大レベル上限あり）
-  useEffect(() => {
-    if (gameProgress !== "playing") {
-      return;
-    }
-
-    const diffSetting = GAME_DIFFICULTY_DATA.find((d) => d.difficulty === difficulty) ?? GAME_DIFFICULTY_DATA[1];
-    const maxLevel = Math.max(...diffSetting.levels);
-
-    const levelInterval = setInterval(() => {
-      setGameLevel((prev) => Math.min(prev + 1, maxLevel));
-    }, 10000);
-
-    return () => clearInterval(levelInterval);
-  }, [gameProgress, difficulty]);
 
   return (
     <div className="game-controller-container">
@@ -123,7 +125,10 @@ const GameController = () => {
       <GameBackground controlBackground={controlBackground} />
 
       {gameProgress === "start" && (
-        <GameStartOverlay onStart={() => setGameProgress("playing")} />
+        <GameStartOverlay onStart={() => {
+          startedAtRef.current = Date.now();
+          setGameProgress("playing");
+        }} />
       )}
       {gameProgress === "end" && (
         <GameEndOverlay feedBack={feedBack} score={score}/>
