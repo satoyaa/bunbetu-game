@@ -88,4 +88,5 @@ export interface GameDifficulty {
   lifeLimit: number; //ライフの初期値。やさしい・ふつうは5、むずかしいは3
   binCount: number; //ごみ箱の数の設定値。現在は全難易度8で、画面の表示数には未反映
   levels: number[]; //レベルごとのパラメータ
+  levelUpIntervalMs: number; //レベルが1上がるまでの経過時間（ミリ秒）
 }

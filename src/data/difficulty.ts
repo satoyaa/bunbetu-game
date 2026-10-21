@@ -7,7 +7,7 @@ import type { GameLevelParameter, GameDifficulty } from '../types/game';
 ふつう: 制限時間60秒、ライフ5。レベル3～6で、ごみの種類は wasteLevel 2～3。
 むずかしい: ライフ3。レベル6～10で、ごみの種類は wasteLevel 3。
   timeLimit は Infinity だが、現在のゲーム処理では999秒に置き換えてカウントダウンする。
-レベルはプレイ中に10秒ごとに上がる。得点では変化しない。
+レベルはプレイ中、やさしい・ふつうでは10秒ごと、むずかしいでは30秒ごとに上がる。得点では変化しない。
 */
 
 // image.png および GameParameter のパラメータに基づいた難易度データ一覧
@@ -100,6 +100,7 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
     lifeLimit: 5,
     binCount: 8,
     levels: [0, 1, 2, 3],
+    levelUpIntervalMs: 10000,
   },
   {
     name: 'ふつう',
@@ -108,6 +109,7 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
     lifeLimit: 5,
     binCount: 8,
     levels: [3, 4, 5, 6],
+    levelUpIntervalMs: 10000,
   },
   {
     name: 'むずかしい',
@@ -116,5 +118,6 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
     lifeLimit: 3,
     binCount: 8,
     levels: [6, 7, 8, 9, 10],
+    levelUpIntervalMs: 30000,
   },
 ]

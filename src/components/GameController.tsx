@@ -72,7 +72,7 @@ const GameController = () => {
       const elapsedMs = Math.max(0, Date.now() - startedAt);
       const remaining = Math.max(0, initialTime - Math.floor(elapsedMs / 1000));
       setTimeLeft(remaining);
-      setGameLevel(Math.min(initialLevel + Math.floor(elapsedMs / 10000), maxLevel));
+      setGameLevel(Math.min(initialLevel + Math.floor(elapsedMs / diffSetting.levelUpIntervalMs), maxLevel));
 
       if (remaining === 0) {
         setGameProgress("end");
