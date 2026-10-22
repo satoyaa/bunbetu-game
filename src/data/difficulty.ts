@@ -3,9 +3,11 @@ import type { GameLevelParameter, GameDifficulty } from '../types/game';
 
 // 難易度について
 /*
-やさしい: 最低限，分別を覚えたい人向け，制限時間60秒，ライフは５．最低限覚えてほしいごみのみ．
-ふつう: しっかり学習したい人向け，制限時間60秒，ライフは３．すべてのごみ，
-むずかしい: やりこみ要素，制限時間なし，ライフは3．すべてのごみ，高速
+やさしい: 制限時間60秒、ライフ5。レベル0～3で、ごみの種類は wasteLevel 1～2。
+ふつう: 制限時間60秒、ライフ5。レベル3～6で、ごみの種類は wasteLevel 2～3。
+むずかしい: ライフ3。レベル6～10で、ごみの種類は wasteLevel 3。
+  timeLimit は Infinity だが、現在のゲーム処理では999秒に置き換えてカウントダウンする。
+レベルはプレイ中、やさしい・ふつうでは10秒ごと、むずかしいでは30秒ごとに上がる。得点では変化しない。
 */
 
 // image.png および GameParameter のパラメータに基づいた難易度データ一覧
@@ -80,6 +82,13 @@ export const GAME_LEVEL_PARAMETER_DATA: GameLevelParameter[] = [
     wasteLevel: 3,
     burstSpawnRate: 0.4,
   },
+  {
+    level: 10,
+    wasteSpeed: 3.0,
+    itemInterval: 0.8,
+    wasteLevel: 3,
+    burstSpawnRate: 0.4,
+  },
 ];
 
 
@@ -91,6 +100,7 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
     lifeLimit: 5,
     binCount: 8,
     levels: [0, 1, 2, 3],
+    levelUpIntervalMs: 10000,
   },
   {
     name: 'ふつう',
@@ -99,6 +109,7 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
     lifeLimit: 5,
     binCount: 8,
     levels: [3, 4, 5, 6],
+    levelUpIntervalMs: 10000,
   },
   {
     name: 'むずかしい',
@@ -107,5 +118,6 @@ export const GAME_DIFFICULTY_DATA: GameDifficulty[] = [
     lifeLimit: 3,
     binCount: 8,
     levels: [6, 7, 8, 9, 10],
+    levelUpIntervalMs: 30000,
   },
 ]

@@ -74,18 +74,19 @@ export interface ConveyItem {
 
 export interface GameLevelParameter {
   level: number; // ゲームのレベル
-  wasteSpeed: number; //ごみの流れるスピード 得点に応じて高速化
-  itemInterval: number; //ごみの出現間隔 得点及び難易度に応じて頻繁に
+  wasteSpeed: number; //ごみの流れるスピード。時間経過によるレベル上昇に応じて高速化
+  itemInterval: number; //ごみの出現間隔。時間経過によるレベル上昇に応じて短縮
   wasteLevel: number; //ごみの種類別にレベル割り当て，簡単な難易度では出現するごみを絞る
-  burstSpawnRate: number; //ごみの一斉出現率 得点に応じて増加
+  burstSpawnRate: number; //ごみの一斉出現率の設定値。現在の出現処理では未使用
 }
 
 // 難易度別に管理するゲームのパラメータ
 export interface GameDifficulty {
   name: string; // 難易度名
   difficulty: "easy" | "normal" | "hard"; // 難易度の種類
-  timeLimit: number; //制限時間 やさしい=>60秒,ふつう=>60秒,むずかしい=>時間無制限
-  lifeLimit: number; //ライフ制限 やさしい=>無制限,ふつう=>3,むずかしい=>3(仮，使わない可能性あり)
-  binCount: number; //ごみ箱の数 難易度に応じて増減
+  timeLimit: number; //制限時間の設定値。やさしい・ふつうは60秒、むずかしいは Infinity（現状の処理では999秒に変換）
+  lifeLimit: number; //ライフの初期値。やさしい・ふつうは5、むずかしいは3
+  binCount: number; //ごみ箱の数の設定値。現在は全難易度8で、画面の表示数には未反映
   levels: number[]; //レベルごとのパラメータ
+  levelUpIntervalMs: number; //レベルが1上がるまでの経過時間（ミリ秒）
 }
