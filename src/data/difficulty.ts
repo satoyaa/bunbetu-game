@@ -14,15 +14,15 @@ import type { GameLevelParameter, GameDifficulty } from '../types/game';
 export const GAME_LEVEL_PARAMETER_DATA: GameLevelParameter[] = [
   {
     level: 0,
-    wasteSpeed: 0.5,
-    itemInterval: 5.0,
+    wasteSpeed: 0.8,
+    itemInterval: 3.0,
     wasteLevel: 1,
     burstSpawnRate: 0.0,
   },
   {
     level: 1,
-    wasteSpeed: 0.8,
-    itemInterval: 5.0,
+    wasteSpeed: 0.9,
+    itemInterval: 4.0,
     wasteLevel: 1,
     burstSpawnRate: 0.1,
   },
