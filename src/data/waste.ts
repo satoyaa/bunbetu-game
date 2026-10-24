@@ -65,7 +65,8 @@ import type { WasteDef } from '../types/game';
 export const Waste: WasteDef[] = [
   {
     key: 'pet_label_cap_drink',
-    label: 'ペットボトル',
+    label: 'ペットボトル（飲み残しあり・キャップとラベル付き）',
+    shortLabel: 'ペットボトル',
     img: petWithDrinkImage,
     score: 50,
     isSimple: false,
@@ -80,7 +81,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'pet_drink',
-    label: 'ペットボトル',
+    label: 'ペットボトル（飲み残しあり・キャップとラベルなし）',
+    shortLabel: 'ペットボトル（中身あり）',
     img: petBodyWithDrinkImage,
     score: 20,
     isSimple: true,
@@ -95,7 +97,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'pet',
-    label: 'ボトル',
+    label: 'ペットボトル（洗浄済・キャップとラベルなし）',
+    shortLabel: 'ペットボトル',
     img: petBodyImage,
     score: 10,
     isSimple: true,
@@ -109,7 +112,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'cap',
-    label: 'キャップ',
+    label: 'ペットボトルのキャップ',
+    shortLabel: 'キャップ',
     img: petCapImage,
     score: 10,
     isSimple: true,
@@ -123,7 +127,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'label',
-    label: 'ラベル',
+    label: 'ペットボトルのラベル',
+    shortLabel: 'ラベル',
     img: petLabelImage,
     score: 10,
     isSimple: true,
@@ -137,7 +142,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'nuigurumi',
-    label: 'ぬいぐるみ(電子機器無し)',
+    label: 'ぬいぐるみ（電子機器を内蔵していないもの）',
+    shortLabel: 'ぬいぐるみ',
     img: plushToyImage,
     score: 20,
     isSimple: true,
@@ -166,7 +172,7 @@ export const Waste: WasteDef[] = [
   {
     // リチウムイオン電池を含むため、回収ボックスで扱う。
     key: 'mobile_battery',
-    label: 'モバイル充電器',
+    label: 'モバイルバッテリー',
     img: mobileBatteryImage,
     score: 30,
     isSimple: true,
@@ -181,7 +187,8 @@ export const Waste: WasteDef[] = [
   {
     // リチウムイオン電池を含むため、回収ボックスで扱う。
     key: 'smartphone',
-    label: 'スマートフォン',
+    label: '携帯電話（スマートフォン）',
+    shortLabel: 'スマートフォン',
     img: smartphoneImage,
     score: 30,
     isSimple: true,
@@ -195,7 +202,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'egg_carton_pulp',
-    label: '卵のパック（パルプモールド）',
+    label: '卵のパック（パルプモールド製）',
+    shortLabel: '卵のパック（紙製）',
     img: pulpEggCartonImage,
     score: 20,
     isSimple: true,
@@ -251,7 +259,7 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'shoes',
-    label: '靴（運動靴・革靴・スリッパ・サンダル等）',
+    label: '靴',
     img: shoesImage,
     score: 20,
     isSimple: true,
@@ -307,7 +315,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'yogurt_dirty',
-    label: 'ヨーグルトのカップ プラスチック製（汚れあり）',
+    label: 'ヨーグルトのカップ（プラスチック製・汚れあり）',
+    shortLabel: 'ヨーグルトのカップ（汚れあり）',
     img: dirtyYogurtImage,
     score: 15,
     isSimple: true,
@@ -351,6 +360,7 @@ export const Waste: WasteDef[] = [
   {
     key: 'ramune_bottle',
     label: 'びん(ガラス) 薬・飲料・食料品等用',
+    shortLabel: 'ラムネびん',
     img: ramuneBottleImage,
     score: 15,
     isSimple: true,
@@ -364,7 +374,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'soy_sauce_bottle',
-    label: 'しょうゆボトル（洗浄済・ラベルとキャップ付き）',
+    label: 'しょうゆの容器（洗浄済・キャップとラベル付き）',
+    shortLabel: 'しょうゆボトル',
     img: soySauceBottleImage,
     score: 15,
     isSimple: false,
@@ -378,7 +389,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'mirin_bottle',
-    label: 'みりんボトル（洗浄済・ラベルとキャップ付き）',
+    label: 'みりんの容器（洗浄済・キャップとラベル付き）',
+    shortLabel: 'みりんボトル',
     img: mirinBottleImage,
     score: 15,
     isSimple: false,
@@ -392,7 +404,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'cooking_sake_bottle',
-    label: '料理酒ボトル（洗浄済・ラベルとキャップ付き）',
+    label: '酒の容器（料理酒用・洗浄済・キャップとラベル付き）',
+    shortLabel: '料理酒ボトル',
     img: cookingSakeBottleImage,
     score: 15,
     isSimple: false,
@@ -406,7 +419,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'soy_sauce_dirty',
-    label: 'しょうゆボトル（汚れあり・ラベルとキャップ付き）',
+    label: 'しょうゆの容器（汚れあり・キャップとラベル付き）',
+    shortLabel: 'しょうゆボトル（汚れあり）',
     img: dirtySoySauceBottleImage,
     score: 20,
     isSimple: false,
@@ -421,7 +435,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'mirin_dirty',
-    label: 'みりんボトル（汚れあり・ラベルとキャップ付き）',
+    label: 'みりんの容器（汚れあり・キャップとラベル付き）',
+    shortLabel: 'みりんボトル（汚れあり）',
     img: dirtyMirinBottleImage,
     score: 20,
     isSimple: false,
@@ -436,7 +451,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'cooking_sake_dirty',
-    label: '料理酒ボトル（汚れあり・ラベルとキャップ付き）',
+    label: '酒の容器（料理酒用・汚れあり・キャップとラベル付き）',
+    shortLabel: '料理酒ボトル（汚れあり）',
     img: dirtyCookingSakeBottleImage,
     score: 20,
     isSimple: false,
@@ -452,6 +468,7 @@ export const Waste: WasteDef[] = [
   {
     key: 'bento_box',
     label: '弁当ガラ(プラスチック製容器)',
+    shortLabel: '弁当ガラ',
     img: bentoBoxImage,
     score: 15,
     isSimple: true,
@@ -465,7 +482,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'yogurt_clean',
-    label: 'ヨーグルトのカップ プラスチック製（洗浄済）',
+    label: 'ヨーグルトのカップ（プラスチック製・洗浄済）',
+    shortLabel: 'ヨーグルトのカップ',
     img: cleanYogurtImage,
     score: 15,
     isSimple: true,
@@ -648,7 +666,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'pet_label_cap',
-    label: 'ペットボトル（飲み残しなし・ラベルとキャップ付き）',
+    label: 'ペットボトル（飲み残しなし・キャップとラベル付き）',
+    shortLabel: 'ペットボトル',
     img: petNoDrinkImage,
     score: 40,
     isSimple: false,
@@ -663,7 +682,8 @@ export const Waste: WasteDef[] = [
   {
     // 3種類の調味料ボトルで共用する洗浄済み本体。
     key: 'condiment_body',
-    label: '調味料ボトル本体（洗浄済）',
+    label: 'ペットボトル（調味料用・本体洗浄済）',
+    shortLabel: '調味料ボトル本体',
     img: condimentBodyImage,
     score: 10,
     isSimple: true,
@@ -677,7 +697,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'condiment_cap',
-    label: '調味料ボトルのキャップ',
+    label: 'ペットボトルのキャップ（調味料用）',
+    shortLabel: '調味料ボトルのキャップ',
     img: condimentCapImage,
     score: 10,
     isSimple: true,
@@ -691,7 +712,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'soy_sauce_label',
-    label: 'しょうゆボトルのラベル',
+    label: 'しょうゆの容器のラベル',
+    shortLabel: 'しょうゆのラベル',
     img: soySauceLabelImage,
     score: 10,
     isSimple: true,
@@ -705,7 +727,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'mirin_label',
-    label: 'みりんボトルのラベル',
+    label: 'みりんの容器のラベル',
+    shortLabel: 'みりんのラベル',
     img: mirinLabelImage,
     score: 10,
     isSimple: true,
@@ -719,7 +742,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'cooking_sake_label',
-    label: '料理酒ボトルのラベル',
+    label: '酒の容器のラベル（料理酒用）',
+    shortLabel: '料理酒のラベル',
     img: cookingSakeLabelImage,
     score: 10,
     isSimple: true,
@@ -733,7 +757,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'soy_sauce_dirty_body',
-    label: 'しょうゆボトル本体（汚れあり）',
+    label: 'しょうゆの容器（本体・汚れあり）',
+    shortLabel: 'しょうゆボトル本体',
     img: soySauceDirtyBodyImage,
     score: 15,
     isSimple: true,
@@ -748,7 +773,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'mirin_dirty_body',
-    label: 'みりんボトル本体（汚れあり）',
+    label: 'みりんの容器（本体・汚れあり）',
+    shortLabel: 'みりんボトル本体',
     img: mirinDirtyBodyImage,
     score: 15,
     isSimple: true,
@@ -763,7 +789,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'cooking_sake_dirty_body',
-    label: '料理酒ボトル本体（汚れあり）',
+    label: '酒の容器（料理酒用・本体・汚れあり）',
+    shortLabel: '料理酒ボトル本体',
     img: cookingSakeDirtyBodyImage,
     score: 15,
     isSimple: true,
@@ -807,7 +834,8 @@ export const Waste: WasteDef[] = [
   {
     // 外袋はプラスチック製の容器包装として別に分別する。本体を使用してから出す。
     key: 'disposable_heat_pack_packaged',
-    label: '使い捨てカイロ（外袋付き）',
+    label: 'カイロ（使い捨て・外袋付き）',
+    shortLabel: 'カイロ（外袋付き）',
     img: packagedHeatPackImage,
     score: 20,
     isSimple: false,
@@ -821,7 +849,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'disposable_heat_pack_body',
-    label: '使い捨てカイロ本体（使用済み）',
+    label: 'カイロ（使い捨て・本体使用済み）',
+    shortLabel: 'カイロ本体',
     img: heatPackBodyImage,
     score: 15,
     isSimple: true,
@@ -836,6 +865,7 @@ export const Waste: WasteDef[] = [
   {
     key: 'camera',
     label: 'カメラ（電池を取り外したもの）',
+    shortLabel: 'カメラ',
     img: cameraImage,
     score: 15,
     isSimple: true,
@@ -863,7 +893,8 @@ export const Waste: WasteDef[] = [
   },
   {
     key: 'mercury_thermometer',
-    label: '体温計（水銀式）',
+    label: '体温計（水銀使用）',
+    shortLabel: '水銀体温計',
     img: mercuryThermometerImage,
     score: 20,
     isSimple: true,

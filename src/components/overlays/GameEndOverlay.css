@@ -97,6 +97,7 @@
 
 .gameEndOverlayText {
   margin: 0;
+  overflow-wrap: anywhere;
   font-size: clamp(18px, 4vw, 22px);
   font-weight: bold;
   color: #333; /* Matching slider-card-title */

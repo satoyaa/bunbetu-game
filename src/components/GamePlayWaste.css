@@ -13,6 +13,14 @@
   cursor: grabbing;
 }
 
+.waste-visual {
+  position: relative;
+}
+
+.waste-visual-loading {
+  visibility: hidden;
+}
+
 .waste-image {
   max-width: var(--waste-size);
   max-height: var(--waste-size);
@@ -27,10 +35,24 @@
 }
 
 .waste-label-tag {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(200px, calc(100vw - 24px));
   font-size: clamp(11px, 2.6vw, 15px);
   font-weight: bold;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
   border-radius: 8px;
   padding: 4px 8px;
-  white-space: nowrap;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.waste-label-fallback {
+  position: static;
+  transform: none;
 }

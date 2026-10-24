@@ -64,12 +64,9 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
           {/* フィードバックメッセージ */}
           {feedBack && (
             <div className="gameEndFeedbackBox">
-              {feedBack.id === "simple_mistake" && (
-                <p className="gameEndOverlayText">
-                  {feedbackMessage}
-                </p>
-              )
-              }
+              <p className="gameEndOverlayText">
+                {feedBack.id === "simple_mistake" ? feedbackMessage : `対象：${feedBack.who}`}
+              </p>
               
               <p className="gameEndDetailText">
                 {detailMessage}
