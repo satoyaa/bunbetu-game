@@ -11,7 +11,7 @@ export const getImmediateHint = (waste: WasteDef): string | undefined => {
       return '中身が残っているよ！';
     case 'burning':
       if (waste.key === 'smartphone') return 'スマホはごみ箱に入れちゃダメ！';
-      if (waste.key === 'mobile_battery') return '充電器はごみ箱に入れちゃダメ！';
+      if (waste.key === 'mobile_battery') return 'モバイルバッテリーはごみ箱に入れちゃダメ！';
       return undefined;
     default:
       return undefined;

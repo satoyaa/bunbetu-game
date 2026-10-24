@@ -41,7 +41,8 @@ export interface BinDef {
 // 流れてくるゴミの定義．
 export interface WasteDef {
   key: string; // key
-  label: string; //ごみ名
+  label: string; // フィードバックに表示するごみ名（公式品目名＋必要な状態）
+  shortLabel?: string; // コンベア上で使う短い名前。省略時は label を表示
   img: string; //画像
   score: number; //獲得点数
   isSimple: boolean; //分解可能か
