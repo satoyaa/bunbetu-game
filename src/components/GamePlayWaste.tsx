@@ -12,6 +12,7 @@ const TAP_SLOP_PX = 8;
 interface DraggableItemProps {
   id: UniqueIdentifier;
   children: ReactNode;
+  disabled: boolean;
   /** 0 = ベルト右端の外側 / 1 = ベルト左端の外側 */
   progress: number;
   /** ベルト面高さに対する縦方向オフセット(%) */
@@ -19,9 +20,10 @@ interface DraggableItemProps {
 }
 
 // 1．ドラッグできるコンポーネント
-const DraggableItem = ({ id, children, progress, laneOffset }: DraggableItemProps) => {
+const DraggableItem = ({ id, children, disabled, progress, laneOffset }: DraggableItemProps) => {
   const { attributes, listeners, setNodeRef, transform, isDragging, activatorEvent, activeNodeRect } = useDraggable({
     id: id,
+    disabled,
   });
   // ドラッグ中はベルトの進行を止めて見せる（指から位置が逃げないように）
   const [frozenProgress, setFrozenProgress] = useState<number | null>(null);
@@ -73,6 +75,7 @@ const DraggableItem = ({ id, children, progress, laneOffset }: DraggableItemProp
     top: `${50 + laneOffset}%`,
     transform: `translate3d(${translateX}, ${translateY}, 0)`,
     zIndex: isDragging ? 1000 : 10,
+    pointerEvents: disabled ? 'none' : undefined,
   };
 
   return (
@@ -95,6 +98,8 @@ const GamePlayWaste = ({ id, label, isSimple, progress, laneOffset, setScore }: 
   const { conveyItems, setConveyItems } = useConveyItems();
   const currentItem = conveyItems.find((item: ConveyItem) => item.id === id);
   const wasteDef = currentItem?.def;
+  const [imageState, setImageState] = useState<{ src: string; status: 'loaded' | 'error' } | null>(null);
+  const imageReady = !wasteDef || imageState?.src === wasteDef.img;
   // タップ開始位置。ドラッグとの競合を避けるため、移動量が小さいときだけ分解とみなす。
   const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -156,21 +161,26 @@ const GamePlayWaste = ({ id, label, isSimple, progress, laneOffset, setScore }: 
   };
 
   const renderVisual = () => {
-    if (!wasteDef) {
-      return <div className="waste-label-tag">{label}</div>;
+    if (!wasteDef || (imageState?.src === wasteDef.img && imageState.status === 'error')) {
+      return <div className="waste-label-tag waste-label-fallback">{label}</div>;
     }
 
     return (
-      <img
-        src={wasteDef.img}
-        alt={wasteDef.label}
-        className="waste-image"
-      />
+      <div className={`waste-visual${imageReady ? '' : ' waste-visual-loading'}`}>
+        <span className="waste-label-tag">{label}</span>
+        <img
+          src={wasteDef.img}
+          alt=""
+          className="waste-image"
+          onLoad={() => setImageState({ src: wasteDef.img, status: 'loaded' })}
+          onError={() => setImageState({ src: wasteDef.img, status: 'error' })}
+        />
+      </div>
     );
   };
 
   return (
-    <DraggableItem id={id} progress={progress} laneOffset={laneOffset}>
+    <DraggableItem id={id} disabled={!imageReady} progress={progress} laneOffset={laneOffset}>
       {isSimple ? (
         renderVisual()
       ) : (
