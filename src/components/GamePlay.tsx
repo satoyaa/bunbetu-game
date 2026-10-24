@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GamePlayBin from "./GamePlayBin";
 import GamePlaySink from "./GamePlaySink";
 import GamePlayCollectionBox from "./GamePlayCollectionBox";
@@ -44,6 +44,7 @@ const GamePlayContent = (props: GamePlayProps) => {
   const { playSE } = useGameSound();
   const [activeOver, setActiveOver] = useState<UniqueIdentifier | null>(null); // 現在ドラッグ中で重なっている領域をハイライトするために管理
   const [immediateHint, setImmediateHint] = useState<ImmediateHint | null>(null);
+  const hasSpawnedFirstItem = useRef(false);
 
   useEffect(() => {
     if (!immediateHint) return;
@@ -172,6 +173,7 @@ const GamePlayContent = (props: GamePlayProps) => {
 
   useEffect(() => {
     if (gameProgress !== "playing") {
+      hasSpawnedFirstItem.current = false;
       return;
     }
 
@@ -182,7 +184,7 @@ const GamePlayContent = (props: GamePlayProps) => {
     const availableWastes = Waste.filter((w: WasteDef) => w.wasteLevel <= currentParam.wasteLevel);
     const wasteList = availableWastes.length > 0 ? availableWastes : Waste;
 
-    const intervalId = setInterval(() => {
+    const spawnItem = () => {
       const itemId = Date.now() + Math.random();
       const index = getRandomNumber(0, wasteList.length - 1);
       // 「ベルト右端の外側 → 左端の外側」を流れ切るまでの時間。
@@ -198,7 +200,14 @@ const GamePlayContent = (props: GamePlayProps) => {
       };
 
       setConveyItems((prevItems: ConveyItem[]) => [...prevItems, newItem]);
-    }, currentParam.itemInterval * 1000);
+    };
+
+    if (!hasSpawnedFirstItem.current) {
+      spawnItem();
+      hasSpawnedFirstItem.current = true;
+    }
+
+    const intervalId = setInterval(spawnItem, currentParam.itemInterval * 1000);
 
     return () => {
       clearInterval(intervalId);
