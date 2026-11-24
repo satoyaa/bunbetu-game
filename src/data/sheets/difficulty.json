@@ -1,0 +1,126 @@
+{
+  "gameLevelParameters": [
+    {
+      "level": 0,
+      "wasteSpeed": 0.8,
+      "itemInterval": 3,
+      "wasteLevel": 1,
+      "burstSpawnRate": 0
+    },
+    {
+      "level": 1,
+      "wasteSpeed": 0.9,
+      "itemInterval": 4,
+      "wasteLevel": 1,
+      "burstSpawnRate": 0.1
+    },
+    {
+      "level": 2,
+      "wasteSpeed": 1,
+      "itemInterval": 4,
+      "wasteLevel": 2,
+      "burstSpawnRate": 0.1
+    },
+    {
+      "level": 3,
+      "wasteSpeed": 1.1,
+      "itemInterval": 3,
+      "wasteLevel": 2,
+      "burstSpawnRate": 0.1
+    },
+    {
+      "level": 4,
+      "wasteSpeed": 1.4,
+      "itemInterval": 2.3,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.2
+    },
+    {
+      "level": 5,
+      "wasteSpeed": 1.5,
+      "itemInterval": 2.2,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.2
+    },
+    {
+      "level": 6,
+      "wasteSpeed": 1.8,
+      "itemInterval": 1.8,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.3
+    },
+    {
+      "level": 7,
+      "wasteSpeed": 1.8,
+      "itemInterval": 1.6,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.3
+    },
+    {
+      "level": 8,
+      "wasteSpeed": 2,
+      "itemInterval": 1.6,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.4
+    },
+    {
+      "level": 9,
+      "wasteSpeed": 2.5,
+      "itemInterval": 1,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.4
+    },
+    {
+      "level": 10,
+      "wasteSpeed": 3,
+      "itemInterval": 0.8,
+      "wasteLevel": 3,
+      "burstSpawnRate": 0.4
+    }
+  ],
+  "gameDifficulties": [
+    {
+      "name": "やさしい",
+      "difficulty": "easy",
+      "timeLimit": 60,
+      "lifeLimit": 5,
+      "binCount": 8,
+      "levels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "levelUpIntervalMs": 10000
+    },
+    {
+      "name": "ふつう",
+      "difficulty": "normal",
+      "timeLimit": 60,
+      "lifeLimit": 5,
+      "binCount": 8,
+      "levels": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "levelUpIntervalMs": 10000
+    },
+    {
+      "name": "むずかしい",
+      "difficulty": "hard",
+      "timeLimit": "Infinity",
+      "lifeLimit": 3,
+      "binCount": 8,
+      "levels": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "levelUpIntervalMs": 30000
+    }
+  ]
+}

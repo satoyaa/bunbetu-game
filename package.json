@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "sheets:sync": "node scripts/sync-sheet-data.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "preview": "vite preview",
     "test": "echo \"No tests yet\" && exit 0"

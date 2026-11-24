@@ -1,4 +1,5 @@
 import type { FeedBackId, WasteDef } from '../types/game';
+import sheetFeedback from './sheets/feedback.json';
 
 // プレイ中は短い注意だけを表示し、詳しい説明は終了画面に残す。
 export const getImmediateHint = (waste: WasteDef): string | undefined => {
@@ -29,36 +30,8 @@ export interface FeedTitle {
 }
 
 // simple_mistake 以外の特別フィードバックメッセージ定義
-export const SPECIAL_FEEDBACK_MESSAGES: SpecialFeedbackMessage[] = [
-  {
-    feedBackId: 'forget_separate',
-    message: 'パーツを分解してから分別してください！',
-  },
-  {
-    feedBackId: 'burning',
-    message: '発火の危険があります。ごみ箱には入れず、購入店へ持参してください。',
-  },
-  {
-    feedBackId: 'missed_Waste',
-    message: '分別が間に合いませんでした！',
-  },
-  {
-    feedBackId: 'must_wash',
-    message: '水で洗ってから分別してください！',
-  },
-  {
-    feedBackId: 'must_flush',
-    message: '中身を流してから分別してください！',
-  },
-];
+export const SPECIAL_FEEDBACK_MESSAGES: SpecialFeedbackMessage[] =
+  sheetFeedback.specialFeedbackMessages as unknown as SpecialFeedbackMessage[];
 
-export const FEEDBACK_TITLES: FeedTitle[] = [
-  { feedTitleScoreThreshold: 0, feedTitle: '初心者' },
-  { feedTitleScoreThreshold: 300, feedTitle: '分別の達人' },
-  { feedTitleScoreThreshold: 500, feedTitle: '分別マスター' },
-  { feedTitleScoreThreshold: 700, feedTitle: 'エコイスト' },
-  { feedTitleScoreThreshold: 1000, feedTitle: '環境保護の英雄' },
-  { feedTitleScoreThreshold: 1500, feedTitle: '分別の王' },
-  { feedTitleScoreThreshold: 2500, feedTitle: '分別星人' },
-  { feedTitleScoreThreshold: 5000, feedTitle: '分別神' },
-];
+export const FEEDBACK_TITLES: FeedTitle[] =
+  sheetFeedback.feedbackTitles as unknown as FeedTitle[];
