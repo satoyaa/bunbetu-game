@@ -3,6 +3,7 @@ import { access, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const projectRoot = process.cwd();
+const checkOnly = process.argv.includes('--check');
 const serviceAccountText = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
 const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
@@ -286,11 +287,13 @@ const [waste, feedback, difficulty] = await Promise.all([
   Promise.resolve(validateDifficulty(difficultyRows)),
 ]);
 
-const outputDirectory = path.join(projectRoot, 'src/data/sheets');
-await mkdir(outputDirectory, { recursive: true });
-await Promise.all([
-  writeFile(path.join(outputDirectory, 'waste.json'), `${JSON.stringify(waste, null, 2)}\n`),
-  writeFile(path.join(outputDirectory, 'feedback.json'), `${JSON.stringify(feedback, null, 2)}\n`),
-  writeFile(path.join(outputDirectory, 'difficulty.json'), `${JSON.stringify(difficulty, null, 2)}\n`),
-]);
-console.log(`Validated and synchronized ${waste.length} waste items, ${feedback.specialFeedbackMessages.length} feedback messages, ${feedback.feedbackTitles.length} titles, ${difficulty.gameLevelParameters.length} levels, and ${difficulty.gameDifficulties.length} modes.`);
+if (!checkOnly) {
+  const outputDirectory = path.join(projectRoot, 'src/data/sheets');
+  await mkdir(outputDirectory, { recursive: true });
+  await Promise.all([
+    writeFile(path.join(outputDirectory, 'waste.json'), `${JSON.stringify(waste, null, 2)}\n`),
+    writeFile(path.join(outputDirectory, 'feedback.json'), `${JSON.stringify(feedback, null, 2)}\n`),
+    writeFile(path.join(outputDirectory, 'difficulty.json'), `${JSON.stringify(difficulty, null, 2)}\n`),
+  ]);
+}
+console.log(`${checkOnly ? 'Connection and validation succeeded' : 'Validated and synchronized'}: ${waste.length} waste items, ${feedback.specialFeedbackMessages.length} feedback messages, ${feedback.feedbackTitles.length} titles, ${difficulty.gameLevelParameters.length} levels, and ${difficulty.gameDifficulties.length} modes.`);

@@ -76,15 +76,19 @@ GitHub ActionsがGoogle Sheets APIからデータを読み込み、検証した�
 
 ## 同期とデプロイ
 
+- **接続テスト（デプロイなし）**: `Actions → Test Google Sheets Connection → Run workflow` を実行します。このWorkflowは3タブの読み込みと内容検証だけを行い、JSONファイルを書き換えず、Cloudflare Pagesへもデプロイしません。成功するとログに `Connection and validation succeeded` と読み込んだ件数が表示されます。
+- 接続テストWorkflowは、この変更が `main` に取り込まれた後にActions一覧へ表示されます。ローカルで試す場合は、2つの環境変数を設定して `npm run sheets:check` を実行してください。
+- 接続テストが通った後、実際に反映する場合は `Actions → Deploy to Test Environment → Run workflow` を実行します。こちらは同期後にビルド・デプロイします。
 - `main` へのpush時に、同期・検証、Lint、ビルドを行ってCloudflare Pagesへデプロイします。
-- Actionsの **Deploy to Test Environment** から手動実行できます。実行するブランチを選択してください。
+- Actionsの **Deploy to Test Environment** は手動実行できます。実行するブランチを選択してください。
 - 定期実行は毎日0時（日本時間）です。GitHub ActionsのUTC cronでは `15:00` に設定しています。
 - 列名の不一致、空の必須値、重複キー、未対応ID、ごみ箱ID、画像パス、参照先などに問題があると同期でエラーになり、デプロイを中止します。
 - `npm run sheets:sync` でローカル同期もできます。`GOOGLE_SERVICE_ACCOUNT_JSON` と `GOOGLE_SHEETS_SPREADSHEET_ID` の環境変数が必要です。
+- `npm run sheets:check` は同じAPI認証・シート読み込み・内容検証を実行しますが、ローカルのデータファイルは書き換えません。
 
 ## 変更記録
 
-- `scripts/sync-sheet-data.mjs` がSheets APIから3タブを取得・検証し、`src/data/sheets/*.json` を生成します。初期JSONには変更前のデータを入れています。
+- `scripts/sync-sheet-data.mjs` がSheets APIから3タブを取得・検証し、通常同期では `src/data/sheets/*.json` を生成します。初期JSONには変更前のデータを入れています。
 - `src/data/waste.ts`、`src/data/feedback.ts`、`src/data/difficulty.ts` は生成JSONをアプリの型へ接続します。`package.json` に同期コマンド、`tsconfig.app.json` にJSON importを追加し、`.github/workflows/cd.yml` で同期後のビルド・デプロイを実行します。
 - このMarkdownにシートの準備方法と列定義を記録しています。
 - `src/data/bins.ts` は対象外です。
