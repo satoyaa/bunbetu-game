@@ -1,63 +1,21 @@
-import { createSign } from 'node:crypto';
 import { access, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const projectRoot = process.cwd();
 const checkOnly = process.argv.includes('--check');
-const serviceAccountText = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+const accessToken = process.env.GOOGLE_ACCESS_TOKEN;
 const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
-if (!serviceAccountText || !spreadsheetId) {
-  throw new Error('Set GOOGLE_SERVICE_ACCOUNT_JSON and GOOGLE_SHEETS_SPREADSHEET_ID before syncing.');
+if (!accessToken) {
+  throw new Error('GOOGLE_ACCESS_TOKEN is missing. Run the Google WIF authentication step and pass its access_token output.');
 }
-
-let serviceAccount;
-try {
-  serviceAccount = JSON.parse(serviceAccountText);
-} catch {
-  throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON is not valid JSON.');
-}
-
-if (!serviceAccount.client_email || !serviceAccount.private_key) {
-  throw new Error('The service account JSON must contain client_email and private_key.');
+if (!spreadsheetId) {
+  throw new Error('GOOGLE_SHEETS_SPREADSHEET_ID is missing. Add it to the workflow environment.');
 }
 
 const BIN_IDS = new Set(['kanen', 'pet', 'recycle_plastic', 'other_plastic', 'hunen', 'sigen', 'yugai', 'oogata', 'yet']);
 const FEEDBACK_IDS = new Set(['simple_mistake', 'forget_separate', 'burning', 'missed_Waste', 'must_wash', 'must_flush']);
 const DIFFICULTIES = new Set(['easy', 'normal', 'hard']);
-
-function base64url(value) {
-  return Buffer.from(value).toString('base64url');
-}
-
-async function getAccessToken() {
-  const issuedAt = Math.floor(Date.now() / 1000);
-  const header = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
-  const claims = base64url(JSON.stringify({
-    iss: serviceAccount.client_email,
-    scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-    aud: 'https://oauth2.googleapis.com/token',
-    iat: issuedAt,
-    exp: issuedAt + 3600,
-  }));
-  const unsignedToken = `${header}.${claims}`;
-  const signer = createSign('RSA-SHA256');
-  signer.update(unsignedToken);
-  const assertion = `${unsignedToken}.${signer.sign(serviceAccount.private_key, 'base64url')}`;
-  const response = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-      assertion,
-    }),
-  });
-  const payload = await response.json();
-  if (!response.ok || !payload.access_token) {
-    throw new Error(`Google OAuth failed (${response.status}): ${payload.error_description ?? payload.error ?? 'unknown error'}`);
-  }
-  return payload.access_token;
-}
 
 async function getRows(accessToken, range, expectedHeaders) {
   const url = new URL(`https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(spreadsheetId)}/values/${encodeURIComponent(range)}`);
@@ -274,11 +232,10 @@ const wasteHeaders = ['key', 'label', 'shortLabel', 'img', 'score', 'isSimple', 
 const feedbackHeaders = ['type', 'feedBackId', 'message', 'feedTitleScoreThreshold', 'feedTitle'];
 const difficultyHeaders = ['type', 'level', 'wasteSpeed', 'itemInterval', 'wasteLevel', 'burstSpawnRate', 'name', 'difficulty', 'timeLimit', 'lifeLimit', 'binCount', 'levels', 'levelUpIntervalMs'];
 
-const token = await getAccessToken();
 const [wasteRows, feedbackRows, difficultyRows] = await Promise.all([
-  getRows(token, 'waste!A:Z', wasteHeaders),
-  getRows(token, 'feedback!A:Z', feedbackHeaders),
-  getRows(token, 'difficulty!A:Z', difficultyHeaders),
+  getRows(accessToken, 'waste!A:Z', wasteHeaders),
+  getRows(accessToken, 'feedback!A:Z', feedbackHeaders),
+  getRows(accessToken, 'difficulty!A:Z', difficultyHeaders),
 ]);
 
 const [waste, feedback, difficulty] = await Promise.all([
