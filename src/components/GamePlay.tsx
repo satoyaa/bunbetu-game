@@ -238,7 +238,7 @@ const GamePlayContent = (props: GamePlayProps) => {
               <GamePlayCollectionBox isOver={activeOver === 'collection_box'} />
               <GamePlaySink isOver={activeOver === 'sink'} />
             </div>
-            <GamePlayConveyor setHealth={setHealth} setScore={setScore} />
+            <GamePlayConveyor setHealth={setHealth} setScore={setScore} setFeedBackItem={setFeedBackItem} />
           </div>
         </div>
 

@@ -5,13 +5,17 @@ import { getProgress, isExpired } from "../data/layout";
 import type { ConveyItem } from "../types/game";
 import "./GamePlayConveyor.css";
 import conveyorImage from '../assets/images/waste/ベルトコンベア.webp';
+import { BINS } from "../data/bins";
+import { SPECIAL_FEEDBACK_MESSAGES, type SpecialFeedbackMessage } from "../data/feedback";
+import type { BinDef, FeedBack } from "../types/game";
 
 type GamePlayConveyorProps = {
   setHealth: React.Dispatch<React.SetStateAction<number>>;
   setScore: React.Dispatch<React.SetStateAction<number>>;
+  setFeedBackItem: React.Dispatch<React.SetStateAction<FeedBack | undefined>>;
 };
 
-const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
+const GamePlayConveyor = ({ setHealth, setScore, setFeedBackItem }: GamePlayConveyorProps) => {
   const { conveyItems, setConveyItems } = useConveyItems();
   const [, setTick] = useState(0);
 
@@ -33,6 +37,23 @@ const GamePlayConveyor = ({ setHealth, setScore }: GamePlayConveyorProps) => {
       .map((item: ConveyItem) => item.id);
 
     if (expiredItemIds.length > 0) {
+      const firstExpired = conveyItems.find((item: ConveyItem) => expiredItemIds.includes(item.id));
+      if (firstExpired) {
+        const waste = firstExpired.def;
+        const binInfo = BINS.find((bin: BinDef) => bin.id === waste.bin);
+        const feedbackId = 'missed_Waste';
+        const message = SPECIAL_FEEDBACK_MESSAGES.find(
+          (item: SpecialFeedbackMessage) => item.feedBackId === feedbackId
+        )?.message ?? "分別が間に合いませんでした。";
+        setFeedBackItem({
+          id: feedbackId,
+          who: waste.label,
+          where: binInfo?.label ?? waste.bin,
+          special_message: message,
+          wasteImg: waste.img,
+          binImg: binInfo?.img,
+        });
+      }
       setHealth((prevHealth: number) => Math.max(0, prevHealth - expiredItemIds.length));
       setConveyItems((prevItems: ConveyItem[]) => prevItems.filter((item: ConveyItem) => !expiredItemIds.includes(item.id)));
     }

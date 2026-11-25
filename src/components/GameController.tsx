@@ -57,6 +57,7 @@ const GameController = () => {
       setMaxHealth(initialLife);
       setGameLevel(initialLevel);
       setScore(0);
+      setFeedBack(undefined);
       return;
     }
 
