@@ -62,7 +62,7 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
               <span className="gameEndScoreUnit">点</span>
             </div>
           {/* フィードバックメッセージ */}
-          {feedBack && (
+          {feedBack ? (
             <div className="gameEndFeedbackBox">
               <p className="gameEndOverlayText">
                 {feedBack.id === "simple_mistake" ? feedbackMessage : `対象：${feedBack.who}`}
@@ -84,6 +84,11 @@ const GameEndOverlay = ({ onEnd, feedBack, score = 0 }: GameEndOverlayProps) => 
                   </div>
                 </div>
               )}
+            </div>
+          ) : (
+            <div className="gameEndFeedbackBox">
+              <p className="gameEndOverlayText">上手に分別できました！</p>
+              <p className="gameEndDetailText">ごみを正しく分別できています。</p>
             </div>
           )}
         </div>
